@@ -21,13 +21,11 @@
     <% else %>
       <%= stylesheet_link_tag "application" %>
     <% end %>
-    <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
     <%= content_for(:head) %>
     <%= description %>
     <%= twitter_card %>
     <%= opengraph %>
-    <%= javascript_tag '$.fx.off = true;' if Rails.env.test? %>
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -47,9 +45,16 @@
 
     <div class="row">
       <%= content_for?(:content) ? yield(:content) : yield %>
-    </div>
+		</div>
+
+		<div id="react-root" />
   </div>
 
   <%= render :partial => 'shared/footer' %>
+
+  <!-- Load JavaScript last so that the rest of the page can start rendering -->
+	<%= javascript_include_tag "application" %>
+	<%= javascript_include_tag "visitors/index" %>
+  <%= javascript_tag '$.fx.off = true;' if Rails.env.test? %>
   </body>
 </html>
