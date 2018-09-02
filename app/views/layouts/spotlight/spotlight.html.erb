@@ -53,8 +53,7 @@
   <%= render :partial => 'shared/footer' %>
 
   <!-- Load JavaScript last so that the rest of the page can start rendering -->
-	<%= javascript_include_tag "application" %>
-	<%= javascript_include_tag "visitors/index" %>
+  <%= javascript_include_tag "application" %>
   <%= javascript_tag '$.fx.off = true;' if Rails.env.test? %>
   </body>
 </html>

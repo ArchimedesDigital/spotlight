@@ -75,6 +75,10 @@ Our `$ rake ci` and `$ rake spotlight:server` tasks utilize Solr and the testing
 
 See more detailed instructions for development environment setup at ["Contributing to Spotlight"](https://github.com/projectblacklight/spotlight/wiki/Contributing-to-Spotlight)
 
+## Developing React Assets
+
+React assets are saved in `./app/web`, outside of the usual `./app/assets/javascripts` because they require additional build tools that Spotlight has not currently implemented. To build the React assets and serve them through the host application, simply run `yarn run build`. Configuration can be found in `webpack.config.js` and `package.json`.
+
 ## Tests
 
 ### Run all the tests:

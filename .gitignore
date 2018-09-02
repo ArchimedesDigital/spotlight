@@ -29,3 +29,4 @@ pkg/
 .internal_test_app/*
 
 node_modules
+app/assets/javascripts/spotlight/webpack_bundle.js
