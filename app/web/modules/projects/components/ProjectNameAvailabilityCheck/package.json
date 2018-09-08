@@ -1,0 +1,6 @@
+{
+  "name": "ProjectNameAvailabilityCheck",
+  "version": "0.0.1",
+  "private": true,
+  "main": "./ProjectNameAvailabilityCheck.js"
+}

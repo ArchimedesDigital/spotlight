@@ -1,3 +1,13 @@
 {
-  "presets": ["env", "@babel/preset-react"]
+  "env": {
+    "test": {
+      "plugins": ["babel-plugin-css-modules-transform"]
+    }
+  },
+  "plugins": [
+    "lodash",
+    "transform-class-properties",
+    ["transform-object-rest-spread", { "useBuiltIns": true }]
+  ],
+  "presets": ["@babel/preset-env", "@babel/preset-flow", "@babel/preset-react"]
 }

@@ -1,0 +1,6 @@
+{
+  "name": "CollectionEditor",
+  "version": "0.0.1",
+  "private": true,
+  "main": "./CollectionEditor.js"
+}
