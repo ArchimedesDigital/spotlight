@@ -141,7 +141,7 @@
   },
   "scripts": {
 		"build": "webpack --config ./webpack.config.js --mode production",
-		"prettier": "prettier",
+		"prettier": "prettier --no-config --use-tabs --single-quote --parser flow --write app/web/**/*.js ",
     "start": "webpack-dev-server --config ./webpack.config.js --mode development"
   }
 }
