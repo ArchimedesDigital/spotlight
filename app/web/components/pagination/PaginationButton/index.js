@@ -5,7 +5,6 @@ import PaginationNext from './PaginationNext';
 import './PaginationButton.css';
 
 class PaginationButton extends React.Component {
-
 	renderButtonContent() {
 		const { prev, next, page } = this.props;
 
@@ -18,7 +17,6 @@ class PaginationButton extends React.Component {
 		return <PaginationPage page={page} />;
 	}
 
-
 	render() {
 		const classes = [];
 		const { isActive } = this.props;
@@ -28,9 +26,7 @@ class PaginationButton extends React.Component {
 		}
 
 		return (
-			<div
-				className={`paginationButton ${classes.join(' ')}`}
-			>
+			<div className={`paginationButton ${classes.join(' ')}`}>
 				{this.renderButtonContent()}
 			</div>
 		);

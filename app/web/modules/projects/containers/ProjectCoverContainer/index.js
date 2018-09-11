@@ -4,7 +4,6 @@ import { compose } from 'react-apollo';
 import ProjectCover from '../../components/ProjectHome/sections/ProjectCover';
 import projectCoverQuery from '../../graphql/queries/projectCoverQuery';
 
-
 const ProjectCoverContainer = props => {
 	let project = null;
 
@@ -12,13 +11,7 @@ const ProjectCoverContainer = props => {
 		project = props.projectCoverQuery.project;
 	}
 
-	return (
-		<ProjectCover
-			project={project}
-		/>
-	);
-}
+	return <ProjectCover project={project} />;
+};
 
-export default compose(
-	projectCoverQuery,
-)(ProjectCoverContainer);
+export default compose(projectCoverQuery)(ProjectCoverContainer);

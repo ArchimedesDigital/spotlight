@@ -7,9 +7,7 @@ import NoResults from '../../../../components/pagination/NoResults';
 
 import './MetadataFields.css';
 
-
 const MetadataFields = ({ fields, metadata, handleUpdateMetadata }) => {
-
 	return (
 		<div className="itemEditorMetadata">
 			<div className="itemEditorMetadataLabels">
@@ -49,16 +47,16 @@ const MetadataFields = ({ fields, metadata, handleUpdateMetadata }) => {
 						handleUpdateMetadata={handleUpdateMetadata}
 						handleRemove={() => fields.remove(index)}
 					/>
-				)
+				);
 			})}
 
-			{!fields.length ?
+			{!fields.length ? (
 				<div className="itemEditorMetadataNoResults">
-					<NoResults
-						message="No metadata entered for this item."
-					/>
+					<NoResults message="No metadata entered for this item." />
 				</div>
-			: ''}
+			) : (
+				''
+			)}
 
 			<button
 				className="itemEditorButton itemEditorAddMetadata"
@@ -69,10 +67,10 @@ const MetadataFields = ({ fields, metadata, handleUpdateMetadata }) => {
 			</button>
 		</div>
 	);
-}
+};
 
 MetadataFields.propTypes = {
-	fields: PropTypes.object,
+	fields: PropTypes.object
 };
 
 export default MetadataFields;

@@ -18,17 +18,10 @@ class ProjectCollections extends React.Component {
 			<div className="projectCollections">
 				<h2>Collections</h2>
 				{collections.map((collection, i) => (
-					<CollectionListItem
-						key={`${collection.slug}-${i}`}
-						{...collection}
-					/>
+					<CollectionListItem key={`${collection.slug}-${i}`} {...collection} />
 				))}
 				<div className="projectCollectionsViewMoreOuter">
-					<Button
-						transparentLight
-						to="/collections"
-						outline
-					>
+					<Button transparentLight to="/collections" outline>
 						View All Collections
 					</Button>
 				</div>
@@ -38,12 +31,11 @@ class ProjectCollections extends React.Component {
 }
 
 ProjectCollections.propTypes = {
-	collections: PropTypes.array,
+	collections: PropTypes.array
 };
 
 ProjectCollections.defaultProps = {
-	collections: [],
+	collections: []
 };
-
 
 export default ProjectCollections;

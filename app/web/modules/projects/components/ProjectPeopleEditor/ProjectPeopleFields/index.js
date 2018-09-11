@@ -4,12 +4,9 @@ import { Row, Col } from 'react-bootstrap';
 import ProjectPeopleField from '../ProjectPeopleField';
 import NoResults from '../../../../../components/pagination/NoResults';
 
-
 import './ProjectPeopleFields.css';
 
-
 const ProjectPeopleFields = ({ fields, users }) => {
-
 	return (
 		<div className="projectPeople">
 			<div className="projectPeopleLabels">
@@ -51,18 +48,18 @@ const ProjectPeopleFields = ({ fields, users }) => {
 						user={user}
 						handleRemove={() => fields.remove(index)}
 					/>
-				)
+				);
 			})}
 
-			{!fields.length ?
+			{!fields.length ? (
 				<div className="projectPeopleNoResults">
-					<NoResults
-						message="No users are associated with this project."
-					/>
+					<NoResults message="No users are associated with this project." />
 				</div>
-			: ''}
+			) : (
+				''
+			)}
 		</div>
 	);
-}
+};
 
 export default ProjectPeopleFields;

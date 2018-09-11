@@ -1,8 +1,7 @@
 import React from 'react';
-import ReactPlayer from 'react-player'
+import ReactPlayer from 'react-player';
 
 import './ThumbnailImage.css';
-
 
 const ThumbnailImage = ({ file, isActiveImage, setActiveFile }) => {
 	let viewer = <div />;
@@ -21,11 +20,7 @@ const ThumbnailImage = ({ file, isActiveImage, setActiveFile }) => {
 			<img
 				className={`
 					thumbnailImage
-					${isActiveImage ?
-						'isActiveImage'
-					:
-						''
-					}
+					${isActiveImage ? 'isActiveImage' : ''}
 				`}
 				alt={file.title}
 				src={src}
@@ -37,11 +32,7 @@ const ThumbnailImage = ({ file, isActiveImage, setActiveFile }) => {
 			<div
 				className={`
 					thumbnailImage
-					${isActiveImage ?
-						'isActiveImage'
-					:
-						''
-					}
+					${isActiveImage ? 'isActiveImage' : ''}
 				`}
 				onClick={setActiveFile.bind(this, file)}
 			>
@@ -50,14 +41,14 @@ const ThumbnailImage = ({ file, isActiveImage, setActiveFile }) => {
 					width="60"
 					height="60"
 					style={{
-						background: '#424242',
+						background: '#424242'
 					}}
-	      />
+				/>
 			</div>
 		);
 	}
 
 	return viewer;
-}
+};
 
 export default ThumbnailImage;

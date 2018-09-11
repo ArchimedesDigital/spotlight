@@ -2,11 +2,10 @@ import { gql, graphql } from 'react-apollo';
 
 import getCurrentProjectHostname from '../../../../lib/getCurrentProjectHostname';
 
-
 const query = gql`
 	query articleQuery($hostname: String, $id: String) {
 		project(hostname: $hostname) {
-	    _id
+			_id
 			userIsAdmin
 			article(_id: $id) {
 				_id
@@ -23,9 +22,9 @@ const articleQuery = graphql(query, {
 	options: ({ params }) => ({
 		variables: {
 			hostname: getCurrentProjectHostname(),
-			id: params.id,
+			id: params.id
 		}
-	}),
+	})
 });
 
 export default articleQuery;

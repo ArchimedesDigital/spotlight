@@ -2,28 +2,23 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { reduxForm } from 'redux-form';
 
-
 import TextSelectorContainer from '../../containers/TextSelectorContainer';
-
 
 import './TextEditor.css';
 
-
 class TextEditor extends React.Component {
-
 	render() {
 		const { text, collection, textGroup, work } = this.props;
 
 		return (
 			<div className="textEditor">
+				<h1>
+					{text
+						? 'Edit this Text included with your project'
+						: 'Add a Text to your project'}
+				</h1>
 
-				<h1>{text ? 'Edit this Text included with your project' : 'Add a Text to your project'}</h1>
-
-				<form
-					className="textEditorForm"
-					onSubmit={this.props.handleSubmit}
-				>
-
+				<form className="textEditorForm" onSubmit={this.props.handleSubmit}>
 					<TextSelectorContainer
 						collectionId={collection}
 						textGroupUrn={textGroup}
@@ -48,13 +43,13 @@ class TextEditor extends React.Component {
 }
 
 TextEditor.propTypes = {
-	text: PropTypes.object,
+	text: PropTypes.object
 };
 
 TextEditor.defaultProps = {
-	text: null,
+	text: null
 };
 
 export default reduxForm({
-	form: 'TextEditor',
+	form: 'TextEditor'
 })(TextEditor);

@@ -10,41 +10,33 @@ import UserAvatarContainer from '../../../../modules/users/containers/UserAvatar
 // styles
 import './NavBar.css';
 
-
 const NavBar = ({ toggleAuthModal, toggleLeftMenu, userId, logout }) => (
 	<Headroom className="navbar">
 		<NavBarHeader toggleLeftMenu={toggleLeftMenu} />
 		<ul className="nav">
 			<li>
-				<Link to={'/'}>
-					Example Link
-				</Link>
+				<Link to={'/'}>Example Link</Link>
 			</li>
 			<li>
-				<Link to={'/about'}>
-					About
-				</Link>
+				<Link to={'/about'}>About</Link>
 			</li>
 			<li>
-				{ userId ?
-					<Link
-						to={'/profile'}
-						className="userAvatarLink"
-					>
+				{userId ? (
+					<Link to={'/profile'} className="userAvatarLink">
 						<UserAvatarContainer />
 					</Link>
-				: '' }
+				) : (
+					''
+				)}
 			</li>
 			<li>
-				{!userId ?
-					<Link
-						to={'/'}
-						className="login-button"
-						onClick={toggleAuthModal}
-					>
+				{!userId ? (
+					<Link to={'/'} className="login-button" onClick={toggleAuthModal}>
 						Sign Up / In
 					</Link>
-				: '' }
+				) : (
+					''
+				)}
 			</li>
 		</ul>
 	</Headroom>
@@ -52,7 +44,7 @@ const NavBar = ({ toggleAuthModal, toggleLeftMenu, userId, logout }) => (
 
 NavBar.propTypes = {
 	toggleAuthModal: PropTypes.func.isRequired,
-	userId: PropTypes.string,
+	userId: PropTypes.string
 };
 
 export default NavBar;

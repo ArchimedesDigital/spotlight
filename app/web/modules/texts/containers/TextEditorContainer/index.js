@@ -8,7 +8,6 @@ import textCreateMutation from '../../graphql/mutations/create';
 import textUpdateMutation from '../../graphql/mutations/update';
 import textRemoveMutation from '../../graphql/mutations/remove';
 
-
 class TextEditorContainer extends React.Component {
 	constructor(props) {
 		super(props);
@@ -16,7 +15,7 @@ class TextEditorContainer extends React.Component {
 		this.state = {
 			collection: null,
 			textGroup: '',
-			work: '',
+			work: ''
 		};
 		autoBind(this);
 	}
@@ -24,35 +23,35 @@ class TextEditorContainer extends React.Component {
 	componentWillReceiveProps(nextProps) {
 		let text = null;
 		if (
-				!this.state.collection
-			&& nextProps.textQuery
-			&& nextProps.textQuery.project
-			&& nextProps.textQuery.project.text
+			!this.state.collection &&
+			nextProps.textQuery &&
+			nextProps.textQuery.project &&
+			nextProps.textQuery.project.text
 		) {
 			text = nextProps.textQuery.project.text;
 			this.setState({
 				collection: parseInt(text.ctsNamespace, 10),
 				textGroup: text.textGroup,
-				work: text.work,
+				work: text.work
 			});
 		}
 	}
 
 	handleSelectCollection(event, index, value) {
 		this.setState({
-			collection: value,
+			collection: value
 		});
 	}
 
 	handleSelectTextGroup(event, index, value) {
 		this.setState({
-			textGroup: value,
+			textGroup: value
 		});
 	}
 
 	handleSelectWork(event, index, value) {
 		this.setState({
-			work: value,
+			work: value
 		});
 	}
 
@@ -60,7 +59,6 @@ class TextEditorContainer extends React.Component {
 		const values = {}; // Object.assign({}, _values);
 		const { textCreate, textUpdate, router } = this.props;
 		const { collection, textGroup, work } = this.state;
-
 
 		values.ctsNamespace = collection;
 		values.textGroup = textGroup;
@@ -72,18 +70,18 @@ class TextEditorContainer extends React.Component {
 		if ('_id' in _values) {
 			values._id = _values._id;
 			textUpdate(values)
-				.then((response) => {
+				.then(response => {
 					router.replace(`/texts/${values._id}`);
 				})
-				.catch((err) => {
+				.catch(err => {
 					console.error(err);
 				});
 		} else {
 			textCreate(values)
-				.then((response) => {
+				.then(response => {
 					router.replace('/texts/');
 				})
-				.catch((err) => {
+				.catch(err => {
 					console.error(err);
 				});
 		}
@@ -93,10 +91,10 @@ class TextEditorContainer extends React.Component {
 		const { textRemove, router } = this.props;
 
 		textRemove(textId)
-			.then((response) => {
+			.then(response => {
 				router.replace('/texts');
 			})
-			.catch((err) => {
+			.catch(err => {
 				console.error(err);
 			});
 	}
@@ -120,7 +118,7 @@ class TextEditorContainer extends React.Component {
 		}
 
 		this.setState({
-			selectedItems,
+			selectedItems
 		});
 	}
 
@@ -129,10 +127,7 @@ class TextEditorContainer extends React.Component {
 
 		// Get text from query
 		let text;
-		if (
-			this.props.textQuery
-			&& this.props.textQuery.project
-		) {
+		if (this.props.textQuery && this.props.textQuery.project) {
 			text = this.props.textQuery.project.text;
 		}
 
@@ -154,6 +149,8 @@ class TextEditorContainer extends React.Component {
 }
 
 export default compose(
-	textCreateMutation, textUpdateMutation, textRemoveMutation,
-	textDetailQuery,
+	textCreateMutation,
+	textUpdateMutation,
+	textRemoveMutation,
+	textDetailQuery
 )(TextEditorContainer);

@@ -2,7 +2,6 @@ import Cookies from 'universal-cookie';
 
 const cookies = new Cookies();
 
-
 const userLoggedIn = () => {
 	const token = cookies.get('token');
 
@@ -10,21 +9,24 @@ const userLoggedIn = () => {
 	return false;
 };
 
-const login = async (data) => {
+const login = async data => {
 	if (userLoggedIn()) return null;
 
 	try {
-		const res = await fetch(`${process.env.REACT_APP_SERVER}/${process.env.REACT_APP_LOGIN_URI}`, {
-			method: 'POST',
-			credentials: 'include',
-			headers: {
-				Accept: 'application/json',
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({
-				...data
-			})
-		});
+		const res = await fetch(
+			`${process.env.REACT_APP_SERVER}/${process.env.REACT_APP_LOGIN_URI}`,
+			{
+				method: 'POST',
+				credentials: 'include',
+				headers: {
+					Accept: 'application/json',
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({
+					...data
+				})
+			}
+		);
 		if (!res.ok) {
 			throw new Error(res.statusText);
 		}
@@ -45,21 +47,24 @@ const logoutUser = async () => {
 	cookies.remove('hello', { domain });
 };
 
-const register = async (data) => {
+const register = async data => {
 	if (userLoggedIn()) return null;
 
 	try {
-		const res = await fetch(`${process.env.REACT_APP_SERVER}/${process.env.REACT_APP_REGISTER_URI}`, {
-			method: 'POST',
-			credentials: 'include',
-			headers: {
-				Accept: 'application/json',
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({
-				...data
-			})
-		});
+		const res = await fetch(
+			`${process.env.REACT_APP_SERVER}/${process.env.REACT_APP_REGISTER_URI}`,
+			{
+				method: 'POST',
+				credentials: 'include',
+				headers: {
+					Accept: 'application/json',
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({
+					...data
+				})
+			}
+		);
 		if (!res.ok) {
 			throw new Error(res.statusText);
 		}
@@ -73,7 +78,7 @@ const register = async (data) => {
 		if (resJson.passwordStrength) {
 			throw new Error({
 				passwordError: true,
-				suggestion: resJson.passwordStrength.feedback.suggestions[0],
+				suggestion: resJson.passwordStrength.feedback.suggestions[0]
 			});
 		}
 	} catch (err) {
@@ -85,15 +90,20 @@ const verifyToken = async () => {
 	const token = cookies.get('token');
 	if (token) {
 		try {
-			const res = await fetch(`${process.env.REACT_APP_SERVER}/${process.env.REACT_APP_VERIFY_TOKEN_URI}`, {
-				method: 'POST',
-				credentials: 'include',
-				headers: {
-					Accept: 'application/json',
-					'Content-Type': 'application/json',
-					authorization: token,
+			const res = await fetch(
+				`${process.env.REACT_APP_SERVER}/${
+					process.env.REACT_APP_VERIFY_TOKEN_URI
+				}`,
+				{
+					method: 'POST',
+					credentials: 'include',
+					headers: {
+						Accept: 'application/json',
+						'Content-Type': 'application/json',
+						authorization: token
+					}
 				}
-			});
+			);
 			if (!res.ok) {
 				throw new Error(res.statusText);
 			}

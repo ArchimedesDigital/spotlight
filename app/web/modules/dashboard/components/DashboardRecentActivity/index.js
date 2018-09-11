@@ -1,12 +1,10 @@
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
 
-
 import getCurrentProjectHostname from '../../../../lib/getCurrentProjectHostname';
 import ProjectRecentActivityContainer from '../../../projects/containers/ProjectRecentActivityContainer';
 
 import './DashboardRecentActivity.css';
-
 
 const DashboardRecentActivity = props => (
 	<div className="dashboardRecentActivity">
@@ -18,7 +16,7 @@ const DashboardRecentActivity = props => (
 		</Row>
 		<ProjectRecentActivityContainer
 			params={{
-				hostname: getCurrentProjectHostname(),
+				hostname: getCurrentProjectHostname()
 			}}
 		/>
 	</div>

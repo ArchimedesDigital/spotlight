@@ -1,7 +1,6 @@
 const dotenv = require('dotenv');
 
 function dotenvSetup() {
-
 	if (process.env.NODE_ENV === 'production') {
 		dotenv.config({ path: '.env.production.local' });
 		dotenv.config({ path: '.env.production' });

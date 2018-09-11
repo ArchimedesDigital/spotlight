@@ -9,7 +9,6 @@ import collectionCreateMutation from '../../graphql/mutations/create';
 import collectionUpdateMutation from '../../graphql/mutations/update';
 import collectionRemoveMutation from '../../graphql/mutations/remove';
 
-
 class CollectionEditorContainer extends React.Component {
 	constructor(props) {
 		super(props);
@@ -17,19 +16,19 @@ class CollectionEditorContainer extends React.Component {
 
 		this.state = {
 			coverImage: null,
-			selectedItems: [],
+			selectedItems: []
 		};
 	}
 
 	componentWillReceiveProps(nextProps) {
 		if (
-			nextProps.collectionQuery
-			&& nextProps.collectionQuery.project
-			&& nextProps.collectionQuery.project.collection
+			nextProps.collectionQuery &&
+			nextProps.collectionQuery.project &&
+			nextProps.collectionQuery.project.collection
 		) {
 			const collection = nextProps.collectionQuery.project.collection;
 			this.setState({
-				selectedItems: collection.items,
+				selectedItems: collection.items
 			});
 		}
 	}
@@ -58,18 +57,18 @@ class CollectionEditorContainer extends React.Component {
 		// create or update
 		if ('_id' in values) {
 			collectionUpdate(values, selectedItemIds)
-				.then((response) => {
+				.then(response => {
 					router.replace(`/collections/${values._id}/${values.slug}`);
 				})
-				.catch((err) => {
+				.catch(err => {
 					console.error(err);
 				});
 		} else {
 			collectionCreate(values, selectedItemIds)
-				.then((response) => {
+				.then(response => {
 					router.replace('/collections/');
 				})
-				.catch((err) => {
+				.catch(err => {
 					console.error(err);
 				});
 		}
@@ -79,10 +78,10 @@ class CollectionEditorContainer extends React.Component {
 		const { collectionRemove, router } = this.props;
 
 		collectionRemove(collectionId)
-			.then((response) => {
+			.then(response => {
 				router.replace('/collections');
 			})
-			.catch((err) => {
+			.catch(err => {
 				console.error(err);
 			});
 	}
@@ -106,7 +105,7 @@ class CollectionEditorContainer extends React.Component {
 		}
 
 		this.setState({
-			selectedItems,
+			selectedItems
 		});
 	}
 
@@ -115,10 +114,7 @@ class CollectionEditorContainer extends React.Component {
 
 		// Get collection from query
 		let collection;
-		if (
-			this.props.collectionQuery
-			&& this.props.collectionQuery.project
-		) {
+		if (this.props.collectionQuery && this.props.collectionQuery.project) {
 			collection = this.props.collectionQuery.project.collection;
 		}
 
@@ -128,7 +124,9 @@ class CollectionEditorContainer extends React.Component {
 			coverImage = this.state.coverImage;
 		} else if (collection && collection.coverImage) {
 			coverImage = {
-				path: `//iiif.orphe.us/${collection.coverImage}/full/1400,/0/default.jpg`,
+				path: `//iiif.orphe.us/${
+					collection.coverImage
+				}/full/1400,/0/default.jpg`
 			};
 		}
 
@@ -147,6 +145,9 @@ class CollectionEditorContainer extends React.Component {
 }
 
 export default compose(
-	collectionCreateMutation, collectionUpdateMutation, collectionRemoveMutation,
-	collectionDetailQuery, collectionListQuery,
+	collectionCreateMutation,
+	collectionUpdateMutation,
+	collectionRemoveMutation,
+	collectionDetailQuery,
+	collectionListQuery
 )(CollectionEditorContainer);

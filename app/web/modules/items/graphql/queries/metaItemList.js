@@ -2,11 +2,10 @@ import { gql, graphql } from 'react-apollo';
 
 import getCurrentProjectHostname from '../../../../lib/getCurrentProjectHostname';
 
-
 const query = gql`
 	query metaItemListQuery($hostname: String, $ids: [String]) {
 		project(hostname: $hostname) {
-	    _id
+			_id
 			items(ids: $ids) {
 				_id
 				title
@@ -27,9 +26,9 @@ const metaItemListQuery = graphql(query, {
 	options: ({ ids }) => ({
 		variables: {
 			hostname: getCurrentProjectHostname(),
-			ids,
-		},
-	}),
+			ids
+		}
+	})
 });
 
 export default metaItemListQuery;

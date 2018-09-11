@@ -19,7 +19,6 @@ class ModalChangePwd extends React.Component {
 	}
 
 	_handleKeyDown(event) {
-
 		const { closeModal } = this.props;
 
 		if (event.keyCode === 'ESCAPE_KEY') closeModal();
@@ -32,7 +31,7 @@ class ModalChangePwd extends React.Component {
 			<div>
 				<div
 					className={`hul-modal-login
-					hul-modal hul-login-signup ${((lowered) ? ' lowered' : '')}`}
+					hul-modal hul-login-signup ${lowered ? ' lowered' : ''}`}
 				>
 					<div
 						className="close-modal paper-shadow"
@@ -40,9 +39,7 @@ class ModalChangePwd extends React.Component {
 					>
 						<i className="mdi mdi-close" />
 					</div>
-					<div className="modal-inner">
-						Add change pwd form
-					</div>
+					<div className="modal-inner">Add change pwd form</div>
 				</div>
 			</div>
 		);
@@ -51,12 +48,11 @@ class ModalChangePwd extends React.Component {
 
 ModalChangePwd.propTypes = {
 	lowered: PropTypes.bool,
-	closeModal: PropTypes.func,
+	closeModal: PropTypes.func
 };
 
 ModalChangePwd.childContextTypes = {
-	muiTheme: PropTypes.object.isRequired,
+	muiTheme: PropTypes.object.isRequired
 };
-
 
 export default ModalChangePwd;

@@ -6,8 +6,6 @@ import SearchHead from '../SearchHead';
 
 import './ItemListPage.css';
 
-
-
 const ItemListPage = ({ textsearch, filter, skip }) => (
 	<div className="itemListPage">
 		<SearchHead />
@@ -15,13 +13,9 @@ const ItemListPage = ({ textsearch, filter, skip }) => (
 		<div className="searchOuter">
 			<SearchFilter />
 
-			<ItemListContainer
-				textsearch={textsearch}
-				skip={skip}
-			/>
+			<ItemListContainer textsearch={textsearch} skip={skip} />
 		</div>
 	</div>
 );
-
 
 export default ItemListPage;

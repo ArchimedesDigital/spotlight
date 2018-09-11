@@ -5,7 +5,6 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 // component:
 import LinkButton from './LinkButton';
 
-
 describe('LinkButton', () => {
 	it('renders correctly', () => {
 		const wrapper = shallow(
@@ -15,24 +14,24 @@ describe('LinkButton', () => {
 						getCurrentContent: () => ({
 							getEntity: () => ({
 								data: {
-									link: 'http://test.url',
-								},
+									link: 'http://test.url'
+								}
 							}),
 							getBlockForKey: () => ({
-								getEntityAt: () => ({}),
-							}),
+								getEntityAt: () => ({})
+							})
 						}),
 						getSelection: () => ({
 							isCollapsed: () => false,
 							getStartKey: () => ({}),
-							getStartOffset: () => ({}),
-						}),
+							getStartOffset: () => ({})
+						})
 					})}
 					setEditorState={() => {}}
 					theme={{
 						button: 'test',
 						active: 'test',
-						buttonWrapper: 'test',
+						buttonWrapper: 'test'
 					}}
 				/>
 			</MuiThemeProvider>

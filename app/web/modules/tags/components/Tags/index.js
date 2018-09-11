@@ -5,25 +5,20 @@ import Tag from '../Tag';
 
 import './Tags.css';
 
-
 const Tags = props => (
 	<div className="tags">
 		{props.tags.map(tag => (
-			<Tag
-				key={tag}
-				tag={tag}
-			/>
+			<Tag key={tag} tag={tag} />
 		))}
 	</div>
 );
 
 Tags.propTypes = {
-	tags: PropTypes.array,
+	tags: PropTypes.array
 };
 
 Tags.defaultProps = {
-	tags: [],
+	tags: []
 };
-
 
 export default Tags;

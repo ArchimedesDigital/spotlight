@@ -11,7 +11,7 @@ const query = gql`
 `;
 
 const userProjectsQuery = graphql(query, {
-	name: 'userProjectsQuery',
+	name: 'userProjectsQuery'
 });
 
 export default userProjectsQuery;

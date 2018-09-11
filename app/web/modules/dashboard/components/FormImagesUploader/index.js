@@ -20,9 +20,7 @@ export default class FormImagesUploader extends React.Component {
 		this.props.imagesFormState.fields.insert(index, image);
 	}
 
-	showError(event) {
-
-	}
+	showError(event) {}
 
 	render() {
 		const imagesFormState = this.props.imagesFormState;
@@ -30,7 +28,7 @@ export default class FormImagesUploader extends React.Component {
 			<div>
 				<SortableList
 					images={imagesFormState}
-					onSortEnd={({oldIndex, newIndex}) => {
+					onSortEnd={({ oldIndex, newIndex }) => {
 						imagesFormState.fields.move(oldIndex, newIndex);
 					}}
 					updateImage={this.updateImage}
@@ -42,30 +40,33 @@ export default class FormImagesUploader extends React.Component {
 		);
 	}
 }
-const SortableItem = SortableElement(({image, imageIndex, removeImage, updateImageCb, showError}) =>
-  (<ImagesInput
-	image={image}
-	imageIndex={imageIndex}
-	key={`image-key-${image.name}`}
-	updateImageCb={updateImageCb}
-	deleteImage={removeImage}
-	showError={showError}
-  />)
-);
-
-const SortableList = SortableContainer(({images, updateImage, showError}) => (
-	<div>
-		{images.fields.getAll().map((image, index) => (<SortableItem
+const SortableItem = SortableElement(
+	({ image, imageIndex, removeImage, updateImageCb, showError }) => (
+		<ImagesInput
 			image={image}
-			index={index}
-			imageIndex={index}
+			imageIndex={imageIndex}
 			key={`image-key-${image.name}`}
-			updateImageCb={updateImage}
-			removeImage={() => {
-				images.fields.remove(index);
-			}}
+			updateImageCb={updateImageCb}
+			deleteImage={removeImage}
 			showError={showError}
 		/>
-    ))}
+	)
+);
+
+const SortableList = SortableContainer(({ images, updateImage, showError }) => (
+	<div>
+		{images.fields.getAll().map((image, index) => (
+			<SortableItem
+				image={image}
+				index={index}
+				imageIndex={index}
+				key={`image-key-${image.name}`}
+				updateImageCb={updateImage}
+				removeImage={() => {
+					images.fields.remove(index);
+				}}
+				showError={showError}
+			/>
+		))}
 	</div>
 ));

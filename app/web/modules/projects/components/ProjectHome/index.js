@@ -16,7 +16,6 @@ import ReleaseMessage from '../../../../components/common/ReleaseMessage';
 import './ProjectHome.css';
 import '../../../home/components/Home/Home.css';
 
-
 const ProjectHome = props => {
 	// get featured items
 	let featuredItems = [];
@@ -28,10 +27,7 @@ const ProjectHome = props => {
 			const selectedItem = _.sample(items);
 			if (selectedItem) {
 				featuredItems.push(selectedItem);
-				items.splice(
-					items.findIndex(item => item._id === selectedItem._id),
-					1
-				);
+				items.splice(items.findIndex(item => item._id === selectedItem._id), 1);
 			}
 		});
 	}
@@ -47,7 +43,9 @@ const ProjectHome = props => {
 			if (selectedCollection) {
 				featuredCollections.push(selectedCollection);
 				collections.splice(
-					collections.findIndex(collection => collection._id === selectedCollection._id),
+					collections.findIndex(
+						collection => collection._id === selectedCollection._id
+					),
 					1
 				);
 			}
@@ -61,18 +59,10 @@ const ProjectHome = props => {
 
 			{/* Project home content */}
 			<ProjectCoverContainer />
-			<ProjectFeatured
-				items={featuredItems}
-			/>
-			<ProjectAbout
-				description={props.description}
-			/>
-			<ProjectCollections
-				collections={featuredCollections}
-			/>
-			<ProjectPeople
-				people={props.users}
-			/>
+			<ProjectFeatured items={featuredItems} />
+			<ProjectAbout description={props.description} />
+			<ProjectCollections collections={featuredCollections} />
+			<ProjectPeople people={props.users} />
 			<ProjectVisit
 				title={props.title}
 				email={props.email}
@@ -86,6 +76,6 @@ const ProjectHome = props => {
 			<ReleaseMessage />
 		</div>
 	);
-}
+};
 
 export default ProjectHome;

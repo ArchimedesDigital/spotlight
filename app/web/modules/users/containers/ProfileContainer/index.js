@@ -6,7 +6,6 @@ import Profile from '../../components/Profile';
 import profileQuery from '../../graphql/queries/profile';
 import profileMutation from '../../graphql/mutations/profile';
 
-
 class ProfileContainer extends React.Component {
 	constructor(props) {
 		super(props);
@@ -20,10 +19,10 @@ class ProfileContainer extends React.Component {
 		delete values.isActiveUser;
 
 		userUpdate(values)
-			.then((response) => {
+			.then(response => {
 				router.replace('/profile');
 			})
-			.catch((err) => {
+			.catch(err => {
 				console.error(err);
 			});
 	}
@@ -35,15 +34,11 @@ class ProfileContainer extends React.Component {
 			profile = this.props.userProfileQuery.userProfile;
 		}
 
-		return (
-			<Profile
-				onSubmit={this.handleSubmit}
-				initialValues={profile}
-			/>
-		);
+		return <Profile onSubmit={this.handleSubmit} initialValues={profile} />;
 	}
 }
 
 export default compose(
-	profileMutation, profileQuery,
+	profileMutation,
+	profileQuery
 )(ProfileContainer);

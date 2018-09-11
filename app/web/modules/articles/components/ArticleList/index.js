@@ -9,7 +9,6 @@ import './ArticleList.css';
 const ArticleList = ({ articles, horizontal }) => {
 	const classes = [];
 
-
 	if (horizontal) {
 		classes.push('articlesListHorizontal');
 	}
@@ -23,21 +22,21 @@ const ArticleList = ({ articles, horizontal }) => {
 				/>
 			))}
 
-			{!articles || !articles.length ?
-				<NoResults
-					message="No articles have been added to this collection yet."
-				/>
-			: ''}
+			{!articles || !articles.length ? (
+				<NoResults message="No articles have been added to this collection yet." />
+			) : (
+				''
+			)}
 		</div>
 	);
 };
 
 ArticleList.propTypes = {
-	articles: PropTypes.array,
+	articles: PropTypes.array
 };
 
 ArticleList.defaultProps = {
-	articles: [],
+	articles: []
 };
 
 export default ArticleList;

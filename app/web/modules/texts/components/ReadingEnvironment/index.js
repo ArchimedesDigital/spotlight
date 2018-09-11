@@ -1,25 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-
 import './ReadingEnvironment.css';
 
-
-const ReadingEnvironment = ({ _id, collection, userIsAdmin, handleRemove })=> {
-
+const ReadingEnvironment = ({ _id, collection, userIsAdmin, handleRemove }) => {
 	if (!collection) {
 		return null;
 	}
 
-
 	return (
 		<div className="readingEnvironment">
-
 			<div className="readingEnvironmentHeader">
 				<h1 className="readingEnvironmentTitle">
-					<span className="textGroupTitle">{collection.textGroup.title},</span> {collection.textGroup.work.english_title}
+					<span className="textGroupTitle">{collection.textGroup.title},</span>{' '}
+					{collection.textGroup.work.english_title}
 				</h1>
-				{userIsAdmin ?
+				{userIsAdmin ? (
 					<div className="readingEnvironmentHeaderEditLinks">
 						<Link
 							to={`/texts/${_id}/edit`}
@@ -34,7 +30,9 @@ const ReadingEnvironment = ({ _id, collection, userIsAdmin, handleRemove })=> {
 							Remove
 						</button>
 					</div>
-				: ''}
+				) : (
+					''
+				)}
 			</div>
 			<div className="readingEnvironmentText">
 				{collection.textGroup.work.textNodes.map(textNode => {
@@ -49,19 +47,13 @@ const ReadingEnvironment = ({ _id, collection, userIsAdmin, handleRemove })=> {
 					});
 
 					return (
-						<div
-							className="readingEnvironmentTextNode"
-							key={textNode.urn}
-						>
-							<span className={`
+						<div className="readingEnvironmentTextNode" key={textNode.urn}>
+							<span
+								className={`
 								readingEnvironmentTextNodeNumber
-								${
-									(number % 5 === 0) ?
-									'readingEnvironmentTextNodeNumberShow'
-									:
-									''
-								}
-							`}>
+								${number % 5 === 0 ? 'readingEnvironmentTextNodeNumberShow' : ''}
+							`}
+							>
 								{location}
 							</span>
 							<p

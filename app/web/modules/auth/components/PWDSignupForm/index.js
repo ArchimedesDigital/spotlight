@@ -7,7 +7,6 @@ import '../PWDLoginForm/PWDLoginForm.css';
 // actions
 import { toggleAuthModal, setUser } from '../../actions';
 
-
 const wrapSubmit = signup => async (values, dispatch) => {
 	try {
 		const userObj = await signup(values);
@@ -16,7 +15,9 @@ const wrapSubmit = signup => async (values, dispatch) => {
 		return {};
 	} catch (err) {
 		if (err.passwordError) {
-			throw new SubmissionError({ _error: `Password too weak: ${err.suggestion}` });
+			throw new SubmissionError({
+				_error: `Password too weak: ${err.suggestion}`
+			});
 		}
 		throw new SubmissionError({ _error: 'Registration failed!' });
 	}
@@ -28,7 +29,7 @@ function renderField({ input, label, type, meta }) {
 			<input
 				{...input}
 				type={type}
-				style={{width: '100%'}}
+				style={{ width: '100%' }}
 				placeholder={label}
 				autoCapitalize="none"
 				autoCorrect="off"
@@ -36,12 +37,20 @@ function renderField({ input, label, type, meta }) {
 				spellCheck="false"
 				required
 			/>
-			{meta.touched && meta.error && <span className="help-block">{meta.error}</span>}
+			{meta.touched &&
+				meta.error && <span className="help-block">{meta.error}</span>}
 		</div>
 	);
 }
 
-const PWDSignupForm = ({ error, handleSubmit, pristine, reset, submitting, signup }) => (
+const PWDSignupForm = ({
+	error,
+	handleSubmit,
+	pristine,
+	reset,
+	submitting,
+	signup
+}) => (
 	<div className="at-pwd-form">
 		<form onSubmit={handleSubmit(wrapSubmit(signup))}>
 			<Field
@@ -62,15 +71,24 @@ const PWDSignupForm = ({ error, handleSubmit, pristine, reset, submitting, signu
 				type="password"
 				component={renderField}
 			/>
-			<span className="error-text">
-				{error && <strong>{error}</strong>}
-			</span>
+			<span className="error-text">{error && <strong>{error}</strong>}</span>
 			<div className="at-pwd-link">
 				<p>
-					<a href="/forgot-password" id="at-forgotPwd" className="at-link at-pwd">Forgot your password?</a>
+					<a
+						href="/forgot-password"
+						id="at-forgotPwd"
+						className="at-link at-pwd"
+					>
+						Forgot your password?
+					</a>
 				</p>
 			</div>
-			<button type="submit" className="at-btn submit btn btn-lg btn-block btn-default" id="at-btn" disabled={submitting}>
+			<button
+				type="submit"
+				className="at-btn submit btn btn-lg btn-block btn-default"
+				id="at-btn"
+				disabled={submitting}
+			>
 				Register
 			</button>
 		</form>
@@ -78,10 +96,10 @@ const PWDSignupForm = ({ error, handleSubmit, pristine, reset, submitting, signu
 );
 
 PWDSignupForm.propTypes = {
-	signup: PropTypes.func.isRequired,
+	signup: PropTypes.func.isRequired
 };
 
-const validate = (values) => {
+const validate = values => {
 	const errors = {};
 
 	if (values.password !== values.passwordRepeat) {
@@ -93,5 +111,5 @@ const validate = (values) => {
 
 export default reduxForm({
 	form: 'PWDSignupForm',
-	validate,
+	validate
 })(PWDSignupForm);

@@ -6,12 +6,10 @@ import leftMenu from './leftMenu';
 import authReducers from '../modules/auth/reducers';
 import client from '../middleware/apolloClient';
 
-
 import * as ActionTypes from '../actions';
 
-
 const errorMessage = (state = null, action) => {
-	const {type, error} = action;
+	const { type, error } = action;
 
 	if (type === ActionTypes.RESET_ERROR_MESSAGE) {
 		return null;
@@ -29,7 +27,7 @@ const rootReducer = combineReducers({
 	routing: routerReducer,
 	bricks,
 	leftMenu,
-	auth: authReducers,
+	auth: authReducers
 });
 
 export default rootReducer;

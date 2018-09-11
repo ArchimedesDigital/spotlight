@@ -7,10 +7,7 @@ import Login from './Login';
 describe('Login', () => {
 	it('renders correctly', () => {
 		const wrapper = shallow(
-			<Login
-				onRegisterClick={() => {}}
-				login={() => {}}
-			/>
+			<Login onRegisterClick={() => {}} login={() => {}} />
 		);
 		expect(wrapper).toBeDefined();
 	});

@@ -1,12 +1,10 @@
 import React from 'react';
 import { compose } from 'react-apollo';
 
-
 import userAvatarQuery from '../../graphql/queries/avatar';
 import SidebarUserAvatar from '../../components/SidebarUserAvatar';
 
-
-const SidebarUserAvatarContainer = (props) => {
+const SidebarUserAvatarContainer = props => {
 	let user;
 	let userName = '';
 	let avatarUrl = '/images/default_user.jpg';
@@ -21,14 +19,7 @@ const SidebarUserAvatarContainer = (props) => {
 		}
 	}
 
-	return (
-		<SidebarUserAvatar
-			avatarUrl={avatarUrl}
-			name={userName}
-		/>
-	);
+	return <SidebarUserAvatar avatarUrl={avatarUrl} name={userName} />;
 };
 
-export default compose(
-	userAvatarQuery,
-)(SidebarUserAvatarContainer);
+export default compose(userAvatarQuery)(SidebarUserAvatarContainer);

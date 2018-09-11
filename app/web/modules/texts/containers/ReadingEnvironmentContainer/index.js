@@ -4,15 +4,14 @@ import { compose } from 'react-apollo';
 import ReadingEnvironment from '../../components/ReadingEnvironment';
 import readingEnvironmentQuery from '../../graphql/queries/readingEnvironment';
 
-
 class ReadingEnvironmentContainer extends React.Component {
 	render() {
 		let collection = null;
 		let userIsAdmin = this.props.userIsAdmin;
 
 		if (
-			this.props.readingEnvironmentQuery
-			&& this.props.readingEnvironmentQuery.collection
+			this.props.readingEnvironmentQuery &&
+			this.props.readingEnvironmentQuery.collection
 		) {
 			collection = this.props.readingEnvironmentQuery.collection;
 		}
@@ -28,6 +27,4 @@ class ReadingEnvironmentContainer extends React.Component {
 	}
 }
 
-export default compose(
-	readingEnvironmentQuery,
-)(ReadingEnvironmentContainer);
+export default compose(readingEnvironmentQuery)(ReadingEnvironmentContainer);

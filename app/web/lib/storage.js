@@ -6,15 +6,14 @@ export const setLocalStorageItem = (key, value) => {
 	throw new Error('Storage not available');
 };
 
-export const getLocalStorageItem = (key) => {
+export const getLocalStorageItem = key => {
 	if (typeof Storage !== 'undefined') {
 		return localStorage.getItem(key);
 	}
 	throw new Error('Storage not available');
 };
 
-
-export const removeLocalStorageItem = (key) => {
+export const removeLocalStorageItem = key => {
 	if (typeof Storage !== 'undefined') {
 		localStorage.removeItem(key);
 		return null;

@@ -4,12 +4,9 @@ import _ from 'underscore';
 import autoBind from 'react-autobind';
 import OnImagesLoaded from 'react-on-images-loaded';
 
-
 import './Bricks.css';
 
-
 class _Bricks extends React.Component {
-
 	constructor(props) {
 		super(props);
 		const windowWidth = window.innerWidth;
@@ -27,14 +24,14 @@ class _Bricks extends React.Component {
 		this.nImages = nImages;
 
 		this.state = {
-			showImages: false,
+			showImages: false
 		};
 		autoBind(this);
 	}
 
 	static defaultProps = {
-		loaded: false,
-	}
+		loaded: false
+	};
 
 	componentDidMount() {
 		this.initializeBricks();
@@ -54,58 +51,38 @@ class _Bricks extends React.Component {
 			{ mq: '1300px', columns: 14, gutter: 20 },
 			{ mq: '1400px', columns: 15, gutter: 20 },
 			{ mq: '1500px', columns: 16, gutter: 20 },
-			{ mq: '1600px', columns: 17, gutter: 20 },
+			{ mq: '1600px', columns: 17, gutter: 20 }
 		];
 
-
 		if (this.nImages === 1) {
-			sizes = [
-				{ columns: 1, gutter: 20 },
-			];
+			sizes = [{ columns: 1, gutter: 20 }];
 		} else if (1 < this.nImages && this.nImages < 6) {
-			sizes = [
-				{ columns: 2, gutter: 20 },
-			];
+			sizes = [{ columns: 2, gutter: 20 }];
 		} else if (6 <= this.nImages && this.nImages < 12) {
-			sizes = [
-				{ columns: 3, gutter: 20 },
-			];
+			sizes = [{ columns: 3, gutter: 20 }];
 		} else if (12 <= this.nImages && this.nImages < 24) {
-			sizes = [
-				{ columns: 4, gutter: 20 },
-			];
+			sizes = [{ columns: 4, gutter: 20 }];
 		} else if (24 <= this.nImages && this.nImages < 48) {
-			sizes = [
-				{ columns: 6, gutter: 20 },
-			];
+			sizes = [{ columns: 6, gutter: 20 }];
 		} else if (48 <= this.nImages && this.nImages < 60) {
-			sizes = [
-				{ columns: 7, gutter: 20 },
-			];
+			sizes = [{ columns: 7, gutter: 20 }];
 		} else if (60 <= this.nImages && this.nImages < 72) {
-			sizes = [
-				{ columns: 8, gutter: 20 },
-			];
+			sizes = [{ columns: 8, gutter: 20 }];
 		} else if (72 <= this.nImages && this.nImages < 84) {
-			sizes = [
-				{ columns: 9, gutter: 20 },
-			];
+			sizes = [{ columns: 9, gutter: 20 }];
 		} else if (84 <= this.nImages && this.nImages < 96) {
-			sizes = [
-				{ columns: 10, gutter: 20 },
-			];
+			sizes = [{ columns: 10, gutter: 20 }];
 		}
 
 		this.instance = Bricks({
 			container: '.bricks-inner',
 			packed: 'data-packed',
 			sizes,
-			position: true,
+			position: true
 		});
 		this.instance.resize(true);
 		this.instance.pack();
 	}
-
 
 	makeDefaultBricks() {
 		const imagesUpperRange = 106;
@@ -164,7 +141,7 @@ class _Bricks extends React.Component {
 	handleAllImagesLoaded() {
 		setTimeout(() => {
 			this.setState({
-				showImages: true,
+				showImages: true
 			});
 		}, 1000);
 	}
@@ -185,7 +162,6 @@ class _Bricks extends React.Component {
 			}, 500);
 		}
 
-
 		return (
 			<div className={`bricks ${this.state.showImages ? '' : 'loading'}`}>
 				<OnImagesLoaded
@@ -193,9 +169,7 @@ class _Bricks extends React.Component {
 					onTimeout={this.handleAllImagesLoaded.bind(this)}
 					timeout={100000}
 				>
-					<div className="bricks-inner">
-						{bricks}
-					</div>
+					<div className="bricks-inner">{bricks}</div>
 				</OnImagesLoaded>
 			</div>
 		);

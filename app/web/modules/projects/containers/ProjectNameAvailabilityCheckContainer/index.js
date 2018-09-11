@@ -4,22 +4,18 @@ import { compose } from 'react-apollo';
 import ProjectNameAvailabilityCheck from '../../components/ProjectNameAvailabilityCheck';
 import projectAvailabilityQuery from '../../graphql/queries/availability';
 
-
-
 class ProjectNameAvailabilityCheckContainer extends React.Component {
-
 	render() {
 		let projectFound = false;
 
 		if (
-			this.props.params.hostname
-			&& this.props.params.hostname.length
-			&& this.props.projectAvailabilityQuery
-			&& this.props.projectAvailabilityQuery.checkProjectAvailability
+			this.props.params.hostname &&
+			this.props.params.hostname.length &&
+			this.props.projectAvailabilityQuery &&
+			this.props.projectAvailabilityQuery.checkProjectAvailability
 		) {
 			projectFound = true;
 		}
-
 
 		return (
 			<ProjectNameAvailabilityCheck
@@ -31,6 +27,6 @@ class ProjectNameAvailabilityCheckContainer extends React.Component {
 	}
 }
 
-export default compose(
-	projectAvailabilityQuery,
-)(ProjectNameAvailabilityCheckContainer);
+export default compose(projectAvailabilityQuery)(
+	ProjectNameAvailabilityCheckContainer
+);

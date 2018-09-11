@@ -2,7 +2,6 @@ import React from 'react';
 import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
 import autoBind from 'react-autobind';
 
-
 class MapContainer extends React.Component {
 	constructor(props) {
 		super(props);
@@ -11,7 +10,7 @@ class MapContainer extends React.Component {
 		this.state = {
 			place: null,
 			position: null,
-			autocomplete: '',
+			autocomplete: ''
 		};
 	}
 
@@ -28,7 +27,9 @@ class MapContainer extends React.Component {
 
 		if (!google || !map) return;
 
-		var autocomplete = new google.maps.places.Autocomplete(this.state.autocomplete);
+		var autocomplete = new google.maps.places.Autocomplete(
+			this.state.autocomplete
+		);
 		autocomplete.bindTo('bounds', map);
 
 		autocomplete.addListener('place_changed', () => {
@@ -47,8 +48,8 @@ class MapContainer extends React.Component {
 			this.setState({
 				place: place,
 				position: place.geometry.location
-			})
-		})
+			});
+		});
 	}
 
 	render() {
@@ -58,24 +59,20 @@ class MapContainer extends React.Component {
 			<Map
 				google={this.props.google}
 				containerStyle={{
-    			position: 'relative',
-    			height: '210px',
-    			width: '100%'
-    		}}
+					position: 'relative',
+					height: '210px',
+					width: '100%'
+				}}
 				center={this.props.position}
 				centerAroundCurrentLocation={false}
 				zoom={1}
-    	>
-				{marker ?
-					<Marker
-						position={this.marker.position}
-          />
-        : ''}
+			>
+				{marker ? <Marker position={this.marker.position} /> : ''}
 			</Map>
 		);
 	}
-};
+}
 
 export default GoogleApiWrapper({
-	apiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+	apiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY
 })(MapContainer);

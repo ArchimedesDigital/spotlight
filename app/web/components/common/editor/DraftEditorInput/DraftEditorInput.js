@@ -1,7 +1,9 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Editor from 'draft-js-plugins-editor';
-import createInlineToolbarPlugin, { Separator } from 'draft-js-inline-toolbar-plugin';
+import createInlineToolbarPlugin, {
+	Separator
+} from 'draft-js-inline-toolbar-plugin';
 import createMentionPlugin from 'draft-js-mention-plugin';
 import createSingleLinePlugin from 'draft-js-single-line-plugin';
 import createVideoPlugin from 'draft-js-video-plugin';
@@ -14,16 +16,14 @@ import {
 	UnderlineButton,
 	UnorderedListButton,
 	OrderedListButton,
-	BlockquoteButton,
+	BlockquoteButton
 } from 'draft-js-buttons';
 
 import VideoAdd from './AddButton/VideoAdd';
 import ImageAdd from './AddButton/ImageAdd';
 import Suggestions from './Suggestions/Suggestions';
 
-
 import './DraftEditorInput.css';
-
 
 const singleLinePlugin = createSingleLinePlugin();
 const inlineToolbarPlugin = createInlineToolbarPlugin({
@@ -35,12 +35,11 @@ const inlineToolbarPlugin = createInlineToolbarPlugin({
 		UnorderedListButton,
 		OrderedListButton,
 		BlockquoteButton,
-		LinkButton,
+		LinkButton
 	]
 });
 
 class DraftEditorInput extends Component {
-
 	static propTypes = {
 		// props recieved from formsy HOC:
 		onChange: PropTypes.func.isRequired,
@@ -60,7 +59,10 @@ class DraftEditorInput extends Component {
 		super(props);
 
 		this.mentionPlugin = createMentionPlugin();
-		this.keywordPlugin = createMentionPlugin({mentionPrefix: '#', mentionTrigger: '#'});
+		this.keywordPlugin = createMentionPlugin({
+			mentionPrefix: '#',
+			mentionTrigger: '#'
+		});
 		this.videoPlugin = createVideoPlugin();
 		this.imagePlugin = createImagePlugin();
 		this.onEditorChange = this.onEditorChange.bind(this);
@@ -69,11 +71,17 @@ class DraftEditorInput extends Component {
 		this.props.onChange(editorState);
 	}
 	getPlugins() {
-		let ret = this.props.disableMentions ? [] : [this.mentionPlugin, this.keywordPlugin];
-		if (this.props.plugins)			{ ret = ret.concat(this.props.plugins); }
+		let ret = this.props.disableMentions
+			? []
+			: [this.mentionPlugin, this.keywordPlugin];
+		if (this.props.plugins) {
+			ret = ret.concat(this.props.plugins);
+		}
 		ret = !this.props.InlineToolbar ? [inlineToolbarPlugin].concat(ret) : ret; // Is there any custom InlineToolbar
 		ret = this.props.singleLine ? ret.concat([singleLinePlugin]) : ret;
-		ret = this.props.mediaOn ? ret.concat([this.videoPlugin, this.imagePlugin]) : ret;
+		ret = this.props.mediaOn
+			? ret.concat([this.videoPlugin, this.imagePlugin])
+			: ret;
 		return ret;
 	}
 	getPlainAttributes() {
@@ -88,11 +96,13 @@ class DraftEditorInput extends Component {
 	}
 	render() {
 		const plugins = this.getPlugins();
-		const InlineToolbar = this.props.singleLine ? undefined : (this.props.InlineToolbar || inlineToolbarPlugin.InlineToolbar);
+		const InlineToolbar = this.props.singleLine
+			? undefined
+			: this.props.InlineToolbar || inlineToolbarPlugin.InlineToolbar;
 		const plainAttributes = this.getPlainAttributes();
 		return (
 			<div>
-				{this.props.label !== undefined ? (<div >{this.props.label}</div>) : ''}
+				{this.props.label !== undefined ? <div>{this.props.label}</div> : ''}
 				<div className="draft-editor-input">
 					<Editor
 						editorState={this.props.editorState}
@@ -101,20 +111,24 @@ class DraftEditorInput extends Component {
 						{...plainAttributes}
 						placeholder={this.props.placeholder}
 					/>
-					{ this.props.disableMentions === true ? '' :
-					(<Suggestions
-						mentionPlugin={this.mentionPlugin}
-						keywordPlugin={this.keywordPlugin}
-					/>)
-					}
+					{this.props.disableMentions === true ? (
+						''
+					) : (
+						<Suggestions
+							mentionPlugin={this.mentionPlugin}
+							keywordPlugin={this.keywordPlugin}
+						/>
+					)}
 				</div>
-				{ InlineToolbar !== undefined ?
-					(<div className="inline-toolbar-wrap">
+				{InlineToolbar !== undefined ? (
+					<div className="inline-toolbar-wrap">
 						<InlineToolbar />
-					</div>) : ''
-				}
-				{ this.props.mediaOn ?
-					(<div className="draft-button-container">
+					</div>
+				) : (
+					''
+				)}
+				{this.props.mediaOn ? (
+					<div className="draft-button-container">
 						<ImageAdd
 							editorState={this.props.editorState}
 							onChange={this.onEditorChange}
@@ -127,8 +141,10 @@ class DraftEditorInput extends Component {
 							label="Add video"
 							modifier={this.videoPlugin.addVideo}
 						/>
-					</div>) : ''
-				}
+					</div>
+				) : (
+					''
+				)}
 			</div>
 		);
 	}

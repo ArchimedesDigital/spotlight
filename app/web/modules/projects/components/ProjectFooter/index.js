@@ -1,18 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  Grid,
-  Row,
-  Col,
-} from 'react-bootstrap';
+import { Grid, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router';
 
 import '../../../../components/navigation/Footer/Footer.css';
 import './ProjectFooter.css';
 
-
 class Footer extends React.Component {
-
 	render() {
 		const { project } = this.props;
 		const now = new Date();
@@ -25,29 +19,23 @@ class Footer extends React.Component {
 						<Col md={12}>
 							<ul className="projectFooterNav">
 								<li>
-									<Link
-										to="/terms"
-									>
-										Terms
-									</Link>
+									<Link to="/terms">Terms</Link>
 								</li>
 								<li>
-									<Link
-										to="/privacy"
-									>
-										Privacy
-									</Link>
+									<Link to="/privacy">Privacy</Link>
 								</li>
 							</ul>
 						</Col>
 					</Row>
 					<Row>
 						<Col md={12}>
-							{project ?
+							{project ? (
 								<span className="footerCopyright">
 									© Copyright {project.title}, {year}
 								</span>
-							: ''}
+							) : (
+								''
+							)}
 						</Col>
 					</Row>
 				</Grid>
@@ -57,12 +45,11 @@ class Footer extends React.Component {
 }
 
 Footer.propTypes = {
-	project: PropTypes.object,
+	project: PropTypes.object
 };
 
 Footer.defaultProps = {
-	project: null,
+	project: null
 };
-
 
 export default Footer;

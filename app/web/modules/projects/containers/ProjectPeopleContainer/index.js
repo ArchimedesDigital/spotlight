@@ -8,7 +8,6 @@ import projectDetailQuery from '../../graphql/queries/detail';
 import projectUpdateMutation from '../../graphql/mutations/update';
 import projectRemoveMutation from '../../graphql/mutations/remove';
 
-
 class ProjectPeopleContainer extends React.Component {
 	constructor(props) {
 		super(props);
@@ -43,12 +42,11 @@ class ProjectPeopleContainer extends React.Component {
 		});
 		values.users = sanitizedUsers;
 
-
 		projectUpdate(values)
-			.then((response) => {
+			.then(response => {
 				router.replace('/dashboard/');
 			})
-			.catch((err) => {
+			.catch(err => {
 				console.error(err);
 			});
 	}
@@ -71,6 +69,8 @@ class ProjectPeopleContainer extends React.Component {
 }
 
 export default compose(
-	projectUpdateMutation, projectRemoveMutation, projectDetailQuery,
-	projectListQuery,
+	projectUpdateMutation,
+	projectRemoveMutation,
+	projectDetailQuery,
+	projectListQuery
 )(ProjectPeopleContainer);

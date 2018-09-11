@@ -13,7 +13,12 @@ export default class AvatarEditor extends React.Component {
 		super(props);
 
 		this.state = {
-			avatarUrl: Meteor.user() && Meteor.user().profile && Meteor.user().profile.avatarUrl ? Meteor.user().profile.avatarUrl : props.defaultAvatarUrl,
+			avatarUrl:
+				Meteor.user() &&
+				Meteor.user().profile &&
+				Meteor.user().profile.avatarUrl
+					? Meteor.user().profile.avatarUrl
+					: props.defaultAvatarUrl
 		};
 
 		// binding users
@@ -45,8 +50,18 @@ export default class AvatarEditor extends React.Component {
 
 	render() {
 		return (
-			<DropZone className="draft-editor-dropzone" onDrop={this.onDrop} multiple={false} accept={'image/*'}>
-				<RaisedButton className="draft-add-video-confirm-button" onClick={this.addVideo}>Upload image</RaisedButton>                
+			<DropZone
+				className="draft-editor-dropzone"
+				onDrop={this.onDrop}
+				multiple={false}
+				accept={'image/*'}
+			>
+				<RaisedButton
+					className="draft-add-video-confirm-button"
+					onClick={this.addVideo}
+				>
+					Upload image
+				</RaisedButton>
 			</DropZone>
 		);
 	}
@@ -57,5 +72,5 @@ AvatarEditor.propTypes = {
 };
 
 AvatarEditor.defaultProps = {
-	defaultAvatarUrl: '',
+	defaultAvatarUrl: ''
 };

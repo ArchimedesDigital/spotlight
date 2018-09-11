@@ -3,11 +3,14 @@ import { Row, Col } from 'react-bootstrap';
 
 import CountSection from '../CountSection';
 
-
 import './DashboardCounts.css';
 
-
-const DashboardCounts = ({ collectionsCount, articlesCount, itemsCount, textsCount }) => (
+const DashboardCounts = ({
+	collectionsCount,
+	articlesCount,
+	itemsCount,
+	textsCount
+}) => (
 	<div className="dashboardCounts">
 		<Row>
 			<Col md={4}>
@@ -18,18 +21,10 @@ const DashboardCounts = ({ collectionsCount, articlesCount, itemsCount, textsCou
 				/>
 			</Col>
 			<Col md={4}>
-				<CountSection
-					label="Items"
-					count={itemsCount}
-					link="/items"
-				/>
+				<CountSection label="Items" count={itemsCount} link="/items" />
 			</Col>
 			<Col md={4}>
-				<CountSection
-					label="Articles"
-					count={articlesCount}
-					link="/articles"
-				/>
+				<CountSection label="Articles" count={articlesCount} link="/articles" />
 			</Col>
 			{/*
 			<Col md={3}>

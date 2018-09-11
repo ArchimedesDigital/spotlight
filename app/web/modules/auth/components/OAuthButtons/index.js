@@ -4,9 +4,7 @@ import hello from 'hellojs';
 
 import './OAuthButtons.css';
 
-
 class OAuthButtons extends React.Component {
-
 	constructor(props) {
 		super(props);
 
@@ -14,7 +12,7 @@ class OAuthButtons extends React.Component {
 
 		this.state = {
 			disabledButtons: false,
-			errorOauth: null,
+			errorOauth: null
 		};
 
 		this.OAuthButton = this.OAuthButton.bind(this);
@@ -23,24 +21,29 @@ class OAuthButtons extends React.Component {
 	async handleLogin(type) {
 		const { login } = this.props;
 
-
 		this.setState({
-			disabledButtons: true,
+			disabledButtons: true
 		});
 
 		try {
 			const auth = await hello(type).login();
 
 			if (type === 'twitter') {
-				await login({ network: auth.network, oauthToken: auth.authResponse.oauth_token, oauthTokenSecret: auth.authResponse.oauth_token_secret });
+				await login({
+					network: auth.network,
+					oauthToken: auth.authResponse.oauth_token,
+					oauthTokenSecret: auth.authResponse.oauth_token_secret
+				});
 			} else {
-				await login({ network: auth.network, accessToken: auth.authResponse.access_token });
+				await login({
+					network: auth.network,
+					accessToken: auth.authResponse.access_token
+				});
 			}
-
 		} catch (err) {
 			this.setState({
 				errorOauth: err.message,
-				disabledButtons: false,
+				disabledButtons: false
 			});
 		}
 	}
@@ -63,19 +66,19 @@ class OAuthButtons extends React.Component {
 				disabled={disabledButtons}
 			>
 				<i className={`mdi mdi-${type}`} /> {this._getButtonText(type)}
-			</button>);
+			</button>
+		);
 	}
 
 	render() {
-
 		const { errorOauth } = this.state;
 
 		return (
 			<div className="at-oauth">
-				{this.socialTypes.map(social => <this.OAuthButton key={social} type={social} />)}
-				<span className="error-text">
-					{errorOauth}
-				</span>
+				{this.socialTypes.map(social => (
+					<this.OAuthButton key={social} type={social} />
+				))}
+				<span className="error-text">{errorOauth}</span>
 			</div>
 		);
 	}
@@ -83,11 +86,11 @@ class OAuthButtons extends React.Component {
 
 OAuthButtons.propTypes = {
 	login: PropTypes.func.isRequired,
-	register: PropTypes.bool,
+	register: PropTypes.bool
 };
 
 OAuthButtons.defaultProps = {
-	register: false,
+	register: false
 };
 
 export default OAuthButtons;

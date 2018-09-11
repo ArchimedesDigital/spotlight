@@ -14,12 +14,10 @@ import articleListQuery from '../../graphql/queries/list';
 import articleSaveMutation from '../../graphql/mutations/save';
 import articleRemoveMutation from '../../graphql/mutations/remove';
 
-
 class ArticleEditorContainer extends React.Component {
 	constructor(props) {
 		super(props);
 		autoBind(this);
-
 
 		let editorState;
 		// if creating a new article, initialize with editorstate empty
@@ -31,16 +29,16 @@ class ArticleEditorContainer extends React.Component {
 			articleId: shortid.generate(),
 			files: [],
 			metadata: [],
-			editorState,
+			editorState
 		};
 	}
 
 	componentWillReceiveProps(nextProps) {
 		if (
-				nextProps.articleQuery
-			&& nextProps.articleQuery.project
-			&& nextProps.articleQuery.project.article
-			&& !this.state.editorState
+			nextProps.articleQuery &&
+			nextProps.articleQuery.project &&
+			nextProps.articleQuery.project.article &&
+			!this.state.editorState
 		) {
 			const article = nextProps.articleQuery.project.article;
 			let editorState = null;
@@ -48,11 +46,13 @@ class ArticleEditorContainer extends React.Component {
 			if (article.content) {
 				editorState = JSON.parse(article.content);
 			} else {
-				editorState = convertToRaw(EditorState.createEmpty().getCurrentContent());
+				editorState = convertToRaw(
+					EditorState.createEmpty().getCurrentContent()
+				);
 			}
 			this.setState({
 				editorState,
-				articleId: article._id,
+				articleId: article._id
 			});
 		}
 	}
@@ -71,7 +71,9 @@ class ArticleEditorContainer extends React.Component {
 		if (articleContent) {
 			values.content = articleContent;
 		} else {
-			values.content = JSON.stringify(convertToRaw(EditorState.createEmpty().getCurrentContent()));
+			values.content = JSON.stringify(
+				convertToRaw(EditorState.createEmpty().getCurrentContent())
+			);
 		}
 
 		// if no title, don't save/submit
@@ -80,10 +82,12 @@ class ArticleEditorContainer extends React.Component {
 		}
 
 		await articleSave(values)
-			.then((response) => {
-				router.replace(`/articles/${this.state.articleId}/${_s.slugify(values.title)}`)
+			.then(response => {
+				router.replace(
+					`/articles/${this.state.articleId}/${_s.slugify(values.title)}`
+				);
 			})
-			.catch((err) => {
+			.catch(err => {
 				console.error(err);
 			});
 	}
@@ -92,10 +96,10 @@ class ArticleEditorContainer extends React.Component {
 		const { articleRemove, router } = this.props;
 
 		await articleRemove(articleId)
-			.then((response) => {
+			.then(response => {
 				router.replace('/articles');
 			})
-			.catch((err) => {
+			.catch(err => {
 				console.error(err);
 			});
 	}
@@ -112,11 +116,11 @@ class ArticleEditorContainer extends React.Component {
 		// TODO: find better solution for preventing this
 		// prevent false submit before editor is initialized
 		if (
-			saveBehavior.editorContent.blocks
-		&& saveBehavior.editorContent.blocks.length
-		&& !saveBehavior.editorContent.blocks[0].text.length
+			saveBehavior.editorContent.blocks &&
+			saveBehavior.editorContent.blocks.length &&
+			!saveBehavior.editorContent.blocks[0].text.length
 		) {
-			return null
+			return null;
 		}
 
 		// set article content
@@ -128,15 +132,15 @@ class ArticleEditorContainer extends React.Component {
 		}
 
 		await articleSave(values)
-			.then((response) => {
+			.then(response => {
 				// console.log('Article saved');
 			})
-			.catch((err) => {
+			.catch(err => {
 				console.error(err);
 			});
 
 		this.setState({
-			articleContent: JSON.stringify(saveBehavior.editorContent),
+			articleContent: JSON.stringify(saveBehavior.editorContent)
 		});
 	}
 
@@ -146,9 +150,9 @@ class ArticleEditorContainer extends React.Component {
 		let article;
 
 		if (
-			this.props.articleQuery
-			&& this.props.articleQuery.project
-			&& this.props.articleQuery.project.article
+			this.props.articleQuery &&
+			this.props.articleQuery.project &&
+			this.props.articleQuery.project.article
 		) {
 			article = this.props.articleQuery.project.article;
 		}
@@ -173,21 +177,21 @@ class ArticleEditorContainer extends React.Component {
 	}
 }
 
-const selector = formValueSelector('ArticleEditor') // <-- same as form name
+const selector = formValueSelector('ArticleEditor'); // <-- same as form name
 
 const mapStateToProps = (state, props) => {
-	const title = selector(state, 'title')
+	const title = selector(state, 'title');
 
 	return {
-		title,
+		title
 	};
 };
 
 export default compose(
-	articleSaveMutation, articleRemoveMutation, articleDetailQuery,
+	articleSaveMutation,
+	articleRemoveMutation,
+	articleDetailQuery,
 	articleListQuery,
-	connect(
-		mapStateToProps,
-	),
-	withRouter,
+	connect(mapStateToProps),
+	withRouter
 )(ArticleEditorContainer);

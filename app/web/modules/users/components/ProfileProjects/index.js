@@ -18,24 +18,24 @@ const ProfileProjects = ({ projects }) => (
 							href={`//${project.hostname}`}
 							key={project._id}
 						>
-							<span>
-								{project.title}
-							</span>
+							<span>{project.title}</span>
 							<hr />
 						</a>
 					))}
 				</div>
-				{projects && !projects.length ?
+				{projects && !projects.length ? (
 					<div className="profileProjectListNoResults">
 						<p>
-							You don&apos;t belong to any projects. <Link to="/create">Create one.</Link>
+							You don&apos;t belong to any projects.{' '}
+							<Link to="/create">Create one.</Link>
 						</p>
 					</div>
-				: ''}
+				) : (
+					''
+				)}
 			</Row>
 		</Grid>
 	</div>
 );
-
 
 export default ProfileProjects;

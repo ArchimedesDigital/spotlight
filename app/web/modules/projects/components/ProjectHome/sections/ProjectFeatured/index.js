@@ -1,11 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-
 import ItemListItem from '../../../../../items/components/ItemListItem';
 
 import './ProjectFeatured.css';
-
 
 const ProjectFeatured = ({ items }) => {
 	let featuredItems = [];
@@ -17,24 +15,18 @@ const ProjectFeatured = ({ items }) => {
 	return (
 		<section className="projectFeatured">
 			{featuredItems.map((item, i) => {
-				return (
-					<ItemListItem
-						key={`${item.slug}-${i}`}
-						{...item}
-					/>
-				);
+				return <ItemListItem key={`${item.slug}-${i}`} {...item} />;
 			})}
 		</section>
 	);
-}
+};
 
 ProjectFeatured.propTypes = {
-	items: PropTypes.array,
+	items: PropTypes.array
 };
 
 ProjectFeatured.defaultProps = {
-	items: [],
+	items: []
 };
-
 
 export default ProjectFeatured;

@@ -10,7 +10,6 @@ import itemCreateMutation from '../../graphql/mutations/create';
 import itemUpdateMutation from '../../graphql/mutations/update';
 import itemRemoveMutation from '../../graphql/mutations/remove';
 
-
 class ItemEditorContainer extends React.Component {
 	constructor(props) {
 		super(props);
@@ -18,20 +17,17 @@ class ItemEditorContainer extends React.Component {
 
 		this.state = {
 			files: [],
-			metadataFieldsExtra: [],
+			metadataFieldsExtra: []
 		};
 	}
 
 	componentWillReceiveProps(nextProps) {
 		if (
-			(
-				!this.state.files
-			|| !this.state.files.length
-			)
-			&& nextProps.itemQuery
-			&& nextProps.itemQuery.project
-			&& nextProps.itemQuery.project.item
-			&& nextProps.itemQuery.project.item.files
+			(!this.state.files || !this.state.files.length) &&
+			nextProps.itemQuery &&
+			nextProps.itemQuery.project &&
+			nextProps.itemQuery.project.item &&
+			nextProps.itemQuery.project.item.files
 		) {
 			this.setState({
 				files: nextProps.itemQuery.project.item.files
@@ -62,10 +58,7 @@ class ItemEditorContainer extends React.Component {
 				let value = metadataField.value;
 
 				// set type from metadata redux form
-				if (
-					metadataField.type
-					&& typeof metadataField.type !== 'undefined'
-				) {
+				if (metadataField.type && typeof metadataField.type !== 'undefined') {
 					type = metadataField.type;
 				}
 
@@ -79,7 +72,7 @@ class ItemEditorContainer extends React.Component {
 				metadata.push({
 					type,
 					label: metadataField.label,
-					value,
+					value
 				});
 			});
 		}
@@ -98,18 +91,18 @@ class ItemEditorContainer extends React.Component {
 		// create or update
 		if ('_id' in values) {
 			itemUpdate(values, files)
-				.then((response) => {
+				.then(response => {
 					router.replace(`/items/${values._id}/${values.slug}`);
 				})
-				.catch((err) => {
+				.catch(err => {
 					console.error(err);
 				});
 		} else {
 			itemCreate(values, files)
-				.then((response) => {
+				.then(response => {
 					router.replace('/items/');
 				})
-				.catch((err) => {
+				.catch(err => {
 					console.error(err);
 				});
 		}
@@ -119,10 +112,10 @@ class ItemEditorContainer extends React.Component {
 		const { itemRemove, router } = this.props;
 
 		itemRemove(itemId)
-			.then((response) => {
+			.then(response => {
 				router.replace('/items');
 			})
-			.catch((err) => {
+			.catch(err => {
 				console.error(err);
 			});
 	}
@@ -132,7 +125,7 @@ class ItemEditorContainer extends React.Component {
 
 		files.push(file);
 		this.setState({
-			files,
+			files
 		});
 	}
 
@@ -140,13 +133,13 @@ class ItemEditorContainer extends React.Component {
 		const files = this.state.files.slice();
 		files.splice(index, 1);
 		this.setState({
-			files,
+			files
 		});
 	}
 
 	onSortEnd({ oldIndex, newIndex }) {
 		this.setState({
-			files: arrayMove(this.state.files, oldIndex, newIndex),
+			files: arrayMove(this.state.files, oldIndex, newIndex)
 		});
 	}
 
@@ -156,7 +149,7 @@ class ItemEditorContainer extends React.Component {
 		files[index] = file;
 
 		this.setState({
-			files,
+			files
 		});
 	}
 
@@ -174,25 +167,21 @@ class ItemEditorContainer extends React.Component {
 		if (!existingField) {
 			metadataFieldsExtra.push({
 				field,
-				value,
+				value
 			});
 		}
 
 		this.setState({
-			metadataFieldsExtra,
+			metadataFieldsExtra
 		});
 	}
-
 
 	render() {
 		const { files } = this.state;
 
 		let item;
 
-		if (
-			this.props.itemQuery
-			&& this.props.itemQuery.project
-		) {
+		if (this.props.itemQuery && this.props.itemQuery.project) {
 			item = this.props.itemQuery.project.item;
 		}
 
@@ -214,6 +203,9 @@ class ItemEditorContainer extends React.Component {
 }
 
 export default compose(
-	itemCreateMutation, itemUpdateMutation, itemRemoveMutation, itemDetailQuery,
-	itemListQuery,
+	itemCreateMutation,
+	itemUpdateMutation,
+	itemRemoveMutation,
+	itemDetailQuery,
+	itemListQuery
 )(ItemEditorContainer);

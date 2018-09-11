@@ -1,27 +1,19 @@
 import React from 'react';
 import { compose } from 'react-apollo';
 
-
 import textSelectorQuery from '../../graphql/queries/textSelector';
 import textListQuery from '../../graphql/queries/list';
 import TextSelector from '../../components/TextSelector';
-
 
 const TextSelectorContainer = props => {
 	let collection = null;
 	let collections = [];
 
-	if (
-		props.textSelectorQuery
-	) {
-		if (
-			props.textSelectorQuery.collection
-		) {
+	if (props.textSelectorQuery) {
+		if (props.textSelectorQuery.collection) {
 			collection = props.textSelectorQuery.collection;
 		}
-		if (
-			props.textSelectorQuery.collections
-		) {
+		if (props.textSelectorQuery.collections) {
 			collections = props.textSelectorQuery.collections;
 		}
 	}
@@ -38,9 +30,9 @@ const TextSelectorContainer = props => {
 			handleSelectWork={props.handleSelectWork}
 		/>
 	);
-}
-
+};
 
 export default compose(
-	textSelectorQuery, textListQuery,
+	textSelectorQuery,
+	textListQuery
 )(TextSelectorContainer);

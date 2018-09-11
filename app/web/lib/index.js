@@ -1,11 +1,7 @@
 // @flow
 
-export const concatStartAndEnd = ({
-	start,
-	startOffset,
-	end,
-	endOffset,
-}) => (`${start}-${startOffset}-${end}-${endOffset}`);
+export const concatStartAndEnd = ({ start, startOffset, end, endOffset }) =>
+	`${start}-${startOffset}-${end}-${endOffset}`;
 
 export const splitStartAndEnd = ({ startAndEnd }) => {
 	const split = startAndEnd.split('-');
@@ -14,6 +10,6 @@ export const splitStartAndEnd = ({ startAndEnd }) => {
 		start: split[0],
 		startOffset: split[1],
 		end: split[2],
-		endOffset: split[3],
+		endOffset: split[3]
 	};
 };

@@ -3,7 +3,7 @@ import { gql, graphql } from 'react-apollo';
 const query = gql`
 	query projectAvailabilityQuery($hostname: String) {
 		checkProjectAvailability(hostname: $hostname) {
-	    _id
+			_id
 			title
 			slug
 			hostname
@@ -16,9 +16,9 @@ const projectAvailabilityQuery = graphql(query, {
 	name: 'projectAvailabilityQuery',
 	options: ({ params }) => ({
 		variables: {
-			hostname: params.hostname,
+			hostname: params.hostname
 		}
-	}),
+	})
 });
 
 export default projectAvailabilityQuery;

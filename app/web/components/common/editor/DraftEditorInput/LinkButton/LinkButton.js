@@ -13,12 +13,11 @@ import linkDecorator from './linkDecorator';
 /*
  *	helper
  */
-const preventBubblingUp = (event) => { event.preventDefault(); };
-
-
+const preventBubblingUp = event => {
+	event.preventDefault();
+};
 
 class LinkButton extends Component {
-
 	static propTypes = {
 		getEditorState: PropTypes.func.isRequired,
 		setEditorState: PropTypes.func.isRequired,
@@ -26,15 +25,15 @@ class LinkButton extends Component {
 			button: PropTypes.string,
 			active: PropTypes.string,
 			buttonWrapper: PropTypes.string
-		}).isRequired,
-	}
+		}).isRequired
+	};
 
 	constructor(props) {
 		super(props);
 
 		this.state = {
 			linkModalOpen: false,
-			linkValue: null,
+			linkValue: null
 		};
 
 		// methods:
@@ -51,13 +50,11 @@ class LinkButton extends Component {
 
 		const { getEditorState } = this.props;
 
-
 		const editorState = getEditorState();
 		const contentState = editorState.getCurrentContent();
 		const selection = editorState.getSelection();
 
 		if (!selection.isCollapsed()) {
-
 			const startKey = editorState.getSelection().getStartKey();
 			const startOffset = editorState.getSelection().getStartOffset();
 			const blockWithLinkAtBeginning = contentState.getBlockForKey(startKey);
@@ -71,7 +68,7 @@ class LinkButton extends Component {
 
 			this.setState({
 				linkModalOpen: true,
-				linkValue: url,
+				linkValue: url
 			});
 		}
 	}
@@ -80,7 +77,7 @@ class LinkButton extends Component {
 		if (event) event.preventDefault();
 		this.setState({
 			linkModalOpen: false,
-			linkValue: null,
+			linkValue: null
 		});
 	}
 
@@ -92,7 +89,8 @@ class LinkButton extends Component {
 		const contentState = editorState.getCurrentContent();
 		const contentStateWithEntity = contentState.createEntity(
 			'LINK',
-			'MUTABLE', {
+			'MUTABLE',
+			{
 				// don't use url, as it will cause redirect on click
 				link: linkValue
 			}
@@ -101,14 +99,16 @@ class LinkButton extends Component {
 
 		const newEditorState = EditorState.set(editorState, {
 			currentContent: contentStateWithEntity,
-			decorator: linkDecorator,
+			decorator: linkDecorator
 		});
 
-		setEditorState(RichUtils.toggleLink(
-			newEditorState,
-			newEditorState.getSelection(),
-			entityKey
-		));
+		setEditorState(
+			RichUtils.toggleLink(
+				newEditorState,
+				newEditorState.getSelection(),
+				entityKey
+			)
+		);
 
 		this.hideLinkModal();
 	}
@@ -128,7 +128,7 @@ class LinkButton extends Component {
 
 	onValueChange(event, newValue) {
 		this.setState({
-			linkValue: newValue,
+			linkValue: newValue
 		});
 	}
 
@@ -140,7 +140,6 @@ class LinkButton extends Component {
 		const selection = editorState.getSelection();
 
 		if (!selection.isCollapsed()) {
-
 			const startKey = editorState.getSelection().getStartKey();
 			const startOffset = editorState.getSelection().getStartOffset();
 			const blockWithLinkAtBeginning = contentState.getBlockForKey(startKey);
@@ -157,23 +156,26 @@ class LinkButton extends Component {
 	}
 
 	render() {
-
 		const { theme } = this.props;
 		const { linkModalOpen, linkValue } = this.state;
 
-		const className = this.styleIsActive() ? unionClassNames(theme.button, theme.active) : theme.button;
+		const className = this.styleIsActive()
+			? unionClassNames(theme.button, theme.active)
+			: theme.button;
 
 		return (
-			<div
-				className={theme.buttonWrapper}
-				onMouseDown={preventBubblingUp}
-			>
+			<div className={theme.buttonWrapper} onMouseDown={preventBubblingUp}>
 				<button
 					className={className}
 					onClick={this.showLinkModal}
 					type="button"
 				>
-					<svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+					<svg
+						height="24"
+						viewBox="0 0 24 24"
+						width="24"
+						xmlns="http://www.w3.org/2000/svg"
+					>
 						<g>
 							<path
 								d="M18.101,10.747l-3.771,3.771c-1.042,1.042-2.729,1.042-3.771,0l-1.257-1.257l1.257-1.257l1.257,1.257

@@ -10,7 +10,6 @@ import itemListQuery from '../../graphql/queries/list';
 import itemDetailQuery from '../../graphql/queries/detail';
 import itemRemoveMutation from '../../graphql/mutations/remove';
 
-
 class ItemDetailContainer extends React.Component {
 	constructor(props) {
 		super(props);
@@ -21,10 +20,10 @@ class ItemDetailContainer extends React.Component {
 		const { itemRemove, router } = this.props;
 
 		itemRemove(itemId)
-			.then((response) => {
+			.then(response => {
 				router.replace('/items');
 			})
-			.catch((err) => {
+			.catch(err => {
 				console.error(err);
 			});
 	}
@@ -33,10 +32,7 @@ class ItemDetailContainer extends React.Component {
 		let item = [];
 		let userIsAdmin = false;
 
-		if (
-			this.props.itemQuery
-			&& this.props.itemQuery.project
-		) {
+		if (this.props.itemQuery && this.props.itemQuery.project) {
 			item = this.props.itemQuery.project.item;
 			userIsAdmin = this.props.itemQuery.project.userIsAdmin;
 		}
@@ -52,5 +48,7 @@ class ItemDetailContainer extends React.Component {
 }
 
 export default compose(
-	itemListQuery, itemDetailQuery, itemRemoveMutation
+	itemListQuery,
+	itemDetailQuery,
+	itemRemoveMutation
 )(ItemDetailContainer);

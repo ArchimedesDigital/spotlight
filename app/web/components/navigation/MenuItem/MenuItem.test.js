@@ -6,10 +6,7 @@ import MenuItem from './MenuItem';
 
 describe('MenuItem', () => {
 	it('renders correctly', () => {
-
-		const tree = renderer
-			.create(<MenuItem />)
-			.toJSON();
+		const tree = renderer.create(<MenuItem />).toJSON();
 		expect(tree).toMatchSnapshot();
 	});
 });

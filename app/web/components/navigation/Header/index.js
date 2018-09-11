@@ -9,20 +9,16 @@ import LeftMenu from '../LeftMenu';
 // actions
 import * as authActions from '../../../modules/auth/actions';
 
-
 const Header = ({ toggleAuthModal, userId }) => (
 	<div>
 		<LeftMenu />
-		<NavBar
-			toggleAuthModal={toggleAuthModal}
-			userId={userId}
-		/>
+		<NavBar toggleAuthModal={toggleAuthModal} userId={userId} />
 	</div>
 );
 
 Header.propTypes = {
 	toggleAuthModal: PropTypes.func.isRequired,
-	userId: PropTypes.string,
+	userId: PropTypes.string
 };
 
 Header.defaultProps = {
@@ -30,14 +26,14 @@ Header.defaultProps = {
 };
 
 const mapStateToProps = state => ({
-	userId: state.auth.userId,
+	userId: state.auth.userId
 });
 
 const mapDispatchToProps = dispatch => ({
-	toggleAuthModal: (e) => {
+	toggleAuthModal: e => {
 		e.preventDefault();
 		dispatch(authActions.toggleAuthModal());
-	},
+	}
 });
 
 export default connect(

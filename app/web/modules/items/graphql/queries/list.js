@@ -2,11 +2,15 @@ import { gql, graphql } from 'react-apollo';
 
 import getCurrentProjectHostname from '../../../../lib/getCurrentProjectHostname';
 
-
 const query = gql`
-	query itemListQuery($hostname: String, $textsearch: String, $offset: Int, $limit: Int) {
+	query itemListQuery(
+		$hostname: String
+		$textsearch: String
+		$offset: Int
+		$limit: Int
+	) {
 		project(hostname: $hostname) {
-	    _id
+			_id
 			items(textsearch: $textsearch, offset: $offset, limit: $limit) {
 				_id
 				title
@@ -36,9 +40,9 @@ const itemListQuery = graphql(query, {
 			hostname: getCurrentProjectHostname(),
 			textsearch,
 			offset: skip,
-			limit,
-		},
-	}),
+			limit
+		}
+	})
 });
 
 export default itemListQuery;

@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 
-
 import './MenuSubItem.css';
 
 const MenuSubItem = ({ to, onClick, children, last }) => (
@@ -14,15 +13,13 @@ const MenuSubItem = ({ to, onClick, children, last }) => (
 		to={to}
 		onClick={onClick}
 	>
-		<span>
-			{children}
-		</span>
+		<span>{children}</span>
 	</Link>
 );
 
 MenuSubItem.propTypes = {
 	to: PropTypes.string,
-	onClick: PropTypes.func,
+	onClick: PropTypes.func
 };
 
 export default MenuSubItem;

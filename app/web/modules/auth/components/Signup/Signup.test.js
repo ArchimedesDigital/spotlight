@@ -7,11 +7,7 @@ import Signup from './Signup';
 describe('Signup', () => {
 	it('renders correctly', () => {
 		const wrapper = shallow(
-			<Signup
-				onSigninClick={() => {}}
-				signup={() => {}}
-				login={() => {}}
-			/>
+			<Signup onSigninClick={() => {}} signup={() => {}} login={() => {}} />
 		);
 		expect(wrapper).toBeDefined();
 	});

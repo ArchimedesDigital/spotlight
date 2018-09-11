@@ -17,34 +17,19 @@ const Pagination = ({ limit, total }) => {
 
 	return (
 		<div className="pagination">
-			{activePage > 1 ?
-				<PaginationButton
-					prev
-				/>
-			: ''}
-			{_.range(1, numPages).map((page) => {
+			{activePage > 1 ? <PaginationButton prev /> : ''}
+			{_.range(1, numPages).map(page => {
 				let isActive = false;
 
 				if (activePage === page) {
 					isActive = true;
 				}
 
-				return (
-					<PaginationButton
-						key={page}
-						page={page}
-						isActive={isActive}
-					/>
-				);
+				return <PaginationButton key={page} page={page} isActive={isActive} />;
 			})}
-			{activePage < numPages - 1 ?
-				<PaginationButton
-					next
-				/>
-			: ''}
+			{activePage < numPages - 1 ? <PaginationButton next /> : ''}
 		</div>
 	);
 };
-
 
 export default Pagination;

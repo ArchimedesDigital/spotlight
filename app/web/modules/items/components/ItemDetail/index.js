@@ -10,10 +10,19 @@ import Discussion from '../../../comments/components/Discussion';
 import './ItemDetail.css';
 
 const ItemDetail = ({
-	_id, title, slug, description, tags, metadata, files, commentsCount, comments,
-	userIsAdmin, manifest, handleRemove
-})=> {
-
+	_id,
+	title,
+	slug,
+	description,
+	tags,
+	metadata,
+	files,
+	commentsCount,
+	comments,
+	userIsAdmin,
+	manifest,
+	handleRemove
+}) => {
 	if (!_id) {
 		// TODO: loading or no results
 		return null;
@@ -21,13 +30,14 @@ const ItemDetail = ({
 
 	return (
 		<div className="itemDetail">
-
-			{files ?
+			{files ? (
 				<ItemImageViewer
-					itemMiradorLink={ manifest ? `/items/${_id}/${slug}/mirador` : null}
+					itemMiradorLink={manifest ? `/items/${_id}/${slug}/mirador` : null}
 					files={files}
 				/>
-			: ''}
+			) : (
+				''
+			)}
 
 			<div className="itemDetailColumn">
 				<ItemTitle
@@ -36,25 +46,15 @@ const ItemDetail = ({
 					editLink={userIsAdmin ? `/items/${_id}/${slug}/edit` : null}
 					handleRemove={userIsAdmin ? handleRemove : null}
 				/>
-				<ItemDescription
-					description={description}
-				/>
-				<Tags
-					tags={tags}
-				/>
-				<ItemMetaFields
-					metafields={metadata}
-				/>
-				<Discussion
-					commentsCount={commentsCount}
-					comments={comments}
-				/>
+				<ItemDescription description={description} />
+				<Tags tags={tags} />
+				<ItemMetaFields metafields={metadata} />
+				<Discussion commentsCount={commentsCount} comments={comments} />
 			</div>
 
 			<ItemCollection />
 		</div>
 	);
-}
-
+};
 
 export default ItemDetail;

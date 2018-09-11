@@ -7,7 +7,6 @@ import LinkButtonDialog from './LinkButtonDialog';
 
 describe('LinkButtonDialog', () => {
 	it('renders correctly', () => {
-
 		const wrapper = shallow(
 			<MuiThemeProvider>
 				<LinkButtonDialog

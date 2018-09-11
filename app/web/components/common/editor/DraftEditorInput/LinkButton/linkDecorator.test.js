@@ -14,8 +14,8 @@ describe('linkDecarator', () => {
 						getEntity: () => ({
 							getData: () => ({
 								url: 'http://test.url'
-							}),
-						}),
+							})
+						})
 					}}
 				/>
 			</MuiThemeProvider>

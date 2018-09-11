@@ -4,7 +4,6 @@ import React from 'react';
 import './ProjectAbout.css';
 
 export default class ProjectAbout extends React.Component {
-
 	render() {
 		const { description } = this.props;
 
@@ -15,9 +14,7 @@ export default class ProjectAbout extends React.Component {
 		return (
 			<section className="projectAbout" id="about">
 				<h2>About</h2>
-				<p>
-					{description}
-				</p>
+				<p>{description}</p>
 				{/*
 					<Button
 					href={'/articles/about'}

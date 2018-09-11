@@ -7,7 +7,6 @@ import articleDetailQuery from '../../graphql/queries/detail';
 import articleListQuery from '../../graphql/queries/list';
 import articleRemoveMutation from '../../graphql/mutations/remove';
 
-
 class ArticleDetailContainer extends React.Component {
 	constructor(props) {
 		super(props);
@@ -18,10 +17,10 @@ class ArticleDetailContainer extends React.Component {
 		const { articleRemove, router } = this.props;
 
 		articleRemove(articleId)
-			.then((response) => {
+			.then(response => {
 				router.replace('/articles');
 			})
-			.catch((err) => {
+			.catch(err => {
 				console.error(err);
 			});
 	}
@@ -30,10 +29,7 @@ class ArticleDetailContainer extends React.Component {
 		let article = [];
 		let userIsAdmin = false;
 
-		if (
-			this.props.articleQuery
-			&& this.props.articleQuery.project
-		) {
+		if (this.props.articleQuery && this.props.articleQuery.project) {
 			article = this.props.articleQuery.project.article;
 			userIsAdmin = this.props.articleQuery.project.userIsAdmin;
 		}
@@ -49,5 +45,7 @@ class ArticleDetailContainer extends React.Component {
 }
 
 export default compose(
-	articleDetailQuery, articleListQuery, articleRemoveMutation,
+	articleDetailQuery,
+	articleListQuery,
+	articleRemoveMutation
 )(ArticleDetailContainer);

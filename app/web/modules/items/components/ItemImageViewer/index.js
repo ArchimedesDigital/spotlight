@@ -7,23 +7,20 @@ import ThumbnailImages from './ThumbnailImages';
 
 import './ItemImageViewer.css';
 
-
 class ItemImageViewer extends React.Component {
-
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			activeImage: null,
+			activeImage: null
 		};
 
 		autoBind(this);
 	}
 
-
 	setActiveFile(file) {
 		this.setState({
-			activeImage: file,
+			activeImage: file
 		});
 	}
 
@@ -37,10 +34,7 @@ class ItemImageViewer extends React.Component {
 
 		return (
 			<div className="itemImageViewer">
-				<PrimaryImage
-					file={activeImage}
-					itemMiradorLink={itemMiradorLink}
-				/>
+				<PrimaryImage file={activeImage} itemMiradorLink={itemMiradorLink} />
 				<ThumbnailImages
 					files={files}
 					activeImage={activeImage}
@@ -53,12 +47,12 @@ class ItemImageViewer extends React.Component {
 
 ItemImageViewer.propTypes = {
 	title: PropTypes.string,
-	files: PropTypes.array,
+	files: PropTypes.array
 };
 
 ItemImageViewer.defaultProps = {
 	title: '',
-	files: [],
+	files: []
 };
 
 export default ItemImageViewer;

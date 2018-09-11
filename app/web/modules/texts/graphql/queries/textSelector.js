@@ -1,13 +1,12 @@
 import { gql, graphql } from 'react-apollo';
 
-
 const query = gql`
 	query textSelectorQuery($collectionId: Int, $textGroupUrn: String) {
 		collections {
-	    id
-	    urn
-	    title
-	  }
+			id
+			urn
+			title
+		}
 
 		collection(id: $collectionId) {
 			id
@@ -32,12 +31,12 @@ const query = gql`
 
 const textSelectorQuery = graphql(query, {
 	name: 'textSelectorQuery',
-	options: (props) => ({
+	options: props => ({
 		variables: {
 			collectionId: props.collectionId,
-			textGroupUrn: props.textGroupUrn,
+			textGroupUrn: props.textGroupUrn
 		}
-	}),
+	})
 });
 
 export default textSelectorQuery;

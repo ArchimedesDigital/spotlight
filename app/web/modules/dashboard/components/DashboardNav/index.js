@@ -3,19 +3,14 @@ import { Link, withRouter } from 'react-router';
 
 import './DashboardNav.css';
 
-
-const DashboardNav = (props) => {
+const DashboardNav = props => {
 	const activePath = props.location.pathname;
 
 	return (
 		<div className="dashboardNav">
 			<Link
 				to="/dashboard"
-				className={
-					activePath === '/dashboard' ?
-					'dashboardNavLinkActive'
-					: ''
-				}
+				className={activePath === '/dashboard' ? 'dashboardNavLinkActive' : ''}
 			>
 				<i className="mdi mdi-view-dashboard" />
 				Dashboard
@@ -25,9 +20,7 @@ const DashboardNav = (props) => {
 					to="/create"
 					className={`
 						dashboardNavLinkWithDropdown
-						${activePath === '/create' ?
-						'dashboardNavLinkActive'
-						: ''}
+						${activePath === '/create' ? 'dashboardNavLinkActive' : ''}
 					`}
 				>
 					<i className="mdi mdi-plus" />
@@ -38,9 +31,7 @@ const DashboardNav = (props) => {
 						to="/collections/create"
 						className={`
 							dropdownLink
-							${activePath === '/collections/create' ?
-							'dashboardNavLinkActive'
-							: ''}
+							${activePath === '/collections/create' ? 'dashboardNavLinkActive' : ''}
 						`}
 					>
 						Collection
@@ -49,9 +40,7 @@ const DashboardNav = (props) => {
 						to="/items/create"
 						className={`
 							dropdownLink
-							${activePath === '/items/create' ?
-							'dashboardNavLinkActive'
-							: ''}
+							${activePath === '/items/create' ? 'dashboardNavLinkActive' : ''}
 						`}
 					>
 						Item
@@ -60,9 +49,7 @@ const DashboardNav = (props) => {
 						to="/articles/create"
 						className={`
 							dropdownLink
-							${activePath === '/articles/create' ?
-							'dashboardNavLinkActive'
-							: ''}
+							${activePath === '/articles/create' ? 'dashboardNavLinkActive' : ''}
 						`}
 					>
 						Articles
@@ -85,9 +72,7 @@ const DashboardNav = (props) => {
 			<Link
 				to="/dashboard/settings"
 				className={
-					activePath === '/dashboard/settings' ?
-					'dashboardNavLinkActive'
-					: ''
+					activePath === '/dashboard/settings' ? 'dashboardNavLinkActive' : ''
 				}
 			>
 				<i className="mdi mdi-settings" />
@@ -98,9 +83,7 @@ const DashboardNav = (props) => {
 					to="/dashboard/people"
 					className={`
 						dashboardNavLinkWithDropdown
-						${activePath === '/dashboard/people' ?
-						'dashboardNavLinkActive'
-						: ''}
+						${activePath === '/dashboard/people' ? 'dashboardNavLinkActive' : ''}
 					`}
 				>
 					<i className="mdi mdi-account-multiple" />
@@ -111,9 +94,7 @@ const DashboardNav = (props) => {
 						to="/dashboard/people/invite"
 						className={`
 							dropdownLink
-							${activePath === '/dashboard/people/invite' ?
-							'dashboardNavLinkActive'
-							: ''}
+							${activePath === '/dashboard/people/invite' ? 'dashboardNavLinkActive' : ''}
 						`}
 					>
 						Invite
@@ -123,9 +104,7 @@ const DashboardNav = (props) => {
 			<Link
 				to="/dashboard/help"
 				className={
-					activePath === '/dashboard/help' ?
-					'dashboardNavLinkActive'
-					: ''
+					activePath === '/dashboard/help' ? 'dashboardNavLinkActive' : ''
 				}
 			>
 				<i className="mdi mdi-information-outline" />

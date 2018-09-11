@@ -7,13 +7,9 @@ import { Link } from 'react-router';
 import DashboardNav from '../../../dashboard/components/DashboardNav';
 import ProjectPeopleFields from './ProjectPeopleFields';
 
-
 import './ProjectPeopleEditor.css';
 
-
-
 class ProjectPeopleEditor extends React.Component {
-
 	render() {
 		const { users } = this.props;
 
@@ -23,28 +19,18 @@ class ProjectPeopleEditor extends React.Component {
 
 				<div className="projectEditorHead">
 					<h1>People</h1>
-					<Link to="/dashboard/people/invite">
-						Invite a new member.
-					</Link>
+					<Link to="/dashboard/people/invite">Invite a new member.</Link>
 				</div>
 
-				<form
-					className="projectEditorForm"
-					onSubmit={this.props.handleSubmit}
-				>
-					<div
-						className="projectEditorFormInputOuter"
-					>
+				<form className="projectEditorForm" onSubmit={this.props.handleSubmit}>
+					<div className="projectEditorFormInputOuter">
 						<FieldArray
 							name="users"
 							component={ProjectPeopleFields}
 							users={users}
 						/>
 					</div>
-					<button
-						type="submit"
-						className="projectEditorButton"
-					>
+					<button type="submit" className="projectEditorButton">
 						Save
 					</button>
 				</form>
@@ -54,21 +40,19 @@ class ProjectPeopleEditor extends React.Component {
 }
 
 let ProjectPeopleEditorForm = reduxForm({
-	form: 'ProjectPeopleEditor',
+	form: 'ProjectPeopleEditor'
 })(ProjectPeopleEditor);
 
-const selector = formValueSelector('ProjectPeopleEditor') // <-- same as form name
+const selector = formValueSelector('ProjectPeopleEditor'); // <-- same as form name
 
 const mapStateToProps = (state, props) => {
-	const users = selector(state, 'users')
+	const users = selector(state, 'users');
 
 	return {
-		users,
+		users
 	};
 };
 
-ProjectPeopleEditorForm = connect(
-	mapStateToProps
-)(ProjectPeopleEditorForm);
+ProjectPeopleEditorForm = connect(mapStateToProps)(ProjectPeopleEditorForm);
 
 export default ProjectPeopleEditorForm;

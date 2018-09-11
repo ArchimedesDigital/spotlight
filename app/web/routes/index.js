@@ -30,7 +30,6 @@ import textRoutes from '../modules/texts/routes';
 // users
 import userRoutes from '../modules/users/routes';
 
-
 export default (
 	<div>
 		{/* Home Route for orphe.us */}

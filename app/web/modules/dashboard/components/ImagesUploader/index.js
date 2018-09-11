@@ -10,7 +10,7 @@ export default class ImagesUploader extends React.Component {
 	}
 
 	handleDrop(acceptedFiles, rejectedFiles) {
-		acceptedFiles.forEach((file) => {
+		acceptedFiles.forEach(file => {
 			this.props.addImage(file);
 		});
 	}
@@ -18,7 +18,11 @@ export default class ImagesUploader extends React.Component {
 	render() {
 		return (
 			<div>
-				<Dropzone className="dropzone" accept="image/*" onDrop={this.handleDrop}>
+				<Dropzone
+					className="dropzone"
+					accept="image/*"
+					onDrop={this.handleDrop}
+				>
 					<div className="text">Drop files here</div>
 				</Dropzone>
 			</div>

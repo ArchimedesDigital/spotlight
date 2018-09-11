@@ -8,7 +8,7 @@ const BackgroundImage = ({ src }) => {
 	const styles = {
 		backgroundSize: 'cover',
 		backgroundPosition: 'center',
-		backgroundRepeat: 'no-repeat',
+		backgroundRepeat: 'no-repeat'
 	};
 
 	if (src) {
@@ -18,13 +18,8 @@ const BackgroundImage = ({ src }) => {
 	}
 
 	return (
-		<div
-			className="backgroundImage"
-			style={styles}
-		>
-			{!src ?
-				<Textures />
-			: ''}
+		<div className="backgroundImage" style={styles}>
+			{!src ? <Textures /> : ''}
 		</div>
 	);
 };

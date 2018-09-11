@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 
 import './FileUploader.css';
 
-
 export default class FileUploader extends React.Component {
 	constructor(props) {
 		super(props);
@@ -12,12 +11,12 @@ export default class FileUploader extends React.Component {
 		this.handleDrop = this.handleDrop.bind(this);
 
 		this.state = {
-			uploading: false,
+			uploading: false
 		};
 	}
 
 	handleDrop(acceptedFiles, rejectedFiles) {
-		acceptedFiles.forEach((file) => {
+		acceptedFiles.forEach(file => {
 			this.props.addFile(file);
 		});
 	}
@@ -25,18 +24,12 @@ export default class FileUploader extends React.Component {
 	render() {
 		return (
 			<div className="fileUploader">
-				<Dropzone
-					className="fileDropzone"
-					onDrop={this.handleDrop}
-				>
+				<Dropzone className="fileDropzone" onDrop={this.handleDrop}>
 					<div className="fileUploaderLabel">
 						<label>
-							{
-								this.state.uploading ?
-									'Uploading...'
-								:
-									'Drag and drop files or click to select'
-							}
+							{this.state.uploading
+								? 'Uploading...'
+								: 'Drag and drop files or click to select'}
 						</label>
 					</div>
 				</Dropzone>

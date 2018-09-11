@@ -5,8 +5,6 @@ import { Field } from 'redux-form';
 import FontAwesome from 'react-fontawesome';
 import { SortableHandle } from 'react-sortable-hoc';
 
-
-
 export default class ImagesInput extends React.Component {
 	constructor(props) {
 		super(props);
@@ -25,13 +23,19 @@ export default class ImagesInput extends React.Component {
 
 	componentWillMount() {
 		if (!this.props.image.path && process.env.REACT_APP_BUCKET_URL) {
-			this._id = Math.random().toString(36).substring(2) + Math.random().toString(36).substring(2);
+			this._id =
+				Math.random()
+					.toString(36)
+					.substring(2) +
+				Math.random()
+					.toString(36)
+					.substring(2);
 			this.uploadFile();
 		}
 	}
 
 	handleProgress(percentage) {
-		this.setState({progress: percentage});
+		this.setState({ progress: percentage });
 	}
 
 	inputComponent(props) {
@@ -43,7 +47,9 @@ export default class ImagesInput extends React.Component {
 			name: this.imageName,
 			type: this.imageType,
 			path: `${process.env.REACT_APP_BUCKET_URL}/${event.filename}`,
-			thumbPath: `https://iiif.orphe.us/${event.filename}/full/90,/0/default.jpg`,
+			thumbPath: `https://iiif.orphe.us/${
+				event.filename
+			}/full/90,/0/default.jpg`,
 			_id: this._id
 		};
 		this.props.updateImageCb(this.imageIndex, image);
@@ -61,10 +67,10 @@ export default class ImagesInput extends React.Component {
 			signingUrl: '/s3/sign',
 			server: process.env.REACT_APP_SERVER,
 			onError: this.handleError,
-			uploadRequestHeaders: {'x-amz-acl': 'public-read'},
+			uploadRequestHeaders: { 'x-amz-acl': 'public-read' },
 			contentDisposition: 'auto',
-			scrubFilename: (filename) => {
-				const secureFilename = filename.replace(/[^\w\d_\-\.]+/ig, ''); // eslint-disable-line
+			scrubFilename: filename => {
+				const secureFilename = filename.replace(/[^\w\d_\-\.]+/gi, ''); // eslint-disable-line
 				return `${this._id}-${secureFilename}`;
 			},
 			signingUrlMethod: 'GET',
@@ -77,7 +83,11 @@ export default class ImagesInput extends React.Component {
 	}
 
 	render() {
-		const DragHandle = SortableHandle(() => <div className="moveButton"><FontAwesome name="bars" /></div>); // This can be any component you want
+		const DragHandle = SortableHandle(() => (
+			<div className="moveButton">
+				<FontAwesome name="bars" />
+			</div>
+		)); // This can be any component you want
 		const disableInput = !this.props.image.path;
 		if (!process.env.REACT_APP_BUCKET_URL) {
 			this.deleteImage();
@@ -86,7 +96,6 @@ export default class ImagesInput extends React.Component {
 		}
 		return (
 			<div>
-
 				<div className="row fileInput">
 					<div className="row">
 						<div className="col-lg-2">
@@ -102,8 +111,11 @@ export default class ImagesInput extends React.Component {
 					</div>
 					<div className="row">
 						<div className="col-lg-2 progressBox">
-							{this.props.image.path ? <img src={this.props.image.thumbPath} alt="thumbnail" /> :
-							<CircularProgressbar percentage={this.state.progress} />}
+							{this.props.image.path ? (
+								<img src={this.props.image.thumbPath} alt="thumbnail" />
+							) : (
+								<CircularProgressbar percentage={this.state.progress} />
+							)}
 						</div>
 						<div className="col-lg-10">
 							<div>
@@ -122,6 +134,5 @@ export default class ImagesInput extends React.Component {
 				</div>
 			</div>
 		);
-
 	}
 }

@@ -7,19 +7,14 @@ import autoBind from 'react-autobind';
 
 // Maker location date
 
-
-
 import './SearchHead.css';
 
-
-
 class SearchHead extends React.Component {
-
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			open: false,
+			open: false
 		};
 		autoBind(this);
 	}
@@ -34,7 +29,7 @@ class SearchHead extends React.Component {
 
 	filterMenu(filterValues) {
 		let filters = [];
-		return filters.map((name) => (
+		return filters.map(name => (
 			<MenuItem
 				key={name}
 				insetChildren={true}
@@ -62,7 +57,6 @@ class SearchHead extends React.Component {
 		// const fields = this.props.router.location.query;
 
 		return (
-
 			<div className="searchHead">
 				<div className="searchInputOuter">
 					<i className="mdi mdi-magnify mdi-36px searchIcon" />
@@ -75,7 +69,6 @@ class SearchHead extends React.Component {
 						value={defaultValue}
 					/>
 				</div>
-
 			</div>
 		);
 	}

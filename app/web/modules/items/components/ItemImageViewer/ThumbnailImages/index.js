@@ -5,12 +5,10 @@ import ThumbnailImage from '../ThumbnailImage';
 
 import './ThumbnailImages.css';
 
-
 const ThumbnailImages = ({ files, activeImage, setActiveFile }) => {
 	if (!files) {
 		return null;
 	}
-
 
 	return (
 		<div className="thumbnailImages">
@@ -34,12 +32,11 @@ const ThumbnailImages = ({ files, activeImage, setActiveFile }) => {
 };
 
 ThumbnailImages.propTypes = {
-	files: PropTypes.array,
+	files: PropTypes.array
 };
 
 ThumbnailImages.defaultProps = {
-	files: [],
+	files: []
 };
-
 
 export default ThumbnailImages;

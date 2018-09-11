@@ -7,7 +7,6 @@ import textDetailQuery from '../../graphql/queries/detail';
 import textListQuery from '../../graphql/queries/list';
 import textRemoveMutation from '../../graphql/mutations/remove';
 
-
 class TextDetailContainer extends React.Component {
 	constructor(props) {
 		super(props);
@@ -18,10 +17,10 @@ class TextDetailContainer extends React.Component {
 		const { textRemove, router } = this.props;
 
 		textRemove(textId)
-			.then((response) => {
+			.then(response => {
 				router.replace('/texts');
 			})
-			.catch((err) => {
+			.catch(err => {
 				console.error(err);
 			});
 	}
@@ -30,10 +29,7 @@ class TextDetailContainer extends React.Component {
 		let text = [];
 		let userIsAdmin = false;
 
-		if (
-			this.props.textQuery
-			&& this.props.textQuery.project
-		) {
+		if (this.props.textQuery && this.props.textQuery.project) {
 			text = this.props.textQuery.project.text;
 			userIsAdmin = this.props.textQuery.project.userIsAdmin;
 		}
@@ -49,5 +45,7 @@ class TextDetailContainer extends React.Component {
 }
 
 export default compose(
-	textDetailQuery, textListQuery, textRemoveMutation,
+	textDetailQuery,
+	textListQuery,
+	textRemoveMutation
 )(TextDetailContainer);

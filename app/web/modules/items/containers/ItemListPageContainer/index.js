@@ -6,25 +6,18 @@ import ItemListPage from '../../components/ItemListPage';
 import userIsAdminQuery from '../../../users/graphql/queries/userIsAdmin';
 import itemListQuery from '../../graphql/queries/list';
 
-
-const ItemListPageContainer = (props) => {
+const ItemListPageContainer = props => {
 	let userIsAdmin = false;
 	let files = [];
 
-	if (
-		props.userIsAdminQuery
-		&& props.userIsAdminQuery.project
-	) {
+	if (props.userIsAdminQuery && props.userIsAdminQuery.project) {
 		userIsAdmin = props.userIsAdminQuery.project.userIsAdmin;
 	}
 
-	if (
-		props.itemListQuery
-		&& props.itemListQuery.project
-	) {
+	if (props.itemListQuery && props.itemListQuery.project) {
 		files = props.itemListQuery.project.files;
 	}
-	
+
 	let skip = 0;
 	if (props.router.location.query.page) {
 		skip = (props.router.location.query.page - 1) * 24;
@@ -43,5 +36,5 @@ const ItemListPageContainer = (props) => {
 export default compose(
 	userIsAdminQuery,
 	itemListQuery,
-	withRouter,
+	withRouter
 )(ItemListPageContainer);

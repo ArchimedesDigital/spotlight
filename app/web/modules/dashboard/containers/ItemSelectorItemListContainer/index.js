@@ -5,7 +5,6 @@ import { compose } from 'react-apollo';
 import itemsQuery from '../../../items/graphql/queries/list';
 import ItemSelectorItemList from '../../components/ItemSelectorItemList';
 
-
 class ItemSelectorItemListContainer extends React.Component {
 	render() {
 		const { selectedItems } = this.props;
@@ -13,9 +12,9 @@ class ItemSelectorItemListContainer extends React.Component {
 		let items = [];
 
 		if (
-			this.props.itemListQuery
-			&& this.props.itemListQuery.project
-			&& this.props.itemListQuery.project.items
+			this.props.itemListQuery &&
+			this.props.itemListQuery.project &&
+			this.props.itemListQuery.project.items
 		) {
 			items = this.props.itemListQuery.project.items.slice();
 
@@ -29,24 +28,16 @@ class ItemSelectorItemListContainer extends React.Component {
 						if (item._id === selectedItem) {
 							_selectedItems[i] = item;
 						}
-					})
+					});
 				}
 			}
 		}
 
-
 		// don't show the items that are common between lists
 		_selectedItems.forEach(selectedItem => {
 			items.forEach(item => {
-				if (
-						item
-					&& selectedItem
-					&& item._id === selectedItem._id
-				) {
-					items.splice(
-						items.findIndex( _i => _i._id === item._id),
-						1
-					);
+				if (item && selectedItem && item._id === selectedItem._id) {
+					items.splice(items.findIndex(_i => _i._id === item._id), 1);
 				}
 			});
 		});
@@ -63,13 +54,11 @@ class ItemSelectorItemListContainer extends React.Component {
 
 ItemSelectorItemListContainer.propTypes = {
 	toggleSelectedItem: PropTypes.func.isRequired,
-	selectedItems: PropTypes.array,
+	selectedItems: PropTypes.array
 };
 
 ItemSelectorItemListContainer.defaultProps = {
-	selectedItems: [],
+	selectedItems: []
 };
 
-export default compose(
-	itemsQuery,
-)(ItemSelectorItemListContainer);
+export default compose(itemsQuery)(ItemSelectorItemListContainer);

@@ -6,13 +6,10 @@ import { required, maxLength } from '../../../../lib/formHelpers';
 
 import './ProjectEditor.css';
 
-
 const maxLength200 = maxLength(200);
 const maxLength2100 = maxLength(2100);
 
-
 class ProjectEditor extends React.Component {
-
 	render() {
 		return (
 			<div className="projectEditor">
@@ -20,12 +17,11 @@ class ProjectEditor extends React.Component {
 
 				<h1>Project Settings</h1>
 
-				<form
-					className="projectEditorForm"
-					onSubmit={this.props.handleSubmit}
-				>
+				<form className="projectEditorForm" onSubmit={this.props.handleSubmit}>
 					<div className="projectEditorFormInputOuter">
-						<label>What is your Organization&apos;s or Project&apos;s title?</label>
+						<label>
+							What is your Organization&apos;s or Project&apos;s title?
+						</label>
 						<Field
 							name="title"
 							type="text"
@@ -33,11 +29,7 @@ class ProjectEditor extends React.Component {
 							placeholder="Your Organization or Project"
 							validate={[required, maxLength200]}
 						/>
-						<span
-							className="projectEditorFormHelp"
-						>
-							?
-						</span>
+						<span className="projectEditorFormHelp">?</span>
 					</div>
 
 					<div className="projectEditorFormInputOuter">
@@ -49,11 +41,7 @@ class ProjectEditor extends React.Component {
 							placeholder="E.g. 16th and 17th century manuscripts"
 							validate={[maxLength200]}
 						/>
-						<span
-							className="projectEditorFormHelp"
-						>
-							?
-						</span>
+						<span className="projectEditorFormHelp">?</span>
 					</div>
 
 					<div className="projectEditorFormInputOuter projectEditorFormDescriptionOuter">
@@ -65,11 +53,7 @@ class ProjectEditor extends React.Component {
 							placeholder="Example description of project . . . "
 							validate={[maxLength2100]}
 						/>
-						<span
-							className="projectEditorFormHelp"
-						>
-							?
-						</span>
+						<span className="projectEditorFormHelp">?</span>
 					</div>
 
 					<div
@@ -80,7 +64,9 @@ class ProjectEditor extends React.Component {
 						"
 					>
 						<div>
-							<label>At what URL would you like users to access your project?</label>
+							<label>
+								At what URL would you like users to access your project?
+							</label>
 							<Field
 								name="hostname"
 								type="text"
@@ -90,19 +76,14 @@ class ProjectEditor extends React.Component {
 								disabled
 							/>
 							<div className="projectNameAvailabilityFormURL">
-								<span>
-									.orphe.us
-								</span>
+								<span>.orphe.us</span>
 							</div>
-							<span
-								className="projectEditorFormHelp"
-							>
-								?
-							</span>
+							<span className="projectEditorFormHelp">?</span>
 						</div>
 						<div>
 							<span className="">
-								Contact <a href="mailto:support@orphe.us">support</a> to change your project URL.
+								Contact <a href="mailto:support@orphe.us">support</a> to change
+								your project URL.
 							</span>
 						</div>
 					</div>
@@ -122,7 +103,9 @@ class ProjectEditor extends React.Component {
 					</div>
 
 					<div className="projectEditorFormInputOuter ">
-						<label>Enter an email for users to contact your project or institution.</label>
+						<label>
+							Enter an email for users to contact your project or institution.
+						</label>
 						<Field
 							name="email"
 							type="text"
@@ -130,11 +113,7 @@ class ProjectEditor extends React.Component {
 							placeholder="contact@example.edu"
 							validate={[maxLength2100]}
 						/>
-						<span
-							className="projectEditorFormHelp"
-						>
-							?
-						</span>
+						<span className="projectEditorFormHelp">?</span>
 					</div>
 
 					<div className="projectEditorFormInputOuter ">
@@ -146,13 +125,8 @@ class ProjectEditor extends React.Component {
 							placeholder="https://project.example.edu"
 							validate={[maxLength2100]}
 						/>
-						<span
-							className="projectEditorFormHelp"
-						>
-							?
-						</span>
+						<span className="projectEditorFormHelp">?</span>
 					</div>
-
 
 					<div className="projectEditorFormInputOuter ">
 						<label>Enter the address of the project (if there is one).</label>
@@ -163,15 +137,13 @@ class ProjectEditor extends React.Component {
 							placeholder="123 Your Street, City, State"
 							validate={[maxLength2100]}
 						/>
-						<span
-							className="projectEditorFormHelp"
-						>
-							?
-						</span>
+						<span className="projectEditorFormHelp">?</span>
 					</div>
 
 					<div className="projectEditorFormInputOuter ">
-						<label>Enter the phone number of the project (if there is one).</label>
+						<label>
+							Enter the phone number of the project (if there is one).
+						</label>
 						<Field
 							name="phone"
 							type="text"
@@ -179,13 +151,8 @@ class ProjectEditor extends React.Component {
 							placeholder="(###) ###-####"
 							validate={[maxLength2100]}
 						/>
-						<span
-							className="projectEditorFormHelp"
-						>
-							?
-						</span>
+						<span className="projectEditorFormHelp">?</span>
 					</div>
-
 
 					<button
 						type="submit"
@@ -202,5 +169,5 @@ class ProjectEditor extends React.Component {
 }
 
 export default reduxForm({
-	form: 'ProjectEditor',
+	form: 'ProjectEditor'
 })(ProjectEditor);

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { defaultSuggestionsFilter } from 'draft-js-mention-plugin';
 import { fromJS } from 'immutable';
@@ -10,7 +10,6 @@ import { commentsQuery } from '/imports/graphql/methods/comments';
 import { keywordsQuery } from '/imports/graphql/methods/keywords';
 
 class Suggestions extends Component {
-
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -24,32 +23,38 @@ class Suggestions extends Component {
 	}
 	componentWillReceiveProps(nextProps) {
 		this.setState({
-			tags: nextProps.keywordsQuery.loading ? [] : nextProps.keywordsQuery.keywords,
-			comments: nextProps.commentsQuery.loading ? [] : nextProps.commentsQuery.comments
+			tags: nextProps.keywordsQuery.loading
+				? []
+				: nextProps.keywordsQuery.keywords,
+			comments: nextProps.commentsQuery.loading
+				? []
+				: nextProps.commentsQuery.comments
 		});
 	}
 	onMentionSearchChange({ value }) {
-		this.props.commentsQuery.refetch({
-			queryParam: JSON.stringify({ $text: { $search: value } }),
-			limit: 5
-		}).then(function(res) {
-			const _mentions = Utils.getSuggestionsFromComments(res.data.comments);
-			this.setState({
-				mentions: defaultSuggestionsFilter(value, fromJS(_mentions))
+		this.props.commentsQuery
+			.refetch({
+				queryParam: JSON.stringify({ $text: { $search: value } }),
+				limit: 5
+			})
+			.then(function(res) {
+				const _mentions = Utils.getSuggestionsFromComments(res.data.comments);
+				this.setState({
+					mentions: defaultSuggestionsFilter(value, fromJS(_mentions))
+				});
 			});
-		});
 	}
 	onKeywordSearchChange({ value }) {
 		const _keywords = [];
-		this.state.tags.forEach((keyword) => {
+		this.state.tags.forEach(keyword => {
 			_keywords.push({
 				name: keyword.title,
-				link: `/tags/${keyword.slug}`,
+				link: `/tags/${keyword.slug}`
 			});
 		});
 
 		this.setState({
-			keywords: defaultSuggestionsFilter(value, fromJS(_keywords)),
+			keywords: defaultSuggestionsFilter(value, fromJS(_keywords))
 		});
 	}
 	render() {
@@ -65,8 +70,10 @@ class Suggestions extends Component {
 							onSearchChange={this.onKeywordSearchChange.bind(this)}
 							suggestions={this.state.keywords}
 						/>
-					</div>) : ''
-					}
+					</div>
+				) : (
+					''
+				)}
 			</div>
 		);
 	}

@@ -4,18 +4,15 @@ import { compose } from 'react-apollo';
 import manifestQuery from '../../graphql/queries/manifest';
 import MiradorItemViewer from '../../components/MiradorItemViewer';
 
-
-
 class MiradorItemContainer extends React.Component {
-
- 	render () {
+	render() {
 		let manifest = null;
 
 		if (
-			this.props.manifestQuery
-		&& this.props.manifestQuery.project
-		&& this.props.manifestQuery.project.item
-		&& this.props.manifestQuery.project.item.manifest
+			this.props.manifestQuery &&
+			this.props.manifestQuery.project &&
+			this.props.manifestQuery.project.item &&
+			this.props.manifestQuery.project.item.manifest
 		) {
 			manifest = this.props.manifestQuery.project.item.manifest;
 		}
@@ -24,15 +21,8 @@ class MiradorItemContainer extends React.Component {
 			return null;
 		}
 
-		return (
-			<MiradorItemViewer
-				manifest={manifest}
-			/>
-		);
+		return <MiradorItemViewer manifest={manifest} />;
 	}
 }
 
-
-export default compose(
-	manifestQuery,
-)(MiradorItemContainer);
+export default compose(manifestQuery)(MiradorItemContainer);

@@ -9,7 +9,6 @@ import MainLayout from '../../../layouts/MainLayout';
 import AboutPage from '../components/AboutPage';
 import PageContainer from '../containers/PageContainer';
 
-
 export default (
 	<div>
 		<Route

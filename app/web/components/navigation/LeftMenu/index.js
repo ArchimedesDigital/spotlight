@@ -19,85 +19,57 @@ import getCurrentProjectHostname from '../../../lib/getCurrentProjectHostname';
 
 import './LeftMenu.css';
 
-
 class LeftMenu extends React.Component {
-
 	renderMenuItems() {
-		const {
-			project, closeLeftMenu
-		} = this.props;
+		const { project, closeLeftMenu } = this.props;
 
 		return (
 			<div>
-				<MenuItem
-					to="/collections"
-					onClick={closeLeftMenu}
-				>
+				<MenuItem to="/collections" onClick={closeLeftMenu}>
 					Collections
 				</MenuItem>
-				{project.userIsAdmin ?
+				{project.userIsAdmin ? (
 					<div>
-						<MenuSubItem
-							to="/collections"
-							onClick={closeLeftMenu}
-						>
+						<MenuSubItem to="/collections" onClick={closeLeftMenu}>
 							List
 						</MenuSubItem>
-						<MenuSubItem
-							to="/collections/create"
-							onClick={closeLeftMenu}
-							last
-						>
+						<MenuSubItem to="/collections/create" onClick={closeLeftMenu} last>
 							Create
 						</MenuSubItem>
 					</div>
-				: ''}
-				<MenuItem
-					to="/items"
-					onClick={closeLeftMenu}
-				>
+				) : (
+					''
+				)}
+				<MenuItem to="/items" onClick={closeLeftMenu}>
 					Items
 				</MenuItem>
-				{project.userIsAdmin ?
+				{project.userIsAdmin ? (
 					<div>
-						<MenuSubItem
-							to="/items"
-							onClick={closeLeftMenu}
-						>
+						<MenuSubItem to="/items" onClick={closeLeftMenu}>
 							List
 						</MenuSubItem>
-						<MenuSubItem
-							to="/items/create"
-							onClick={closeLeftMenu}
-							last
-						>
+						<MenuSubItem to="/items/create" onClick={closeLeftMenu} last>
 							Create
 						</MenuSubItem>
 					</div>
-				: ''}
-				<MenuItem
-					to="/articles"
-					onClick={closeLeftMenu}
-				>
+				) : (
+					''
+				)}
+				<MenuItem to="/articles" onClick={closeLeftMenu}>
 					Articles
 				</MenuItem>
-				{project.userIsAdmin ?
+				{project.userIsAdmin ? (
 					<div>
-						<MenuSubItem
-							to="/articles"
-							onClick={closeLeftMenu}
-						>
+						<MenuSubItem to="/articles" onClick={closeLeftMenu}>
 							List
 						</MenuSubItem>
-						<MenuSubItem
-							to="/articles/create"
-							onClick={closeLeftMenu}
-							last
-						>
+						<MenuSubItem to="/articles/create" onClick={closeLeftMenu} last>
 							Create
 						</MenuSubItem>
 					</div>
-				: ''}
+				) : (
+					''
+				)}
 				{/*
 				<MenuItem
 					to="/texts"
@@ -123,29 +95,29 @@ class LeftMenu extends React.Component {
 					</div>
 				: ''}
 				*/}
-				{project.userIsAdmin ?
+				{project.userIsAdmin ? (
 					<div>
-						<MenuItem
-							to="/dashboard"
-							onClick={closeLeftMenu}
-						>
+						<MenuItem to="/dashboard" onClick={closeLeftMenu}>
 							Dashboard
 						</MenuItem>
-						<MenuItem
-							to="/dashboard/settings"
-							onClick={closeLeftMenu}
-						>
+						<MenuItem to="/dashboard/settings" onClick={closeLeftMenu}>
 							Settings
 						</MenuItem>
 					</div>
-				: ''}
+				) : (
+					''
+				)}
 			</div>
 		);
 	}
 
 	render() {
 		const {
-			project, leftMenuOpen, closeLeftMenu, userId, dispatchLogout,
+			project,
+			leftMenuOpen,
+			closeLeftMenu,
+			userId,
+			dispatchLogout,
 			dispatchToggleAuthModal
 		} = this.props;
 
@@ -168,70 +140,50 @@ class LeftMenu extends React.Component {
 			>
 				<LeftMenuHead />
 				<div className="leftMenuContent">
-					<MenuItem
-						to="/"
-						onClick={closeLeftMenu}
-					>
+					<MenuItem to="/" onClick={closeLeftMenu}>
 						Home
 					</MenuItem>
-					{!isMainOrpheusProject ?
-						this.renderMenuItems()
-					: ''}
+					{!isMainOrpheusProject ? this.renderMenuItems() : ''}
 					<Divider />
 
-					{userId ?
+					{userId ? (
 						<div>
-							<MenuItem
-								to="/profile"
-								onClick={closeLeftMenu}
-							>
+							<MenuItem to="/profile" onClick={closeLeftMenu}>
 								Profile
 							</MenuItem>
-							<MenuItem
-								to="/profile/projects"
-								onClick={closeLeftMenu}
-							>
+							<MenuItem to="/profile/projects" onClick={closeLeftMenu}>
 								Projects
 							</MenuItem>
 							<Divider />
 
-							<MenuItem
-								to="/"
-								onClick={dispatchLogout}
-							>
+							<MenuItem to="/" onClick={dispatchLogout}>
 								Sign out
 							</MenuItem>
 						</div>
-					:
-						<MenuItem
-							onClick={dispatchToggleAuthModal}
-						>
-							Sign up / in
-						</MenuItem>
-					}
+					) : (
+						<MenuItem onClick={dispatchToggleAuthModal}>Sign up / in</MenuItem>
+					)}
 				</div>
 			</Drawer>
-
 		);
 	}
 }
 
-
 LeftMenu.propTypes = {
 	project: PropTypes.object,
 	leftMenuOpen: PropTypes.bool,
-	closeLeftMenu: PropTypes.func,
+	closeLeftMenu: PropTypes.func
 };
 
 LeftMenu.defaultProps = {
 	project: {
-		userIsAdmin: false,
-	},
+		userIsAdmin: false
+	}
 };
 
 const mapStateToProps = (state, props) => ({
 	leftMenuOpen: state.leftMenu.open,
-	userId: state.auth.userId,
+	userId: state.auth.userId
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
@@ -245,11 +197,10 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 	dispatchToggleAuthModal: () => {
 		dispatch(toggleAuthModal());
 		dispatch(toggleLeftMenu(false));
-	},
+	}
 });
-
 
 export default connect(
 	mapStateToProps,
-	mapDispatchToProps,
+	mapDispatchToProps
 )(LeftMenu);

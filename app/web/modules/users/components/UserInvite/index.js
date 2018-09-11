@@ -7,9 +7,7 @@ import { required, maxLength } from '../../../../lib/formHelpers';
 
 import './UserInvite.css';
 
-
 const maxLength200 = maxLength(200);
-
 
 const UserInvite = props => (
 	<div className="userInvite">
@@ -19,10 +17,7 @@ const UserInvite = props => (
 			<h1>Invite a new project member</h1>
 		</div>
 
-		<form
-			className="userInviteForm"
-			onSubmit={props.handleSubmit}
-		>
+		<form className="userInviteForm" onSubmit={props.handleSubmit}>
 			<div className="userInviteFormInputOuter">
 				<label>Email of project member to invite</label>
 				<Field
@@ -46,11 +41,10 @@ const UserInvite = props => (
 	</div>
 );
 
-
 UserInvite.propTypes = {
-	handleSubmit: PropTypes.function,
+	handleSubmit: PropTypes.function
 };
 
 export default reduxForm({
-	form: 'UserInvite',
+	form: 'UserInvite'
 })(UserInvite);

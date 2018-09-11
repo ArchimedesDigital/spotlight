@@ -8,7 +8,6 @@ import projectDetailQuery from '../../../projects/graphql/queries/detail';
 import userInviteMutation from '../../graphql/mutations/invite';
 import UserInvite from '../../components/UserInvite';
 
-
 class UserInviteContainer extends React.Component {
 	constructor(props) {
 		super(props);
@@ -26,24 +25,22 @@ class UserInviteContainer extends React.Component {
 		values.role = 'admin';
 
 		userInvite(values)
-			.then((response) => {
+			.then(response => {
 				router.replace('/dashboard/people');
 			})
-			.catch((err) => {
+			.catch(err => {
 				console.error(err);
 			});
 	}
 
 	render() {
-		return (
-			<UserInvite
-				onSubmit={this.handleSubmit}
-			/>
-		);
+		return <UserInvite onSubmit={this.handleSubmit} />;
 	}
 }
 
 export default compose(
-	userInviteMutation, projectDetailQuery, projectListQuery,
-	withRouter,
+	userInviteMutation,
+	projectDetailQuery,
+	projectListQuery,
+	withRouter
 )(UserInviteContainer);

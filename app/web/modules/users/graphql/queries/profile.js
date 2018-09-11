@@ -3,19 +3,19 @@ import { gql, graphql } from 'react-apollo';
 const query = gql`
 	query userProfileQuery {
 		userProfile {
-	    _id
+			_id
 			username
 			avatar
-	    name
-	    email
-	    bio
+			name
+			email
+			bio
 			isActiveUser
 		}
 	}
 `;
 
 const userProfileQuery = graphql(query, {
-	name: 'userProfileQuery',
+	name: 'userProfileQuery'
 });
 
 export default userProfileQuery;

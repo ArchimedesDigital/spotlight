@@ -1,9 +1,13 @@
 import { gql, graphql } from 'react-apollo';
 
 const query = gql`
-	query textListItemQuery($collectionId: Int, $textGroupUrn: String, $workUrn: String) {
+	query textListItemQuery(
+		$collectionId: Int
+		$textGroupUrn: String
+		$workUrn: String
+	) {
 		collection(id: $collectionId) {
-	    id
+			id
 			textGroup(urn: $textGroupUrn) {
 				id
 				work(urn: $workUrn) {
@@ -17,13 +21,13 @@ const query = gql`
 
 const textListItemQuery = graphql(query, {
 	name: 'textListItemQuery',
-	options: (props) => ({
+	options: props => ({
 		variables: {
 			collectionId: parseInt(props.ctsNamespace, 10),
 			textGroupUrn: props.textGroup,
-			workUrn: props.work,
+			workUrn: props.work
 		}
-	}),
+	})
 });
 
 export default textListItemQuery;

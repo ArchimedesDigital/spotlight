@@ -8,10 +8,16 @@ import ArticleTextEditor from '../ArticleTextEditor';
 import './ArticleDetail.css';
 
 const ArticleDetail = ({
-	_id, title, slug, content, tags, commentsCount, comments,
-	userIsAdmin, handleRemove
+	_id,
+	title,
+	slug,
+	content,
+	tags,
+	commentsCount,
+	comments,
+	userIsAdmin,
+	handleRemove
 }) => {
-
 	if (!_id) {
 		// TODO: loading or no results
 		return null;
@@ -27,22 +33,19 @@ const ArticleDetail = ({
 					editLink={userIsAdmin ? `/articles/${_id}/${slug}/edit` : null}
 					handleRemove={userIsAdmin ? handleRemove.bind(this, _id) : null}
 				/>
-				<Tags
-					tags={tags}
-				/>
+				<Tags tags={tags} />
 
 				<ArticleTextEditor
 					editorState={parsedContent}
 					config={{
 						read_only: true,
-						body_placeholder: '',
+						body_placeholder: ''
 					}}
 				/>
 			</div>
 			<Discussion />
 		</div>
 	);
-}
-
+};
 
 export default ArticleDetail;

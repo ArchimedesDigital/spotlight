@@ -9,21 +9,24 @@ import Login from '../../components/Login';
 import Signup from '../../components/Signup';
 
 // actions
-import { toggleAuthModal, changeAuthMode, setUser, login, logout } from '../../actions';
-
+import {
+	toggleAuthModal,
+	changeAuthMode,
+	setUser,
+	login,
+	logout
+} from '../../actions';
 
 const ESCAPE_KEY = 27;
 
-
 class AuthModalContainer extends React.Component {
-
 	static propTypes = {
 		dispatchLogin: PropTypes.func.isRequired,
 		dispatchSignup: PropTypes.func.isRequired,
 		dispatchToggleAuthModal: PropTypes.func.isRequired,
 		dispachChangeAuthMode: PropTypes.func.isRequired,
 		showAuthModal: PropTypes.bool,
-		authMode: PropTypes.string,
+		authMode: PropTypes.string
 	};
 
 	static defaultProps = {
@@ -51,7 +54,8 @@ class AuthModalContainer extends React.Component {
 
 	_handleKeyDown(event) {
 		const { dispatchToggleAuthModal, showAuthModal } = this.props;
-		if (event.keyCode === ESCAPE_KEY && showAuthModal) dispatchToggleAuthModal();
+		if (event.keyCode === ESCAPE_KEY && showAuthModal)
+			dispatchToggleAuthModal();
 	}
 
 	async _initiateUser() {
@@ -72,26 +76,30 @@ class AuthModalContainer extends React.Component {
 	}
 
 	render() {
-		const { showAuthModal, dispatchToggleAuthModal, authMode, dispachChangeAuthMode, dispatchLogin, dispatchSignup } = this.props;
+		const {
+			showAuthModal,
+			dispatchToggleAuthModal,
+			authMode,
+			dispachChangeAuthMode,
+			dispatchLogin,
+			dispatchSignup
+		} = this.props;
 
 		return (
-			<Modal
-				show={showAuthModal}
-				closeModal={dispatchToggleAuthModal}
-			>
+			<Modal show={showAuthModal} closeModal={dispatchToggleAuthModal}>
 				<div>
-					{authMode === 'login' ?
+					{authMode === 'login' ? (
 						<Login
 							onRegisterClick={dispachChangeAuthMode.bind(null, 'signup')}
 							login={dispatchLogin}
 						/>
-					: null}
-					{authMode === 'signup' ?
+					) : null}
+					{authMode === 'signup' ? (
 						<Signup
 							onSigninClick={dispachChangeAuthMode.bind(null, 'login')}
 							signup={dispatchSignup}
 						/>
-					: null}
+					) : null}
 				</div>
 			</Modal>
 		);
@@ -100,17 +108,17 @@ class AuthModalContainer extends React.Component {
 
 const mapStateToProps = state => ({
 	authMode: state.auth.authMode,
-	showAuthModal: state.auth.showAuthModal,
+	showAuthModal: state.auth.showAuthModal
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-	dispatchToggleAuthModal: (value) => {
+	dispatchToggleAuthModal: value => {
 		dispatch(toggleAuthModal(value));
 	},
-	dispachChangeAuthMode: (mode) => {
+	dispachChangeAuthMode: mode => {
 		dispatch(changeAuthMode(mode));
 	},
-	dispachSetUser: (userObject) => {
+	dispachSetUser: userObject => {
 		dispatch(setUser(userObject));
 		dispatch(toggleAuthModal(false));
 	},
@@ -118,7 +126,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 	dispatchSignup: data => dispatch(login(ownProps.signupMethod, data)),
 	dispatchLogout: () => {
 		dispatch(logout(ownProps.logoutMethod));
-	},
+	}
 });
 
 export default connect(

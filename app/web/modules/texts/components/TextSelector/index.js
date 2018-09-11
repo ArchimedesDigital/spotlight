@@ -5,13 +5,14 @@ import MenuItem from 'material-ui/MenuItem';
 
 import './TextSelector.css';
 
-
-
 class TextSelector extends React.Component {
-
 	render() {
 		const {
-			collection, collections, collectionId, textGroupUrn, workUrn
+			collection,
+			collections,
+			collectionId,
+			textGroupUrn,
+			workUrn
 		} = this.props;
 
 		const styles = {
@@ -22,7 +23,7 @@ class TextSelector extends React.Component {
 				color: '#222',
 				padding: '10px',
 				borderBottom: '2px solid #eee',
-				lineHeight: '1.7em',
+				lineHeight: '1.7em'
 			},
 			menuItem: {
 				fontFamily: '"Freight Text W03 Book", Georgia, serif',
@@ -30,10 +31,10 @@ class TextSelector extends React.Component {
 				fontWeight: '100',
 				color: '#222',
 				padding: '10px',
-				lineHeight: '1.7em',
+				lineHeight: '1.7em'
 			},
 			selectedMenuItem: {
-				color: '#039BE5',
+				color: '#039BE5'
 			}
 		};
 
@@ -43,14 +44,10 @@ class TextSelector extends React.Component {
 			if (collection.textGroups) {
 				textGroups = collection.textGroups;
 			}
-			if (
-				collection.textGroup
-				&& collection.textGroup.works
-			) {
+			if (collection.textGroup && collection.textGroup.works) {
 				works = collection.textGroup.works;
 			}
 		}
-
 
 		return (
 			<div className="textSelector">
@@ -75,11 +72,7 @@ class TextSelector extends React.Component {
 						</SelectField>
 					</div>
 
-					<span
-						className="textSelectorFormHelp"
-					>
-						?
-					</span>
+					<span className="textSelectorFormHelp">?</span>
 				</div>
 
 				<div className="textSelectorFormInputOuter">
@@ -103,11 +96,7 @@ class TextSelector extends React.Component {
 						</SelectField>
 					</div>
 
-					<span
-						className="textSelectorFormHelp"
-					>
-						?
-					</span>
+					<span className="textSelectorFormHelp">?</span>
 				</div>
 
 				<div className="textSelectorFormInputOuter">
@@ -131,13 +120,8 @@ class TextSelector extends React.Component {
 						</SelectField>
 					</div>
 
-					<span
-						className="textSelectorFormHelp"
-					>
-						?
-					</span>
+					<span className="textSelectorFormHelp">?</span>
 				</div>
-
 			</div>
 		);
 	}
@@ -145,13 +129,12 @@ class TextSelector extends React.Component {
 
 TextSelector.propTypes = {
 	collection: PropTypes.object,
-	collections: PropTypes.array,
+	collections: PropTypes.array
 };
 
 TextSelector.defaultProps = {
 	collection: null,
-	collections: [],
+	collections: []
 };
-
 
 export default TextSelector;

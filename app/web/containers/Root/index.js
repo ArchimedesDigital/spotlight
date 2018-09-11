@@ -11,18 +11,12 @@ import client from '../../middleware/apolloClient';
 import AuthModalContainer from '../../modules/auth/containers/AuthModalContainer';
 import { login, register, logoutUser, verifyToken } from '../../lib/auth';
 
-
-const Root = ({store}) => (
-	<ApolloProvider
-		client={client}
-		store={store}
-	>
+const Root = ({ store }) => (
+	<ApolloProvider client={client} store={store}>
 		<MuiThemeProvider>
 			<CookiesProvider>
 				<div>
-					<BrowserRouter
-						routes={routes}
-					/>
+					<BrowserRouter routes={routes} />
 					<AuthModalContainer
 						loginMethod={login}
 						signupMethod={register}
@@ -37,7 +31,7 @@ const Root = ({store}) => (
 
 Root.propTypes = {
 	store: PropTypes.shape({}).isRequired,
-	history: PropTypes.shape({}).isRequired,
+	history: PropTypes.shape({}).isRequired
 };
 
 export default Root;

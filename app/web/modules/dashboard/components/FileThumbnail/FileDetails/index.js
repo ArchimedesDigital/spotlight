@@ -2,11 +2,8 @@ import React from 'react';
 
 import './FileDetails.css';
 
-
 const FileDetails = ({ file }) => (
-	<div
-		className="fileDetails"
-	>
+	<div className="fileDetails">
 		<div className="fileDetailsTitleInput">
 			<input
 				type="text"

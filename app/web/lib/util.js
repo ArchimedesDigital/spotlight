@@ -1,6 +1,5 @@
-
 export default {
-	timeSince: (date) => {
+	timeSince: date => {
 		let interval;
 		const seconds = Math.floor((new Date() - date) / 1000);
 		interval = Math.floor(seconds / 31536000);
@@ -42,10 +41,12 @@ export default {
 	},
 
 	isMobile: () => {
-		/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+		/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+			navigator.userAgent
+		);
 	},
-	capitalize: (str) => {
+	capitalize: str => {
 		const capitalized = str.charAt(0).toUpperCase() + str.slice(1);
 		return capitalized;
-	},
+	}
 };

@@ -7,15 +7,15 @@ import ItemSelectorItemListContainer from '../../containers/ItemSelectorItemList
 
 import './ItemSelectorField.css';
 
-
-
 const ItemSelectorField = ({ selectedItems, toggleSelectedItem }) => (
 	<div className="itemSelector">
 		<Row>
 			<Col md={6}>
 				<div className="itemSelectorItems">
 					<label>
-						<span>Items <Link to="/items/create">Create a new item</Link></span>
+						<span>
+							Items <Link to="/items/create">Create a new item</Link>
+						</span>
 					</label>
 					<ItemSelectorItemListContainer
 						selectedItems={selectedItems}
@@ -25,9 +25,7 @@ const ItemSelectorField = ({ selectedItems, toggleSelectedItem }) => (
 			</Col>
 			<Col md={6}>
 				<div className="itemSelectorItems">
-					<label>
-						Selected
-					</label>
+					<label>Selected</label>
 					<ItemSelectorItemList
 						items={selectedItems}
 						toggleSelectedItem={toggleSelectedItem}

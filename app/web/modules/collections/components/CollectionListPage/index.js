@@ -19,7 +19,7 @@ const CollectionListPage = props => {
 	}
 
 	return (
-		<div >
+		<div>
 			<CollectionCover
 				title="Collections"
 				coverLink={props.userIsAdmin ? '/collections/create' : null}
@@ -29,7 +29,6 @@ const CollectionListPage = props => {
 			<CollectionListContainer />
 		</div>
 	);
-}
-
+};
 
 export default CollectionListPage;

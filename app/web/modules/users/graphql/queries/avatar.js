@@ -11,7 +11,7 @@ const query = gql`
 `;
 
 const userAvatarQuery = graphql(query, {
-	name: 'userAvatarQuery',
+	name: 'userAvatarQuery'
 });
 
 export default userAvatarQuery;

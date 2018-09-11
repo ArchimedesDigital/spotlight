@@ -19,7 +19,7 @@ const TextListPage = props => {
 	}
 
 	return (
-		<div >
+		<div>
 			<CollectionCover
 				title="Texts"
 				coverLink={props.userIsAdmin ? '/texts/create' : null}
@@ -29,7 +29,6 @@ const TextListPage = props => {
 			<TextListContainer />
 		</div>
 	);
-}
-
+};
 
 export default TextListPage;

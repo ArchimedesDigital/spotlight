@@ -5,12 +5,9 @@ import shortid from 'shortid';
 import FileUploader from '../FileUploader';
 import FileThumbnail from '../FileThumbnail';
 
-
 import './ItemEditorUploader.css';
 
-
 class ItemEditorUploader extends React.Component {
-
 	render() {
 		const { files } = this.props;
 		return (
@@ -32,35 +29,38 @@ class ItemEditorUploader extends React.Component {
 }
 
 ItemEditorUploader.defaultProps = {
-	files: null,
+	files: null
 };
 
-const SortableItem = SortableElement(({ file, fileIndex, removeFile, updateFileCb, showError }) => (
-	<FileThumbnail
-		file={file}
-		fileIndex={fileIndex}
-		key={shortid.generate()}
-		updateFileCb={updateFileCb}
-		removeFile={removeFile}
-		showError={showError}
-	/>
-));
+const SortableItem = SortableElement(
+	({ file, fileIndex, removeFile, updateFileCb, showError }) => (
+		<FileThumbnail
+			file={file}
+			fileIndex={fileIndex}
+			key={shortid.generate()}
+			updateFileCb={updateFileCb}
+			removeFile={removeFile}
+			showError={showError}
+		/>
+	)
+);
 
-const SortableList = SortableContainer(({ files, updateFile, showError, removeFile }) => (
-	<div className="fileUploaderSortableList">
-		{files.map((file, index) => (
-			<SortableItem
-				file={file}
-				index={index}
-				fileIndex={index}
-				key={shortid.generate()}
-				updateFileCb={updateFile}
-				removeFile={removeFile}
-				showError={showError}
-			/>
-    ))}
-	</div>
-));
-
+const SortableList = SortableContainer(
+	({ files, updateFile, showError, removeFile }) => (
+		<div className="fileUploaderSortableList">
+			{files.map((file, index) => (
+				<SortableItem
+					file={file}
+					index={index}
+					fileIndex={index}
+					key={shortid.generate()}
+					updateFileCb={updateFile}
+					removeFile={removeFile}
+					showError={showError}
+				/>
+			))}
+		</div>
+	)
+);
 
 export default ItemEditorUploader;

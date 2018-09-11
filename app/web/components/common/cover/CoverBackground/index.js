@@ -1,12 +1,11 @@
 import React from 'react';
 
 class CoverBackground extends React.Component {
-
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			transform: 'translate(-1%, -2%)',
+			transform: 'translate(-1%, -2%)'
 		};
 	}
 
@@ -20,7 +19,7 @@ class CoverBackground extends React.Component {
 			y *= -4;
 
 			this.setState({
-				transform: `translate(${x}%, ${y}%)`,
+				transform: `translate(${x}%, ${y}%)`
 			});
 		}
 	}
@@ -33,7 +32,7 @@ class CoverBackground extends React.Component {
 				className="cover-background"
 				onMouseMove={this.translateBackground.bind(this)}
 				style={{
-					transform,
+					transform
 				}}
 			>
 				{this.props.children}

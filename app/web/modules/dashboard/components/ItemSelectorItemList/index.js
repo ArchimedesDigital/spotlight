@@ -1,12 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-
 import ItemSelectorItemListItem from '../ItemSelectorItemListItem';
 import ItemSelectorItemListItemContainer from '../../containers/ItemSelectorItemListItemContainer';
 
 import './ItemSelectorItemList.css';
-
 
 const ItemSelectorItemList = ({ items, toggleSelectedItem }) => {
 	return (
@@ -24,7 +22,7 @@ const ItemSelectorItemList = ({ items, toggleSelectedItem }) => {
 							toggleSelectedItem={toggleSelectedItem}
 							_id={listItem}
 						/>
-					)
+					);
 				}
 
 				return (
@@ -33,7 +31,7 @@ const ItemSelectorItemList = ({ items, toggleSelectedItem }) => {
 						toggleSelectedItem={toggleSelectedItem}
 						{...listItem}
 					/>
-				)
+				);
 			})}
 		</div>
 	);
@@ -43,12 +41,12 @@ ItemSelectorItemList.propTypes = {
 	showSelected: PropTypes.bool,
 	items: PropTypes.array,
 	selectedItems: PropTypes.array,
-	toggleSelectedItem: PropTypes.func,
+	toggleSelectedItem: PropTypes.func
 };
 
 ItemSelectorItemList.defaultProps = {
 	items: [],
-	selectedItems: [],
+	selectedItems: []
 };
 
 export default ItemSelectorItemList;

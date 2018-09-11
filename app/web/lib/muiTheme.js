@@ -1,6 +1,8 @@
 import {
-  grey300,
-  white, darkBlack, fullBlack,
+	grey300,
+	white,
+	darkBlack,
+	fullBlack
 } from 'material-ui/styles/colors';
 
 import { fade } from 'material-ui/utils/colorManipulator';
@@ -20,6 +22,6 @@ export default {
 		disabledColor: fade(darkBlack, 0.3),
 		pickerHeaderColor: '#63232D',
 		clockCircleColor: fade(darkBlack, 0.07),
-		shadowColor: fullBlack,
-	},
+		shadowColor: fullBlack
+	}
 };

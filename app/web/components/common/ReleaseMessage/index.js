@@ -2,7 +2,6 @@ import React from 'react';
 
 import './ReleaseMessage.css';
 
-
 /*
 const ReleaseMessage = props => (
 	<div className="releaseMessage">
@@ -13,9 +12,6 @@ const ReleaseMessage = props => (
 );
 */
 
-const ReleaseMessage = props => (
-	<div />
-);
-
+const ReleaseMessage = props => <div />;
 
 export default ReleaseMessage;

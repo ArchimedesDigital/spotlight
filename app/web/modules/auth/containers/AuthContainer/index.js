@@ -11,14 +11,12 @@ import Signup from '../../components/Signup';
 // actions
 import { changeAuthMode, setUser, login, logout } from '../../actions';
 
-
 class AuthContainer extends React.Component {
-
 	static propTypes = {
 		dispatchLogin: PropTypes.func.isRequired,
 		dispatchSignup: PropTypes.func.isRequired,
 		dispatchChangeAuthMode: PropTypes.func.isRequired,
-		authMode: PropTypes.string,
+		authMode: PropTypes.string
 	};
 
 	static defaultProps = {
@@ -53,8 +51,11 @@ class AuthContainer extends React.Component {
 
 	render() {
 		const {
-      authMode, dispatchChangeAuthMode, dispatchLogin, dispatchSignup,
-    } = this.props;
+			authMode,
+			dispatchChangeAuthMode,
+			dispatchLogin,
+			dispatchSignup
+		} = this.props;
 
 		return (
 			<div
@@ -63,54 +64,54 @@ class AuthContainer extends React.Component {
 					maxWidth: '800px',
 					margin: '0 auto',
 					padding: '120px 0',
-					textAlign: 'center',
+					textAlign: 'center'
 				}}
-      >
-				{authMode === 'login' ?
+			>
+				{authMode === 'login' ? (
 					<Login
 						onRegisterClick={dispatchChangeAuthMode.bind(null, 'signup')}
 						login={dispatchLogin}
 					/>
-				: null}
-				{authMode === 'signup' ?
+				) : null}
+				{authMode === 'signup' ? (
 					<Signup
 						onSigninClick={dispatchChangeAuthMode.bind(null, 'login')}
 						signup={dispatchSignup}
 					/>
-				: null}
+				) : null}
 			</div>
 		);
 	}
 }
 
 const mapStateToProps = state => ({
-	authMode: state.auth.authMode,
+	authMode: state.auth.authMode
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-	dispatchChangeAuthMode: (mode) => {
+	dispatchChangeAuthMode: mode => {
 		dispatch(changeAuthMode(mode));
 	},
-	dispatchSetUser: (userObject) => {
+	dispatchSetUser: userObject => {
 		dispatch(setUser(userObject));
-    // Go to commentary requested route instead of toggling modal
+		// Go to commentary requested route instead of toggling modal
 		ownProps.history.push('/');
 	},
 	dispatchLogin: data => {
 		dispatch(login(ownProps.loginMethod, data));
-    // Go to commentary requested route instead of toggling modal
+		// Go to commentary requested route instead of toggling modal
 		ownProps.history.push('/');
 	},
 	dispatchSignup: data => dispatch(login(ownProps.signupMethod, data)),
 	dispatchLogout: () => {
 		dispatch(logout(ownProps.logoutMethod));
-	},
+	}
 });
 
 export default compose(
-  withRouter,
-  connect(
-  	mapStateToProps,
-  	mapDispatchToProps
-  ),
+	withRouter,
+	connect(
+		mapStateToProps,
+		mapDispatchToProps
+	)
 )(AuthContainer);

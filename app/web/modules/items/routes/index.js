@@ -1,7 +1,6 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
-
 // layouts
 import ProjectLayout from '../../projects/layouts/ProjectLayout';
 
@@ -11,7 +10,6 @@ import ItemListPageContainer from '../containers/ItemListPageContainer';
 import ItemDetailContainer from '../containers/ItemDetailContainer';
 import MiradorItemViewerContainer from '../../mirador/containers/MiradorItemViewerContainer';
 
-
 export default (
 	<div>
 		<Route path="/items" component={ProjectLayout}>
@@ -20,7 +18,10 @@ export default (
 			<Route path="/items/:id" component={ItemDetailContainer} />
 			<Route path="/items/:id/:slug" component={ItemDetailContainer} />
 			<Route path="/items/:id/:slug/edit" component={ItemEditorContainer} />
-			<Route path="/items/:id/:slug/mirador" component={MiradorItemViewerContainer} />
+			<Route
+				path="/items/:id/:slug/mirador"
+				component={MiradorItemViewerContainer}
+			/>
 		</Route>
 
 		<Route path="/search" component={ProjectLayout}>

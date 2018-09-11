@@ -5,32 +5,28 @@ import CollectionListItem from '../CollectionListItem';
 
 import './CollectionList.css';
 
-
 const CollectionList = ({ collections }) => (
 	<div className="collectionsList">
 		{collections.map((listItem, i) => (
-			<CollectionListItem
-				key={`${listItem.slug}-${i}`}
-				{...listItem}
-			/>
+			<CollectionListItem key={`${listItem.slug}-${i}`} {...listItem} />
 		))}
 
-		{!collections || !collections.length ?
+		{!collections || !collections.length ? (
 			<div className="collectionsListNoResults">
-				<p>
-					There are no collections for this project yet.
-				</p>
+				<p>There are no collections for this project yet.</p>
 			</div>
-		: ''}
+		) : (
+			''
+		)}
 	</div>
 );
 
 CollectionList.propTypes = {
-	collections: PropTypes.array,
+	collections: PropTypes.array
 };
 
 CollectionList.defaultProps = {
-	collections: [],
+	collections: []
 };
 
 export default CollectionList;

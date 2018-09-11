@@ -7,7 +7,6 @@ import projectDetailQuery from '../../graphql/queries/detail';
 import projectUpdateMutation from '../../graphql/mutations/update';
 import projectRemoveMutation from '../../graphql/mutations/remove';
 
-
 class ProjectEditorContainer extends React.Component {
 	constructor(props) {
 		super(props);
@@ -29,10 +28,10 @@ class ProjectEditorContainer extends React.Component {
 		values.hostname = `${values.hostname}.orphe.us`;
 
 		projectUpdate(values)
-			.then((response) => {
+			.then(response => {
 				router.replace('/dashboard/');
 			})
-			.catch((err) => {
+			.catch(err => {
 				console.error(err);
 			});
 	}
@@ -41,10 +40,10 @@ class ProjectEditorContainer extends React.Component {
 		const { projectRemove } = this.props;
 
 		projectRemove(projectId)
-			.then((response) => {
+			.then(response => {
 				window.location = '//orphe.us';
 			})
-			.catch((err) => {
+			.catch(err => {
 				console.error(err);
 			});
 	}
@@ -52,10 +51,7 @@ class ProjectEditorContainer extends React.Component {
 	render() {
 		let project;
 
-		if (
-			this.props.projectQuery
-			&& this.props.projectQuery.project
-		) {
+		if (this.props.projectQuery && this.props.projectQuery.project) {
 			project = Object.assign({}, this.props.projectQuery.project);
 			// initialize hostname with orphe.us missing
 			project.hostname = project.hostname.replace('.orphe.us', '');
@@ -72,5 +68,7 @@ class ProjectEditorContainer extends React.Component {
 }
 
 export default compose(
-	projectUpdateMutation, projectRemoveMutation, projectDetailQuery,
+	projectUpdateMutation,
+	projectRemoveMutation,
+	projectDetailQuery
 )(ProjectEditorContainer);

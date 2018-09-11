@@ -4,11 +4,8 @@ import './Tag.css';
 
 const Tags = props => (
 	<Link to={`/search/?tag=${props.tag}`}>
-		<span className="tag">
-			{props.tag}
-		</span>
+		<span className="tag">{props.tag}</span>
 	</Link>
 );
-
 
 export default Tags;

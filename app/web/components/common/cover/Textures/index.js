@@ -2,10 +2,7 @@ import React from 'react';
 import * as d3 from 'd3';
 import textures from 'textures';
 
-
-
 class Textures extends React.Component {
-
 	componentDidMount() {
 		let width = window.innerWidth * 1.2;
 		let height = window.innerHeight * 1.2;
@@ -17,16 +14,14 @@ class Textures extends React.Component {
 			.select('#textures')
 			.append('svg')
 			.attr('width', width)
-			.attr('height', height)
-			;
+			.attr('height', height);
 
 		const texture = textures
 			.lines()
 			.thinner()
 			.lighter()
 			.orientation('vertical')
-			.stroke('#ddd')
-			;
+			.stroke('#ddd');
 
 		svg.call(texture);
 
@@ -38,11 +33,7 @@ class Textures extends React.Component {
 	}
 
 	render() {
-		return (
-			<div
-				id="textures"
-			/>
-		);
+		return <div id="textures" />;
 	}
 }
 

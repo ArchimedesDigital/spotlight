@@ -5,24 +5,20 @@ import DiscussionComment from '../DiscussionComment';
 
 import './Discussion.css';
 
-
-const Discussion = ({ comments}) => (
+const Discussion = ({ comments }) => (
 	<div className="discussion">
 		{comments.map(comment => (
-			<DiscussionComment
-				key={comment._id}
-				{...comment}
-			/>
+			<DiscussionComment key={comment._id} {...comment} />
 		))}
 	</div>
 );
 
 Discussion.propTypes = {
-	comments: PropTypes.array,
+	comments: PropTypes.array
 };
 
 Discussion.defaultProps = {
-	comments: [],
+	comments: []
 };
 
 export default Discussion;

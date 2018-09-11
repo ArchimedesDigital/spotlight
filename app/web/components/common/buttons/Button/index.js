@@ -3,9 +3,18 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 import './Button.css';
 
-const Button = (props) => {
-
-	const { to, onClick, light, transparentLight, dark, primary, accent, outline, classes } = props;
+const Button = props => {
+	const {
+		to,
+		onClick,
+		light,
+		transparentLight,
+		dark,
+		primary,
+		accent,
+		outline,
+		classes
+	} = props;
 	const _classes = classes || [];
 
 	_classes.push('hul-button');
@@ -27,11 +36,7 @@ const Button = (props) => {
 	}
 
 	return (
-		<Link
-			to={to}
-			onClick={onClick}
-			className={_classes.join(' ')}
-		>
+		<Link to={to} onClick={onClick} className={_classes.join(' ')}>
 			{props.children}
 		</Link>
 	);
@@ -45,7 +50,7 @@ Button.propTypes = {
 	primary: PropTypes.bool,
 	accent: PropTypes.bool,
 	outline: PropTypes.bool,
-	children: PropTypes.node,
+	children: PropTypes.node
 };
 
 export default Button;

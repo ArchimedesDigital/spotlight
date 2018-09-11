@@ -1,13 +1,11 @@
-
-
 const getCurrentProjectHostname = () => {
 	let hostname = null;
 	const hulHostnames = ['orphe.us', 'hul.local', 'localhost'];
 
 	if (
-		window
-		&& window.location.hostname
-		&& !~hulHostnames.indexOf(window.location.hostname)
+		window &&
+		window.location.hostname &&
+		!~hulHostnames.indexOf(window.location.hostname)
 	) {
 		hostname = window.location.hostname;
 	}

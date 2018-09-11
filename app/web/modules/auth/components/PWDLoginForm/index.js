@@ -4,7 +4,6 @@ import { Field, reduxForm, SubmissionError } from 'redux-form';
 
 import './PWDLoginForm.css';
 
-
 const wrapSubmit = login => async (values, dispatch) => {
 	try {
 		await login(values);
@@ -21,7 +20,7 @@ function renderField({ input, label, type, meta }) {
 			<input
 				{...input}
 				type={type}
-				style={{width: '100%'}}
+				style={{ width: '100%' }}
 				placeholder={label}
 				autoCapitalize="none"
 				autoCorrect="off"
@@ -29,12 +28,20 @@ function renderField({ input, label, type, meta }) {
 				spellCheck="false"
 				required
 			/>
-			{meta.touched && meta.error && <span className="help-block">{meta.error}</span>}
+			{meta.touched &&
+				meta.error && <span className="help-block">{meta.error}</span>}
 		</div>
 	);
 }
 
-const PWDLoginForm = ({ error, handleSubmit, pristine, reset, submitting, login }) => (
+const PWDLoginForm = ({
+	error,
+	handleSubmit,
+	pristine,
+	reset,
+	submitting,
+	login
+}) => (
 	<div className="at-pwd-form">
 		<form onSubmit={handleSubmit(wrapSubmit(login))}>
 			<Field
@@ -50,11 +57,15 @@ const PWDLoginForm = ({ error, handleSubmit, pristine, reset, submitting, login 
 				component={renderField}
 			/>
 			<div className="at-pwd-link">
-				<p className="error-text">
-					{error}
-				</p>
+				<p className="error-text">{error}</p>
 				<p>
-					<a href="/forgot-password" id="at-forgotPwd" className="at-link at-pwd">Forgot your password?</a>
+					<a
+						href="/forgot-password"
+						id="at-forgotPwd"
+						className="at-link at-pwd"
+					>
+						Forgot your password?
+					</a>
 				</p>
 			</div>
 			<button
@@ -69,13 +80,12 @@ const PWDLoginForm = ({ error, handleSubmit, pristine, reset, submitting, login 
 );
 
 PWDLoginForm.propTypes = {
-	login: PropTypes.func.isRequired,
+	login: PropTypes.func.isRequired
 };
 PWDLoginForm.defaultProps = {
 	// errorMsg: null,
 };
 
-
 export default reduxForm({
-	form: 'PWDLoginForm',  // a unique identifier for this form
+	form: 'PWDLoginForm' // a unique identifier for this form
 })(PWDLoginForm);

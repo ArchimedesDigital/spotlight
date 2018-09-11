@@ -6,12 +6,12 @@ import client from '../middleware/apolloClient';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const configureStore = (preloadedState) => {
+const configureStore = preloadedState => {
 	const store = createStore(
 		rootReducer,
 		preloadedState,
 		composeEnhancers(
-			applyMiddleware(thunk, createLogger(), client.middleware()),
+			applyMiddleware(thunk, createLogger(), client.middleware())
 		)
 	);
 

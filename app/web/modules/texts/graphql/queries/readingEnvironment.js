@@ -1,9 +1,13 @@
 import { gql, graphql } from 'react-apollo';
 
 const query = gql`
-	query readingEnvironmentQuery($collectionId: Int, $textGroupUrn: String, $workUrn: String) {
+	query readingEnvironmentQuery(
+		$collectionId: Int
+		$textGroupUrn: String
+		$workUrn: String
+	) {
 		collection(id: $collectionId) {
-	    id
+			id
 			title
 			textGroup(urn: $textGroupUrn) {
 				id
@@ -25,13 +29,13 @@ const query = gql`
 
 const readingEnvironmentQuery = graphql(query, {
 	name: 'readingEnvironmentQuery',
-	options: (props) => ({
+	options: props => ({
 		variables: {
 			collectionId: parseInt(props.ctsNamespace, 10),
 			textGroupUrn: props.textGroup,
-			workUrn: props.work,
+			workUrn: props.work
 		}
-	}),
+	})
 });
 
 export default readingEnvironmentQuery;

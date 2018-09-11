@@ -10,7 +10,6 @@ import ProjectHomeContainer from '../../projects/containers/ProjectHomeContainer
 // lib
 import getCurrentProjectHostname from '../../../lib/getCurrentProjectHostname';
 
-
 export default (
 	<div>
 		<Route
@@ -21,15 +20,11 @@ export default (
 
 				// If this is a project, return the project home container
 				if (currentProjectHostname && currentProjectHostname.length) {
-					return (
-						<ProjectHomeContainer />
-					);
+					return <ProjectHomeContainer />;
 				}
 
-			// Otherwise, return the main hul home page
-				return (
-					<Home />
-				);
+				// Otherwise, return the main hul home page
+				return <Home />;
 			}}
 		/>
 	</div>

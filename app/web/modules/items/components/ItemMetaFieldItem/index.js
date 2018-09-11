@@ -2,12 +2,9 @@ import React from 'react';
 
 import ItemMetaFieldItemListContainer from '../../containers/ItemMetaFieldItemListContainer';
 
-
 import './ItemMetaFieldItem.css';
 
-
-
-const ItemMetaFieldItem = ({ label, value })=> {
+const ItemMetaFieldItem = ({ label, value }) => {
 	let items = [];
 	let itemIds = [];
 
@@ -20,14 +17,10 @@ const ItemMetaFieldItem = ({ label, value })=> {
 
 	return (
 		<div className="itemMetaField">
-			<label>
-				{label}
-			</label>
-			<ItemMetaFieldItemListContainer
-				ids={itemIds}
-  		/>
+			<label>{label}</label>
+			<ItemMetaFieldItemListContainer ids={itemIds} />
 		</div>
 	);
-}
+};
 
 export default ItemMetaFieldItem;

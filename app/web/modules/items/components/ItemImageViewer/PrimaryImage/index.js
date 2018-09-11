@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router';
-import ReactPlayer from 'react-player'
+import ReactPlayer from 'react-player';
 
 import './PrimaryImage.css';
-
 
 const PrimaryImage = ({ file, itemMiradorLink }) => {
 	let viewer = <div />;
@@ -23,14 +22,9 @@ const PrimaryImage = ({ file, itemMiradorLink }) => {
 			backgroundImage: `url(${src})`,
 			backgroundSize: 'contain',
 			backgroundPosition: 'center',
-			backgroundRepeat: 'no-repeat',
+			backgroundRepeat: 'no-repeat'
 		};
-		viewer = (
-			<div
-				style={styles}
-				className="primaryImage"
-			/>
-		);
+		viewer = <div style={styles} className="primaryImage" />;
 	} else {
 		viewer = (
 			<ReactPlayer
@@ -39,33 +33,29 @@ const PrimaryImage = ({ file, itemMiradorLink }) => {
 				height="90vh"
 				controls
 				style={{
-					margin: '0 auto',
+					margin: '0 auto'
 				}}
-      />
+			/>
 		);
 	}
-
 
 	return (
 		<div className="primaryImageOuter">
 			{viewer}
-			{itemMiradorLink ?
-				<Link
-					to={itemMiradorLink}
-					className="viewInMiradorLink"
-				>
+			{itemMiradorLink ? (
+				<Link to={itemMiradorLink} className="viewInMiradorLink">
 					<i className="mdi mdi-eye" />
-					<span>
-						View in Mirador
-					</span>
+					<span>View in Mirador</span>
 				</Link>
-			: ''}
+			) : (
+				''
+			)}
 		</div>
 	);
 };
 
 PrimaryImage.propTypes = {
-	file: PropTypes.object.isRequired,
+	file: PropTypes.object.isRequired
 };
 
 export default PrimaryImage;

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
-
 // layouts
 import ProjectLayout from '../../projects/layouts/ProjectLayout';
 
@@ -9,7 +8,6 @@ import ProjectLayout from '../../projects/layouts/ProjectLayout';
 // items
 import AuthContainer from '../containers/AuthContainer';
 import LogoutContainer from '../containers/LogoutContainer';
-
 
 export default (
 	<div>

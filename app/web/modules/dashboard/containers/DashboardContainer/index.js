@@ -4,17 +4,13 @@ import { compose } from 'react-apollo';
 import countsQuery from '../../graphql/queries/counts';
 import Dashboard from '../../components/Dashboard';
 
-
 const DashboardContainer = props => {
 	let collectionsCount = 0;
 	let articlesCount = 0;
 	let itemsCount = 0;
 	let textsCount = 0;
 
-	if (
-			props.countsQuery
-		&& props.countsQuery.project
-	) {
+	if (props.countsQuery && props.countsQuery.project) {
 		const project = props.countsQuery.project;
 		collectionsCount = project.collectionsCount;
 		articlesCount = project.articlesCount;
@@ -24,14 +20,12 @@ const DashboardContainer = props => {
 
 	return (
 		<Dashboard
-			 collectionsCount={collectionsCount}
-			 articlesCount={articlesCount}
-			 itemsCount={itemsCount}
-			 textsCount={textsCount}
+			collectionsCount={collectionsCount}
+			articlesCount={articlesCount}
+			itemsCount={itemsCount}
+			textsCount={textsCount}
 		/>
 	);
-}
+};
 
-export default compose(
-	countsQuery,
-)(DashboardContainer);
+export default compose(countsQuery)(DashboardContainer);

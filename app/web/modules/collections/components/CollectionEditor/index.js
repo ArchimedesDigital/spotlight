@@ -2,26 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 
-
 import CoverImageUploader from '../../../dashboard/components/CoverImageUploader';
 import ItemSelectorField from '../../../dashboard/components/ItemSelectorField';
 import { required, maxLength } from '../../../../lib/formHelpers';
 
 import './CollectionEditor.css';
 
-
 const maxLength200 = maxLength(200);
 const maxLength2100 = maxLength(2100);
 
-
 class CollectionEditor extends React.Component {
-
 	render() {
 		const { collection, items, selectedItems } = this.props;
 
 		return (
 			<div className="collectionEditor">
-
 				<h1>{collection ? 'Edit' : 'Create'} Collection</h1>
 
 				<CoverImageUploader
@@ -42,11 +37,7 @@ class CollectionEditor extends React.Component {
 							placeholder="Your collection title"
 							validate={[required, maxLength200]}
 						/>
-						<span
-							className="collectionEditorFormHelp"
-						>
-							?
-						</span>
+						<span className="collectionEditorFormHelp">?</span>
 					</div>
 
 					<div className="collectionEditorFormInputOuter collectionEditorFormDescriptionOuter">
@@ -58,11 +49,7 @@ class CollectionEditor extends React.Component {
 							placeholder="Example description of collection . . . "
 							validate={[maxLength2100]}
 						/>
-						<span
-							className="collectionEditorFormHelp"
-						>
-							?
-						</span>
+						<span className="collectionEditorFormHelp">?</span>
 					</div>
 
 					<div className="collectionEditorFormInputOuter ">
@@ -90,15 +77,15 @@ CollectionEditor.propTypes = {
 	collection: PropTypes.object,
 	items: PropTypes.array,
 	selectedItems: PropTypes.array,
-	toggleSelectedItem: PropTypes.func,
+	toggleSelectedItem: PropTypes.func
 };
 
 CollectionEditor.defaultProps = {
 	collection: null,
 	items: [],
-	selectedItems: [],
+	selectedItems: []
 };
 
 export default reduxForm({
-	form: 'CollectionEditor',
+	form: 'CollectionEditor'
 })(CollectionEditor);

@@ -8,35 +8,29 @@ import MetadataFieldValueInput from '../MetadataFieldValueInput';
 
 import './MetadataField.css';
 
-
 const maxLength200 = maxLength(200);
 
-
 class MetadataField extends React.Component {
-
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			type: props.type ? props.type : 'text',
+			type: props.type ? props.type : 'text'
 		};
 		autoBind(this);
 	}
 
 	componentWillReceiveProps(nextProps) {
-		if (
-			nextProps.type
-			&& this.state.type !== nextProps.type
-		) {
+		if (nextProps.type && this.state.type !== nextProps.type) {
 			this.setState({
-				type: nextProps.type,
+				type: nextProps.type
 			});
 		}
 	}
 
 	toggleFieldType(e) {
 		this.setState({
-			type: e.target.options[e.target.selectedIndex].value,
+			type: e.target.options[e.target.selectedIndex].value
 		});
 	}
 

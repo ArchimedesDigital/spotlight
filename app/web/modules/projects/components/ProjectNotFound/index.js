@@ -7,16 +7,13 @@ import ProjectFooterContainer from '../../containers/ProjectFooterContainer';
 
 import './ProjectNotFound.css';
 
-
 const ProjectNotFound = props => (
 	<div className="projectNotFound">
 		<Header />
 		<Grid>
 			<Row>
 				<Col md={12}>
-					<h1>
-						This project was not found.
-					</h1>
+					<h1>This project was not found.</h1>
 					<p>
 						Head <a href="//orphe.us">back home.</a>
 					</p>

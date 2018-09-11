@@ -4,20 +4,13 @@ import Cover from '../../../../../../components/common/cover/Cover';
 import Bricks from '../../../../../../components/common/cover/Bricks';
 import './HomeCover.css';
 
-
 class HomeCover extends React.Component {
-
 	render() {
-
 		return (
 			<Cover
 				className="home-cover"
-				background={
-					<Bricks />
-				}
-				overlay={
-					<div className="home-overlay" />
-				}
+				background={<Bricks />}
+				overlay={<div className="home-overlay" />}
 				reactsToMouse
 				left
 				full
@@ -29,6 +22,5 @@ class HomeCover extends React.Component {
 		);
 	}
 }
-
 
 export default HomeCover;

@@ -6,7 +6,7 @@ import AlertContainer from 'react-alert';
 import { createManifest } from '../../../../lib/createManifest';
 import FormImagesUploader from '../FormImagesUploader';
 
-const validate = (values) => {
+const validate = values => {
 	const errors = {};
 	if (!values.title) {
 		errors.title = 'Required';
@@ -67,7 +67,10 @@ class MiradorManifestEditor extends React.Component {
 		};
 		return (
 			<div className="content">
-				<AlertContainer ref={a => !this.state.alert && this.setState({alert: a})} {...alertOptions} />
+				<AlertContainer
+					ref={a => !this.state.alert && this.setState({ alert: a })}
+					{...alertOptions}
+				/>
 				<div className="container">
 					<form
 						onSubmit={this.handleSubmit}
@@ -76,33 +79,66 @@ class MiradorManifestEditor extends React.Component {
 					>
 						<div>
 							<label htmlFor="title">Title</label>
-							<Field name="title" component={this.inputComponent} type="text" placeholder="Title..." />
+							<Field
+								name="title"
+								component={this.inputComponent}
+								type="text"
+								placeholder="Title..."
+							/>
 						</div>
 						<div>
 							<label htmlFor="label">Label</label>
-							<Field name="label" component={this.inputComponent} type="text" placeholder="Label..." />
+							<Field
+								name="label"
+								component={this.inputComponent}
+								type="text"
+								placeholder="Label..."
+							/>
 						</div>
 						<div>
 							<label htmlFor="abbr">Abbreviation</label>
-							<Field name="abbr" component={this.inputComponent} type="text" placeholder="Abbreviation..." />
+							<Field
+								name="abbr"
+								component={this.inputComponent}
+								type="text"
+								placeholder="Abbreviation..."
+							/>
 						</div>
 						<div>
 							<label htmlFor="author">Author</label>
-							<Field name="author" component={this.inputComponent} type="text" placeholder="Author..." />
+							<Field
+								name="author"
+								component={this.inputComponent}
+								type="text"
+								placeholder="Author..."
+							/>
 						</div>
 						<div>
 							<label htmlFor="seeAlso">See Also</label>
-							<Field name="seeAlso" component={this.inputComponent} type="text" placeholder="See Also..." />
+							<Field
+								name="seeAlso"
+								component={this.inputComponent}
+								type="text"
+								placeholder="See Also..."
+							/>
 						</div>
 						<div>
 							<label htmlFor="attribution">Attribution</label>
-							<Field name="attribution" component={this.inputComponent} type="text" placeholder="Attribution..." />
+							<Field
+								name="attribution"
+								component={this.inputComponent}
+								type="text"
+								placeholder="Attribution..."
+							/>
 						</div>
 						<FieldArray
 							name="images"
 							component={images => (
-								<FormImagesUploader imagesFormState={images} showError={this.showError} />
-            )}
+								<FormImagesUploader
+									imagesFormState={images}
+									showError={this.showError}
+								/>
+							)}
 						/>
 						<button type="submit">Submit</button>
 					</form>
@@ -112,9 +148,8 @@ class MiradorManifestEditor extends React.Component {
 	}
 }
 
-
 const MiradorManifestEditorForm = reduxForm({
-	form: 'miradorManifestsEditor',
+	form: 'miradorManifestsEditor'
 })(MiradorManifestEditor);
 
 export default MiradorManifestEditorForm;

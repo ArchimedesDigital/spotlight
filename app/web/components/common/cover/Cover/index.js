@@ -2,14 +2,12 @@ import React from 'react';
 import CoverBackground from '../CoverBackground';
 import './Cover.css';
 
-
 class Cover extends React.Component {
-
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			width: window.innerWidth,
+			width: window.innerWidth
 		};
 	}
 
@@ -21,12 +19,20 @@ class Cover extends React.Component {
 
 	handleResize() {
 		this.setState({
-			windowWidth: window.innerWidth,
+			windowWidth: window.innerWidth
 		});
 	}
 
 	render() {
-		const { className, full, left, bottom, background, reactsToMouse, overlay } = this.props;
+		const {
+			className,
+			full,
+			left,
+			bottom,
+			background,
+			reactsToMouse,
+			overlay
+		} = this.props;
 		const classes = [className];
 		const { windowWidth } = this.state;
 		let height = window.innerHeight * 0.66;
@@ -48,13 +54,12 @@ class Cover extends React.Component {
 			classes.push('cover--center');
 		}
 
-
 		return (
 			<div
 				className={`cover ${classes.join(' ')}`}
 				style={{
 					width: windowWidth,
-					height: `${height}px`,
+					height: `${height}px`
 				}}
 			>
 				<div
@@ -63,26 +68,15 @@ class Cover extends React.Component {
 						width: windowWidth
 					}}
 				>
-					{
-						background &&
-						<CoverBackground
-							reactsToMouse={reactsToMouse}
-						>
+					{background && (
+						<CoverBackground reactsToMouse={reactsToMouse}>
 							{background}
 						</CoverBackground>
-					}
-					{
-						this.props.children &&
-						<div className="cover-content">
-							{this.props.children}
-						</div>
-					}
-					{
-						overlay &&
-						<div className="cover-overlay">
-							{overlay}
-						</div>
-					}
+					)}
+					{this.props.children && (
+						<div className="cover-content">{this.props.children}</div>
+					)}
+					{overlay && <div className="cover-overlay">{overlay}</div>}
 				</div>
 			</div>
 		);

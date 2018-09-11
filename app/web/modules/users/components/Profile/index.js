@@ -6,21 +6,16 @@ import { required, maxLength } from '../../../../lib/formHelpers';
 
 import './Profile.css';
 
-
 const maxLength200 = maxLength(200);
 const maxLength2100 = maxLength(2100);
 
 class Profile extends React.Component {
-
 	render() {
 		return (
 			<div className="profile">
 				<ProfileNav />
 
-				<form
-					className="profileForm"
-					onSubmit={this.props.handleSubmit}
-				>
+				<form className="profileForm" onSubmit={this.props.handleSubmit}>
 					<div className="profileEditorFormInputOuter">
 						<label>Username</label>
 						<Field
@@ -79,7 +74,6 @@ class Profile extends React.Component {
 	}
 }
 
-
 export default reduxForm({
-	form: 'Profile',
+	form: 'Profile'
 })(Profile);

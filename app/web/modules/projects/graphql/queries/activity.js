@@ -3,7 +3,7 @@ import { gql, graphql } from 'react-apollo';
 const query = gql`
 	query projectActivityQuery($hostname: String) {
 		project(hostname: $hostname) {
-	    _id
+			_id
 			activity {
 				user {
 					username
@@ -21,9 +21,9 @@ const projectActivityQuery = graphql(query, {
 	name: 'projectActivityQuery',
 	options: ({ params }) => ({
 		variables: {
-			hostname: params.hostname,
-		},
-	}),
+			hostname: params.hostname
+		}
+	})
 });
 
 export default projectActivityQuery;

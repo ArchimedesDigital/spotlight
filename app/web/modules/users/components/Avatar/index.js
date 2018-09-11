@@ -12,10 +12,9 @@ const Avatar = props => (
 			borderRadius: '100%',
 			border: '1px solid #f6f6f6',
 			minHeight: '30px',
-			minWidth: '30px',
+			minWidth: '30px'
 		}}
 	/>
 );
-
 
 export default Avatar;

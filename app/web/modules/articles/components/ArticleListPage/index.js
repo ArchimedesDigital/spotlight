@@ -7,7 +7,6 @@ import ArticleListContainer from '../../containers/ArticleListContainer';
 
 import './ArticleListPage.css';
 
-
 const ArticleListPage = props => {
 	let files = [];
 	let coverImage = null;
@@ -20,8 +19,8 @@ const ArticleListPage = props => {
 		coverImage = _.sample(files).name;
 	}
 
-	 return (
-		<div >
+	return (
+		<div>
 			<CollectionCover
 				title="Articles"
 				coverLink={props.userIsAdmin ? '/articles/create' : null}
@@ -29,12 +28,9 @@ const ArticleListPage = props => {
 				coverImage={coverImage}
 			/>
 			<ArticleListContainer />
-			<Pagination
-				total={0}
-				limit={18}
-			/>
+			<Pagination total={0} limit={18} />
 		</div>
 	);
-}
+};
 
 export default ArticleListPage;

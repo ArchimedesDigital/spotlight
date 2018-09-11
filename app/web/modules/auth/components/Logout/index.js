@@ -3,19 +3,16 @@ import PropTypes from 'prop-types';
 
 import './Logout.css';
 
-
-
 class Logout extends React.Component {
-
 	static propTypes = {
-		logoutMethod: PropTypes.func.isRequired,
-	}
+		logoutMethod: PropTypes.func.isRequired
+	};
 
 	render() {
 		const { logoutMethod } = this.props;
 		return (
 			<div className="at-form">
-				<h3 style={{color: '#000'}}>Sign Out</h3>
+				<h3 style={{ color: '#000' }}>Sign Out</h3>
 				<div className="at-pwd-form">
 					<p>Are your sure you want to sign out?</p>
 					<button

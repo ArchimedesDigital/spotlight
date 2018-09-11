@@ -13,22 +13,20 @@ const NavBarHeader = ({ dispatchToggleLeftMenu, leftMenuOpen }) => (
 			onClick={dispatchToggleLeftMenu.bind(this, !leftMenuOpen)}
 		/>
 		<Link to="/">
-			<h2 className="site-title">
-				
-			</h2>
+			<h2 className="site-title" />
 		</Link>
 	</div>
 );
 
 const mapStateToProps = state => ({
 	userId: state.auth.userId,
-	leftMenuOpen: state.leftMenu.open,
+	leftMenuOpen: state.leftMenu.open
 });
 
 const mapDispatchToProps = dispatch => ({
-	dispatchToggleLeftMenu: (open) => {
+	dispatchToggleLeftMenu: open => {
 		dispatch(toggleLeftMenu(open));
-	},
+	}
 });
 
 export default connect(

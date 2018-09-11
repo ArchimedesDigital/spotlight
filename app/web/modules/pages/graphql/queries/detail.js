@@ -2,11 +2,10 @@ import { gql, graphql } from 'react-apollo';
 
 import getCurrentProjectHostname from '../../../../lib/getCurrentProjectHostname';
 
-
 const query = gql`
 	query pageQuery($hostname: String, $slug: String) {
 		project(hostname: $hostname) {
-	    _id
+			_id
 			page(slug: $slug) {
 				_id
 				title
@@ -22,9 +21,9 @@ const pageQuery = graphql(query, {
 	options: ({ params }) => ({
 		variables: {
 			hostname: getCurrentProjectHostname(),
-			slug: params.slug,
+			slug: params.slug
 		}
-	}),
+	})
 });
 
 export default pageQuery;

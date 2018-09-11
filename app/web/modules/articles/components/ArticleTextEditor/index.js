@@ -3,7 +3,7 @@ import { Map, fromJS } from 'immutable';
 // import { EditorState, convertToRaw } from 'draft-js';
 import autoBind from 'react-autobind';
 
-import { DanteEditor } from "Dante2/es/index.js";
+import { DanteEditor } from 'Dante2/es/index.js';
 import 'Dante2/dist/DanteStyles.css';
 // import DanteImagePopover from 'Dante2/es/components/popovers/image.js'
 // import DanteAnchorPopover from 'Dante2/es/components/popovers/link.js'
@@ -21,32 +21,30 @@ import {
 } from 'Dante2/es/model/index.js'
 */
 
-
 import './ArticleTextEditor.css';
 
-
 class ArticleTextEditor extends React.Component {
-
 	constructor(props) {
-		super(props)
+		super(props);
 
-		let config = Map(fromJS(this.defaultOptions(props.config)))
-		this.options = config.mergeDeep(props.config).toJS()
+		let config = Map(fromJS(this.defaultOptions(props.config)));
+		this.options = config.mergeDeep(props.config).toJS();
 		autoBind(this);
 	}
 
 	defaultOptions(options) {
 		// default options
 		if (options == null) {
-			options = {}
+			options = {};
 		}
-		let defaultOptions = {}
-		defaultOptions.el = 'app'
-		defaultOptions.content = ""
-		defaultOptions.read_only = false
-		defaultOptions.spellcheck = false
-		defaultOptions.title_placeholder = "Title"
-		defaultOptions.body_placeholder = "Write your article with items from your collections . . . "
+		let defaultOptions = {};
+		defaultOptions.el = 'app';
+		defaultOptions.content = '';
+		defaultOptions.read_only = false;
+		defaultOptions.spellcheck = false;
+		defaultOptions.title_placeholder = 'Title';
+		defaultOptions.body_placeholder =
+			'Write your article with items from your collections . . . ';
 		// @defaultOptions.api_key = "86c28a410a104c8bb58848733c82f840"
 
 		/*
@@ -224,15 +222,15 @@ class ArticleTextEditor extends React.Component {
 			before_handler: null,
 			success_handler: null,
 			error_handler: null
-		}
+		};
 
 		defaultOptions.data_storage = {
 			url: null,
-			method: "POST",
+			method: 'POST',
 			success_handler: null,
 			failure_handler: null,
 			interval: 1500
-		}
+		};
 
 		defaultOptions.default_wrappers = [
 			{ className: 'graf--p', block: 'unstyled' },
@@ -244,56 +242,57 @@ class ArticleTextEditor extends React.Component {
 			{ className: 'graf--insertorderedlist', block: 'ordered-list-item' },
 			{ className: 'graf--code', block: 'code-block' },
 			{ className: 'graf--bold', block: 'BOLD' },
-			{ className: 'graf--italic', block: 'ITALIC' }]
+			{ className: 'graf--italic', block: 'ITALIC' }
+		];
 
 		defaultOptions.continuousBlocks = [
-			"unstyled",
-			"blockquote",
-			"ordered-list",
-			"unordered-list",
-			"unordered-list-item",
-			"ordered-list-item",
-			"code-block"
-		]
+			'unstyled',
+			'blockquote',
+			'ordered-list',
+			'unordered-list',
+			'unordered-list-item',
+			'ordered-list-item',
+			'code-block'
+		];
 
 		defaultOptions.key_commands = {
-			"alt-shift": [{ key: 65, cmd: 'add-new-block' }],
-			"alt-cmd": [{ key: 49, cmd: 'toggle_block:header-one' },
-									{ key: 50, cmd: 'toggle_block:header-two' },
-									{ key: 53, cmd: 'toggle_block:blockquote' }],
-			"cmd": [{ key: 66, cmd: 'toggle_inline:BOLD' },
-							{ key: 73, cmd: 'toggle_inline:ITALIC' },
-							{ key: 75, cmd: 'insert:link' }]
-		}
+			'alt-shift': [{ key: 65, cmd: 'add-new-block' }],
+			'alt-cmd': [
+				{ key: 49, cmd: 'toggle_block:header-one' },
+				{ key: 50, cmd: 'toggle_block:header-two' },
+				{ key: 53, cmd: 'toggle_block:blockquote' }
+			],
+			cmd: [
+				{ key: 66, cmd: 'toggle_inline:BOLD' },
+				{ key: 73, cmd: 'toggle_inline:ITALIC' },
+				{ key: 75, cmd: 'insert:link' }
+			]
+		};
 
 		defaultOptions.character_convert_mapping = {
-			'> ': "blockquote",
-			'*.': "unordered-list-item",
-			'* ': "unordered-list-item",
-			'- ': "unordered-list-item",
-			'1.': "ordered-list-item",
+			'> ': 'blockquote',
+			'*.': 'unordered-list-item',
+			'* ': 'unordered-list-item',
+			'- ': 'unordered-list-item',
+			'1.': 'ordered-list-item',
 			'# ': 'header-one',
 			'##': 'header-two',
-			'==': "unstyled",
-			'` ': "code-block"
-		}
+			'==': 'unstyled',
+			'` ': 'code-block'
+		};
 
-		return defaultOptions
+		return defaultOptions;
 	}
 
-	render(){
+	render() {
 		const { editorState } = this.props;
 
-		return(
+		return (
 			<div className="articleTextEditor">
-				<DanteEditor
-					content={editorState}
-					config={this.options}
-				/>
+				<DanteEditor content={editorState} config={this.options} />
 			</div>
-		)
+		);
 	}
 }
-
 
 export default ArticleTextEditor;

@@ -6,7 +6,6 @@ import CollectionDetail from '../../components/CollectionDetail';
 import collectionDetailQuery from '../../graphql/queries/detail';
 import collectionRemoveMutation from '../../graphql/mutations/remove';
 
-
 class CollectionDetailContainer extends React.Component {
 	constructor(props) {
 		super(props);
@@ -17,10 +16,10 @@ class CollectionDetailContainer extends React.Component {
 		const { collectionRemove, router } = this.props;
 
 		collectionRemove(collectionId)
-			.then((response) => {
+			.then(response => {
 				router.replace('/collections');
 			})
-			.catch((err) => {
+			.catch(err => {
 				console.error(err);
 			});
 	}
@@ -29,10 +28,7 @@ class CollectionDetailContainer extends React.Component {
 		let collection = [];
 		let userIsAdmin = false;
 
-		if (
-			this.props.collectionQuery
-			&& this.props.collectionQuery.project
-		) {
+		if (this.props.collectionQuery && this.props.collectionQuery.project) {
 			collection = this.props.collectionQuery.project.collection;
 			userIsAdmin = this.props.collectionQuery.project.userIsAdmin;
 		}
@@ -48,5 +44,6 @@ class CollectionDetailContainer extends React.Component {
 }
 
 export default compose(
-	collectionDetailQuery, collectionRemoveMutation,
+	collectionDetailQuery,
+	collectionRemoveMutation
 )(CollectionDetailContainer);

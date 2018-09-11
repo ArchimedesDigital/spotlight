@@ -9,19 +9,15 @@ import MetadataFields from '../MetadataFields';
 
 import './ItemEditor.css';
 
-
 const maxLength200 = maxLength(200);
 const maxLength200000 = maxLength(200000);
 
-
 class ItemEditor extends React.Component {
-
 	render() {
 		const { item, files, metadata } = this.props;
 
 		return (
 			<div className="itemEditor">
-
 				<div className="itemEditorHead">
 					<h1>{item ? 'Edit' : 'Create'} Item</h1>
 
@@ -34,10 +30,7 @@ class ItemEditor extends React.Component {
 					/>
 				</div>
 
-				<form
-					className="itemEditorForm"
-					onSubmit={this.props.handleSubmit}
-				>
+				<form className="itemEditorForm" onSubmit={this.props.handleSubmit}>
 					<div className="itemEditorFormInputOuter itemEditorFormTitleOuter">
 						<label>Title</label>
 						<Field
@@ -47,11 +40,7 @@ class ItemEditor extends React.Component {
 							placeholder="Your item title"
 							validate={[required, maxLength200]}
 						/>
-						<span
-							className="itemEditorFormHelp"
-						>
-							?
-						</span>
+						<span className="itemEditorFormHelp">?</span>
 					</div>
 
 					<div className="itemEditorFormInputOuter itemEditorFormDescriptionOuter">
@@ -63,11 +52,7 @@ class ItemEditor extends React.Component {
 							placeholder="Example description of item . . . "
 							validate={[maxLength200000]}
 						/>
-						<span
-							className="itemEditorFormHelp"
-						>
-							?
-						</span>
+						<span className="itemEditorFormHelp">?</span>
 					</div>
 
 					<div className="itemEditorFormInputOuter itemEditorFormInputOuterMetadata">
@@ -79,7 +64,6 @@ class ItemEditor extends React.Component {
 							handleUpdateMetadata={this.props.handleUpdateMetadata}
 						/>
 					</div>
-
 
 					<div className="itemEditorFormInputOuter">
 						<button
@@ -97,31 +81,27 @@ class ItemEditor extends React.Component {
 	}
 }
 
-
 ItemEditor.propTypes = {
 	item: PropTypes.object,
 	files: PropTypes.array,
-	metadata: PropTypes.array,
+	metadata: PropTypes.array
 };
-
 
 let ItemEditorForm = reduxForm({
 	form: 'ItemEditor',
-	enableReinitialize: true,
+	enableReinitialize: true
 })(ItemEditor);
 
-const selector = formValueSelector('ItemEditor') // <-- same as form name
+const selector = formValueSelector('ItemEditor'); // <-- same as form name
 
 const mapStateToProps = (state, props) => {
-	const metadata = selector(state, 'metadata')
+	const metadata = selector(state, 'metadata');
 
 	return {
-		metadata,
+		metadata
 	};
 };
 
-ItemEditorForm = connect(
-	mapStateToProps
-)(ItemEditorForm);
+ItemEditorForm = connect(mapStateToProps)(ItemEditorForm);
 
 export default ItemEditorForm;

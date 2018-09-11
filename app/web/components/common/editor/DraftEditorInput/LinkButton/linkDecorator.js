@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { CompositeDecorator } from 'draft-js';
 
-const Link = (props) => {
+const Link = props => {
 	const { url } = props.contentState.getEntity(props.entityKey).getData();
 	const style = {
 		color: '#3b5998',
-		textDecoration: 'underline',
+		textDecoration: 'underline'
 	};
 	return (
 		<a href={url} style={style}>
@@ -16,34 +16,33 @@ const Link = (props) => {
 };
 Link.propTypes = {
 	contentState: PropTypes.shape({
-		getEntity: PropTypes.func.isRequired,
+		getEntity: PropTypes.func.isRequired
 	}).isRequired,
 	children: PropTypes.element,
-	entityKey: PropTypes.string,
+	entityKey: PropTypes.string
 };
 Link.defaultProps = {
 	children: null,
-	entityKey: null,
+	entityKey: null
 };
 
 function findLinkEntities(contentBlock, callback, contentState) {
-	contentBlock.findEntityRanges(
-		(character) => {
-			const entityKey = character.getEntity();
+	contentBlock.findEntityRanges(character => {
+		const entityKey = character.getEntity();
 
-			return (
-				entityKey !== null &&
-				contentState.getEntity(entityKey).getType() === 'LINK'
-			);
-		},
-		callback
-	);
+		return (
+			entityKey !== null &&
+			contentState.getEntity(entityKey).getType() === 'LINK'
+		);
+	}, callback);
 }
 
-const linkDecorator = new CompositeDecorator([{
-	strategy: findLinkEntities,
-	component: Link,
-}]);
+const linkDecorator = new CompositeDecorator([
+	{
+		strategy: findLinkEntities,
+		component: Link
+	}
+]);
 
 export default linkDecorator;
 export { Link, findLinkEntities };

@@ -24,19 +24,27 @@ export default class CoverImageUploader extends React.Component {
 
 	componentWillMount() {
 		if (!this.props.image && process.env.REACT_APP_BUCKET_URL) {
-			this._id = Math.random().toString(36).substring(2) + Math.random().toString(36).substring(2);
+			this._id =
+				Math.random()
+					.toString(36)
+					.substring(2) +
+				Math.random()
+					.toString(36)
+					.substring(2);
 		}
 	}
 
 	handleFinish(event) {
 		this.setState({
-			uploading: false,
+			uploading: false
 		});
 
 		const image = {
 			name: event.filename,
 			path: `${process.env.REACT_APP_BUCKET_URL}/${event.filename}`,
-			thumbPath: `https://iiif.orphe.us/${event.filename}/full/90,/0/default.jpg`,
+			thumbPath: `https://iiif.orphe.us/${
+				event.filename
+			}/full/90,/0/default.jpg`,
 			_id: this._id
 		};
 
@@ -52,7 +60,7 @@ export default class CoverImageUploader extends React.Component {
 			files: [acceptedFile[0]]
 		};
 		if (fileToUpload.files.length) {
-			this.setState({uploading: true});
+			this.setState({ uploading: true });
 
 			const uploader = new S3Upload({
 				onFinishS3Put: this.handleFinish,
@@ -64,12 +72,12 @@ export default class CoverImageUploader extends React.Component {
 				onError: this.handleError,
 				uploadRequestHeaders: { 'x-amz-acl': 'public-read' },
 				contentDisposition: 'auto',
-				scrubFilename: (filename) => {
-          const secureFilename = filename.replace(/[^\w\d_\-\.]+/ig, ''); // eslint-disable-line
+				scrubFilename: filename => {
+					const secureFilename = filename.replace(/[^\w\d_\-\.]+/gi, ''); // eslint-disable-line
 					return `${makeId()}-${secureFilename}`;
 				},
 				signingUrlMethod: 'GET',
-				signingUrlWithCredentials: true,
+				signingUrlWithCredentials: true
 			});
 
 			// TODO: fix uploader
@@ -83,14 +91,12 @@ export default class CoverImageUploader extends React.Component {
 			backgroundColor: '#fff',
 			backgroundSize: 'cover',
 			backgroundPosition: 'center',
-			backgroundRepeat: 'no-repeat',
+			backgroundRepeat: 'no-repeat'
 		};
-
 
 		if (image) {
 			styles.backgroundImage = `url(${image.path})`;
 		}
-
 
 		return (
 			<div className="coverImageUploader">
@@ -100,18 +106,17 @@ export default class CoverImageUploader extends React.Component {
 					onDrop={this.uploadFile}
 					style={styles}
 				>
-					{!image ?
+					{!image ? (
 						<div className="coverImageLabel">
 							<label>
-								{
-									this.state.uploading ?
-										'Uploading...'
-									:
-										'Drag and drop a cover image or click to select file'
-								}
+								{this.state.uploading
+									? 'Uploading...'
+									: 'Drag and drop a cover image or click to select file'}
 							</label>
 						</div>
-					: ''}
+					) : (
+						''
+					)}
 				</Dropzone>
 			</div>
 		);

@@ -4,7 +4,6 @@ import { Link, withRouter } from 'react-router';
 
 import './SearchFilter.css';
 
-
 const SearchFilter = props => {
 	const filter = props.router.location.query;
 	const fields = [];
@@ -13,7 +12,7 @@ const SearchFilter = props => {
 		if (!~['page', 'textsearch'].indexOf(key)) {
 			fields.push({
 				key,
-				value: filter[key],
+				value: filter[key]
 			});
 		}
 	}
@@ -30,22 +29,18 @@ const SearchFilter = props => {
 						className="searchFilterField"
 						key={field.key}
 						to={{
-        			pathname: '/search',
-        			query,
-        		}}
-          >
-						<label>
-							{_s.capitalize(field.key)}
-						</label>
-						<span>
-							{field.value}
-						</span>
+							pathname: '/search',
+							query
+						}}
+					>
+						<label>{_s.capitalize(field.key)}</label>
+						<span>{field.value}</span>
 						<i className="mdi mdi-close" />
 					</Link>
 				);
 			})}
 		</div>
 	);
-}
+};
 
 export default withRouter(SearchFilter);

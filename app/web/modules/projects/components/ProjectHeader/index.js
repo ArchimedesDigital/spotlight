@@ -12,11 +12,15 @@ import UserAvatarContainer from '../../../users/containers/UserAvatarContainer';
 import * as authActions from '../../../auth/actions';
 import { toggleLeftMenu } from '../../../../actions/leftMenu';
 
-
 import './ProjectHeader.css';
 
-const ProjectHeader = ({ project, toggleAuthModal, dispatchToggleLeftMenu, leftMenuOpen, userId }) => {
-
+const ProjectHeader = ({
+	project,
+	toggleAuthModal,
+	dispatchToggleLeftMenu,
+	leftMenuOpen,
+	userId
+}) => {
 	if (!project) {
 		return null;
 	}
@@ -30,89 +34,77 @@ const ProjectHeader = ({ project, toggleAuthModal, dispatchToggleLeftMenu, leftM
 						className="mdi mdi-menu left-menu-toggle-icon"
 						onClick={dispatchToggleLeftMenu.bind(this, !leftMenuOpen)}
 					/>
-					{project ?
-						<Link
-							to="/"
-						>
-							<h2 className="site-title">
-								{project.title}
-							</h2>
+					{project ? (
+						<Link to="/">
+							<h2 className="site-title">{project.title}</h2>
 						</Link>
-					: ''}
+					) : (
+						''
+					)}
 				</div>
 				<ul className="nav">
-					{project.userIsAdmin ?
+					{project.userIsAdmin ? (
 						<li>
-							<Link
-								to="/dashboard"
-							>
-								Dashboard
-							</Link>
+							<Link to="/dashboard">Dashboard</Link>
 						</li>
-					: ''}
-					{project.itemsCount ?
+					) : (
+						''
+					)}
+					{project.itemsCount ? (
 						<li>
-							<Link to="/items" >
-								Items
-							</Link>
+							<Link to="/items">Items</Link>
 						</li>
-					: ''}
-					{project.collectionsCount ?
+					) : (
+						''
+					)}
+					{project.collectionsCount ? (
 						<li>
-							<Link to="/collections" >
-								Collections
-							</Link>
+							<Link to="/collections">Collections</Link>
 						</li>
-					: ''}
-					{project.articlesCount ?
+					) : (
+						''
+					)}
+					{project.articlesCount ? (
 						<li>
-							<Link to="/articles" >
-								Articles
-							</Link>
+							<Link to="/articles">Articles</Link>
 						</li>
-					: ''}
-					{project.textsCount ?
+					) : (
+						''
+					)}
+					{project.textsCount ? (
 						<li>
-							<Link to="/texts" >
-								Texts
-							</Link>
+							<Link to="/texts">Texts</Link>
 						</li>
-					: ''}
-					{project.description ?
+					) : (
+						''
+					)}
+					{project.description ? (
 						<li>
-							<Link
-								to="/#about"
-							>
-								About
-							</Link>
+							<Link to="/#about">About</Link>
 						</li>
-					: ''}
+					) : (
+						''
+					)}
 					<li>
-						{ userId ?
-							<Link
-								to={'/profile'}
-								className="userAvatarLink"
-							>
+						{userId ? (
+							<Link to={'/profile'} className="userAvatarLink">
 								<UserAvatarContainer />
 							</Link>
-						: '' }
+						) : (
+							''
+						)}
 					</li>
 					<li>
-						{!userId ?
-							<Link
-								to={'/'}
-								className="login-button"
-								onClick={toggleAuthModal}
-							>
+						{!userId ? (
+							<Link to={'/'} className="login-button" onClick={toggleAuthModal}>
 								Sign Up / In
 							</Link>
-						: '' }
+						) : (
+							''
+						)}
 					</li>
 					<li>
-						<Link
-							className="searchLink"
-							to="/search"
-						>
+						<Link className="searchLink" to="/search">
 							<i className="mdi mdi-magnify searchIcon" />
 						</Link>
 					</li>
@@ -120,12 +112,12 @@ const ProjectHeader = ({ project, toggleAuthModal, dispatchToggleLeftMenu, leftM
 			</Headroom>
 		</div>
 	);
-}
+};
 
 ProjectHeader.propTypes = {
 	project: PropTypes.object,
 	toggleAuthModal: PropTypes.func.isRequired,
-	userId: PropTypes.string,
+	userId: PropTypes.string
 };
 
 ProjectHeader.defaultProps = {
@@ -134,17 +126,17 @@ ProjectHeader.defaultProps = {
 
 const mapStateToProps = state => ({
 	userId: state.auth.userId,
-	leftMenuOpen: state.leftMenu.open,
+	leftMenuOpen: state.leftMenu.open
 });
 
 const mapDispatchToProps = dispatch => ({
-	toggleAuthModal: (e) => {
+	toggleAuthModal: e => {
 		e.preventDefault();
 		dispatch(authActions.toggleAuthModal());
 	},
-	dispatchToggleLeftMenu: (open) => {
+	dispatchToggleLeftMenu: open => {
 		dispatch(toggleLeftMenu(open));
-	},
+	}
 });
 
 export default connect(

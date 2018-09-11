@@ -4,41 +4,29 @@ import { Link } from 'react-router';
 
 const UserListItem = ({ _id, name, username, avatarUrl, isActiveUser }) => (
 	<div className="userListItem">
-		<Link
-			to={isActiveUser ?
-				"/profile"
-			:
-				`/users/${_id}`
-			}
-		>
+		<Link to={isActiveUser ? '/profile' : `/users/${_id}`}>
 			<div
 				className="userListItemAvatarImage"
 				style={{
 					backgroundImage: `url('${avatarUrl}')`,
 					backgroundSize: 'cover',
 					backgroundPosition: 'center',
-					backgroundRepeat: 'no-repeat',
+					backgroundRepeat: 'no-repeat'
 				}}
 			/>
-			<div className="userListItemUserName">
-				{name ?
-					name
-				:
-					username
-				}
-			</div>
+			<div className="userListItemUserName">{name ? name : username}</div>
 		</Link>
 	</div>
 );
 
 UserListItem.propTypes = {
 	username: PropTypes.string,
-	avatarUrl: PropTypes.string,
+	avatarUrl: PropTypes.string
 };
 
 UserListItem.defaultProps = {
 	username: '',
-	avatarUrl: '/images/default_user.jpg',
+	avatarUrl: '/images/default_user.jpg'
 };
 
 export default UserListItem;

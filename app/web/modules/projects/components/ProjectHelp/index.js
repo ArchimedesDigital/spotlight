@@ -1,7 +1,6 @@
 import React from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
 
-
 import DashboardNav from '../../../dashboard/components/DashboardNav';
 
 import './ProjectHelp.css';
@@ -19,7 +18,6 @@ const ProjectHelp = () => (
 				</Col>
 			</Row>
 		</Grid>
-
 	</div>
 );
 

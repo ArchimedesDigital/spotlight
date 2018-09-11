@@ -6,7 +6,6 @@ import UserListItem from '../../../users/components/UserListItem';
 
 import './ProjectRecentActivityFeedItem.css';
 
-
 const ProjectRecentActivityFeedItem = ({ user, type, excerpt, url }) => (
 	<div className="projectRecentActivityFeedItem">
 		<Row>
@@ -14,18 +13,11 @@ const ProjectRecentActivityFeedItem = ({ user, type, excerpt, url }) => (
 				<UserListItem />
 			</Col>
 			<Col sm={1}>
-				<h3 className="projectRecentActivityFeedItemActivityItem">
-					{type}
-				</h3>
-				<p className="projectRecentActivityFeedItemExcerpt">
-					{excerpt}
-				</p>
+				<h3 className="projectRecentActivityFeedItemActivityItem">{type}</h3>
+				<p className="projectRecentActivityFeedItemExcerpt">{excerpt}</p>
 			</Col>
 			<Col sm={1}>
-				<Link
-					className="projectRecentActivityFeedItemLink"
-					to={url}
-				>
+				<Link className="projectRecentActivityFeedItemLink" to={url}>
 					View
 				</Link>
 			</Col>
