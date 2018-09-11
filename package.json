@@ -104,12 +104,14 @@
     "enzyme": "^3.6.0",
     "enzyme-adapter-react-16": "^1.5.0",
     "eslint": "^4.1.1",
+    "eslint-config-prettier": "^3.0.1",
     "eslint-config-react-app": "^3.0.0-next",
     "eslint-import-resolver-node": "^0.3.2",
     "eslint-loader": "^2.1.0",
     "eslint-plugin-flowtype": "^2.50.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-prettier": "^2.6.2",
     "eslint-plugin-react": "^7.11.1",
     "faker": "^4.1.0",
     "faucet": "^0.0.1",
@@ -124,6 +126,7 @@
     "postcss-flexbugs-fixes": "^4.1.0",
     "postcss-loader": "^3.0.0",
     "pre-commit": "^1.2.2",
+    "prettier": "1.14.2",
     "react-dev-utils": "^5.0.2",
     "react-test-renderer": "^16.5.0",
     "redux-devtools": "^3.4.1",
@@ -137,7 +140,8 @@
     "webpack-manifest-plugin": "^2.0.3"
   },
   "scripts": {
-    "build": "webpack --config ./webpack.config.js --mode production",
+		"build": "webpack --config ./webpack.config.js --mode production",
+		"prettier": "prettier",
     "start": "webpack-dev-server --config ./webpack.config.js --mode development"
   }
 }
