@@ -4,7 +4,7 @@
     "browser": true,
     "node": true
   },
-  "extends": "react-app",
+  "extends": ["react-app", "plugin:react/recommended"],
   "parser": "babel-eslint",
   "parserOptions": {
     "allowImportExportEverywhere": true,
