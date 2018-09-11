@@ -6,8 +6,11 @@
   },
   "plugins": [
     "lodash",
-    "transform-class-properties",
-    ["transform-object-rest-spread", { "useBuiltIns": true }]
+    "transform-class-properties"
   ],
-  "presets": ["@babel/preset-env", "@babel/preset-flow", "@babel/preset-react"]
+  "presets": [
+    ["@babel/preset-env", {"shippedProposals": true}],
+    "@babel/preset-flow",
+    "@babel/preset-react"
+  ]
 }

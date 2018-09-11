@@ -8,7 +8,7 @@ import routes from '../../routes';
 import client from '../../middleware/apolloClient';
 
 // auth
-import AuthModalContainer from '../../modules/auth/containers/AuthModalContainer/AuthModalContainer';
+import AuthModalContainer from '../../modules/auth/containers/AuthModalContainer';
 import { login, register, logoutUser, verifyToken } from '../../lib/auth';
 
 

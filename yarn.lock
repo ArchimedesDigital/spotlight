@@ -3578,7 +3578,7 @@ escodegen@~1.9.0:
   optionalDependencies:
     source-map "~0.6.1"
 
-eslint-config-react-app@^3.0.0:
+eslint-config-react-app@^3.0.0-next:
   version "3.0.0-next.b2fd8db8"
   resolved "https://registry.yarnpkg.com/eslint-config-react-app/-/eslint-config-react-app-3.0.0-next.b2fd8db8.tgz#9c53f55bcfe11c03ff7075d9c4f113beca85191d"
   dependencies:
