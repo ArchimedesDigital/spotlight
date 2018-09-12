@@ -28,7 +28,7 @@ class MetadataFieldValueInput extends React.Component {
 		autoBind(this);
 	}
 
-	componentWillReceiveProps(nextProps) {
+	UNSAFE_componentWillReceiveProps(nextProps) {
 		if (nextProps.initialValue) {
 		}
 	}
@@ -42,7 +42,7 @@ class MetadataFieldValueInput extends React.Component {
 		this.props.handleUpdateMetadata(this.props.field, files);
 	}
 
-	removeFile(index, a, b, c) {
+	removeFile(index) {
 		const files = this.state.files.slice();
 		files.splice(index, 1);
 		this.setState({
@@ -97,75 +97,75 @@ class MetadataFieldValueInput extends React.Component {
 		let elem = null;
 
 		switch (type) {
-			case 'text':
-				elem = (
-					<Field
-						name={`${field}.value`}
-						type="text"
-						component="textarea"
-						placeholder="Value . . . "
-					/>
-				);
-				break;
-			case 'number':
-				elem = (
-					<Field
-						name={`${field}.value`}
-						type="number"
-						component="input"
-						placeholder="Value . . . "
-					/>
-				);
-				break;
-			case 'date':
-				elem = (
-					<Field
-						name={`${field}.value`}
-						type="date"
-						component="input"
-						placeholder="Value . . . "
-					/>
-				);
-				break;
-			case 'place':
-				elem = (
-					<MetadataFieldMapInput
-						field={field}
-						defaultValue={initialValue}
-						handleChangeFieldMapInput={this.handleChangeFieldMapInput}
-					/>
-				);
-				break;
-			case 'media':
-				elem = (
-					<ItemEditorUploader
-						files={this.state.files}
-						addFile={this.addFile}
-						removeFile={this.removeFile}
-						onSortEnd={this.onSortEnd}
-						updateFile={this.updateFile}
-					/>
-				);
-				break;
-			case 'item':
-				elem = (
-					<ItemSelectorField
-						items={items}
-						selectedItems={this.state.selectedItems}
-						toggleSelectedItem={this.toggleSelectedItem}
-					/>
-				);
-				break;
-			default:
-				elem = (
-					<Field
-						name={`${field}.value`}
-						type="text"
-						component="input"
-						placeholder="Value . . . "
-					/>
-				);
-				break;
+		case 'text':
+			elem = (
+				<Field
+					name={`${field}.value`}
+					type="text"
+					component="textarea"
+					placeholder="Value . . . "
+				/>
+			);
+			break;
+		case 'number':
+			elem = (
+				<Field
+					name={`${field}.value`}
+					type="number"
+					component="input"
+					placeholder="Value . . . "
+				/>
+			);
+			break;
+		case 'date':
+			elem = (
+				<Field
+					name={`${field}.value`}
+					type="date"
+					component="input"
+					placeholder="Value . . . "
+				/>
+			);
+			break;
+		case 'place':
+			elem = (
+				<MetadataFieldMapInput
+					field={field}
+					defaultValue={initialValue}
+					handleChangeFieldMapInput={this.handleChangeFieldMapInput}
+				/>
+			);
+			break;
+		case 'media':
+			elem = (
+				<ItemEditorUploader
+					files={this.state.files}
+					addFile={this.addFile}
+					removeFile={this.removeFile}
+					onSortEnd={this.onSortEnd}
+					updateFile={this.updateFile}
+				/>
+			);
+			break;
+		case 'item':
+			elem = (
+				<ItemSelectorField
+					items={items}
+					selectedItems={this.state.selectedItems}
+					toggleSelectedItem={this.toggleSelectedItem}
+				/>
+			);
+			break;
+		default:
+			elem = (
+				<Field
+					name={`${field}.value`}
+					type="text"
+					component="input"
+					placeholder="Value . . . "
+				/>
+			);
+			break;
 		}
 
 		return elem;

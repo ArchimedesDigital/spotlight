@@ -4,7 +4,7 @@ import CollectionCover from '../../../collections/components/CollectionCover';
 
 import './AboutPage.css';
 
-const AboutPage = props => {
+const AboutPage = () => {
 	return (
 		<div>
 			<CollectionCover title="About orphe.us" coverBricks />

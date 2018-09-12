@@ -6,7 +6,7 @@ import SearchHead from '../SearchHead';
 
 import './ItemListPage.css';
 
-const ItemListPage = ({ textsearch, filter, skip }) => (
+const ItemListPage = ({ textsearch, skip }) => (
 	<div className="itemListPage">
 		<SearchHead />
 

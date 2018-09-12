@@ -4,7 +4,7 @@ import { Field, reduxForm, SubmissionError } from 'redux-form';
 
 import './PWDLoginForm.css';
 
-const wrapSubmit = login => async (values, dispatch) => {
+const wrapSubmit = login => async values => {
 	try {
 		await login(values);
 		return {};
@@ -37,8 +37,8 @@ function renderField({ input, label, type, meta }) {
 const PWDLoginForm = ({
 	error,
 	handleSubmit,
-	pristine,
-	reset,
+	// pristine,
+	// reset,
 	submitting,
 	login
 }) => (

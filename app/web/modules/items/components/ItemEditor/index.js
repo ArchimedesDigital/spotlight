@@ -94,7 +94,7 @@ let ItemEditorForm = reduxForm({
 
 const selector = formValueSelector('ItemEditor'); // <-- same as form name
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = state => {
 	const metadata = selector(state, 'metadata');
 
 	return {

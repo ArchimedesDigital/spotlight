@@ -6,7 +6,7 @@ import UserListItem from '../../../users/components/UserListItem';
 
 import './ProjectRecentActivityFeedItem.css';
 
-const ProjectRecentActivityFeedItem = ({ user, type, excerpt, url }) => (
+const ProjectRecentActivityFeedItem = ({ type, excerpt, url }) => (
 	<div className="projectRecentActivityFeedItem">
 		<Row>
 			<Col sm={4}>

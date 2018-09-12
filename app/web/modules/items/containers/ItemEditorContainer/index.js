@@ -21,7 +21,7 @@ class ItemEditorContainer extends React.Component {
 		};
 	}
 
-	componentWillReceiveProps(nextProps) {
+	UNSAFE_componentWillReceiveProps(nextProps) {
 		if (
 			(!this.state.files || !this.state.files.length) &&
 			nextProps.itemQuery &&
@@ -91,7 +91,7 @@ class ItemEditorContainer extends React.Component {
 		// create or update
 		if ('_id' in values) {
 			itemUpdate(values, files)
-				.then(response => {
+				.then(() => {
 					router.replace(`/items/${values._id}/${values.slug}`);
 				})
 				.catch(err => {
@@ -99,7 +99,7 @@ class ItemEditorContainer extends React.Component {
 				});
 		} else {
 			itemCreate(values, files)
-				.then(response => {
+				.then(() => {
 					router.replace('/items/');
 				})
 				.catch(err => {
@@ -112,7 +112,7 @@ class ItemEditorContainer extends React.Component {
 		const { itemRemove, router } = this.props;
 
 		itemRemove(itemId)
-			.then(response => {
+			.then(() => {
 				router.replace('/items');
 			})
 			.catch(err => {
@@ -129,7 +129,7 @@ class ItemEditorContainer extends React.Component {
 		});
 	}
 
-	removeFile(index, a, b, c) {
+	removeFile(index) {
 		const files = this.state.files.slice();
 		files.splice(index, 1);
 		this.setState({

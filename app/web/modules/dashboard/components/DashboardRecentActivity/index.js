@@ -6,7 +6,7 @@ import ProjectRecentActivityContainer from '../../../projects/containers/Project
 
 import './DashboardRecentActivity.css';
 
-const DashboardRecentActivity = props => (
+const DashboardRecentActivity = () => (
 	<div className="dashboardRecentActivity">
 		<Row>
 			<Col md={12}>

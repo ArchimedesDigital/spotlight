@@ -5,7 +5,7 @@ import ItemListContainer from '../../containers/ItemListContainer';
 
 import './ItemCollection.css';
 
-const ItemCollection = props => (
+const ItemCollection = () => (
 	<div className="itemCollection">
 		<Grid>
 			<Row>

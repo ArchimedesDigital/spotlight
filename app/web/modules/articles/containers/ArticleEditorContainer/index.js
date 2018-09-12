@@ -33,7 +33,7 @@ class ArticleEditorContainer extends React.Component {
 		};
 	}
 
-	componentWillReceiveProps(nextProps) {
+	UNSAFE_componentWillReceiveProps(nextProps) {
 		if (
 			nextProps.articleQuery &&
 			nextProps.articleQuery.project &&
@@ -82,7 +82,7 @@ class ArticleEditorContainer extends React.Component {
 		}
 
 		await articleSave(values)
-			.then(response => {
+			.then(() => {
 				router.replace(
 					`/articles/${this.state.articleId}/${_s.slugify(values.title)}`
 				);
@@ -96,7 +96,7 @@ class ArticleEditorContainer extends React.Component {
 		const { articleRemove, router } = this.props;
 
 		await articleRemove(articleId)
-			.then(response => {
+			.then(() => {
 				router.replace('/articles');
 			})
 			.catch(err => {
@@ -132,7 +132,7 @@ class ArticleEditorContainer extends React.Component {
 		}
 
 		await articleSave(values)
-			.then(response => {
+			.then(() => {
 				// console.log('Article saved');
 			})
 			.catch(err => {
@@ -179,7 +179,7 @@ class ArticleEditorContainer extends React.Component {
 
 const selector = formValueSelector('ArticleEditor'); // <-- same as form name
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = state => {
 	const title = selector(state, 'title');
 
 	return {
