@@ -143,12 +143,15 @@ module.exports = {
 		hints: false,
 	},
 	plugins: [
-		new webpack.NamedModulesPlugin(),
+		new webpack.EnvironmentPlugin({
+			NODE_ENV: 'development',
+		}),
+		new webpack.NamedModulesPlugin()
 	],
 	resolve: {
 		extensions: ['*', '.js', '.jsx']
 	},
 	devServer: {
-		contentBase: path.resolve('./app/assets/javascripts/spotlight')
+		contentBase: path.resolve(__dirname, 'app/assets/javascripts/spotlight')
 	}
 };

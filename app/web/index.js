@@ -16,6 +16,6 @@ import './index.css';
 const store = configureStore();
 injectTapEventPlugin();
 
-ReactDOM.render(<Root store={store} />, document.getElementById('root'));
+ReactDOM.render(<Root store={store} />, document.getElementById('react-root'));
 
 registerServiceWorker();
