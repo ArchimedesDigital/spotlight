@@ -2,7 +2,10 @@
   "private": true,
   "dependencies": {
     "Dante2": "^0.4.4",
-    "apollo-client": "^2.4.1",
+    "apollo-cache-inmemory": "^1.2.10",
+    "apollo-client": "^2.4.2",
+    "apollo-link-context": "^1.0.9",
+    "apollo-link-http": "^1.5.5",
     "autoprefixer": "^9.1.5",
     "bricks.js": "^1.8.0",
     "build-css": "^0.2.0",
@@ -24,6 +27,7 @@
     "fs-extra": "^7.0.0",
     "google-maps-react": "^2.0.2",
     "graphql": "^0.13.0",
+    "graphql-tag": "^2.9.2",
     "hellojs": "^1.17.1",
     "immutable": "^3.8.2",
     "jquery": "^3.3.1",
@@ -138,17 +142,17 @@
     "webpack-cli": "^3.1.0",
     "webpack-dev-server": "^3.1.7",
     "webpack-manifest-plugin": "^2.0.3"
-	},
-	"prettier": {
-		"parser": "flow",
-		"semi": true,
-		"singleQuote": true,
-		"useTabs": true
-	},
+  },
+  "prettier": {
+    "parser": "flow",
+    "semi": true,
+    "singleQuote": true,
+    "useTabs": true
+  },
   "scripts": {
-		"build": "webpack --config ./webpack.config.js --mode production",
-		"prettier": "prettier app/web/**/*.js",
-		"prettier:write": "prettier --write app/web/**/*.js",
+    "build": "webpack --config ./webpack.config.js --mode production",
+    "prettier": "prettier app/web/**/*.js",
+    "prettier:write": "prettier --write app/web/**/*.js",
     "start": "webpack-dev-server --config ./webpack.config.js --mode development"
   }
 }

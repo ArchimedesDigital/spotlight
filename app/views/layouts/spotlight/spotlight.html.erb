@@ -54,7 +54,7 @@
 
   <!-- Load JavaScript last so that the rest of the page can start rendering -->
 	<% if Rails.env.development? %>
-	  <%= javascript_tag "//localhost:8080/webpack_bundle.js" %>
+	<script src="//localhost:8080/webpack_bundle.js"></script>
 	<% end %>
 	<%= javascript_tag '$.fx.off = true;' if Rails.env.test? %>
   </body>

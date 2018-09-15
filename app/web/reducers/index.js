@@ -23,7 +23,6 @@ const errorMessage = (state = null, action) => {
 const rootReducer = combineReducers({
 	form: formReducer,
 	errorMessage,
-	apollo: client.reducer(), // graphql data
 	routing: routerReducer,
 	bricks,
 	leftMenu,
