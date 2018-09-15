@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ApolloProvider } from 'react-apollo';
-import { BrowserRouter } from 'react-router-dom';
+import { Router } from 'react-router';
 import { CookiesProvider } from 'react-cookie';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import routes from '../../routes';
@@ -11,12 +11,12 @@ import client from '../../middleware/apolloClient';
 import AuthModalContainer from '../../modules/auth/containers/AuthModalContainer';
 import { login, register, logoutUser, verifyToken } from '../../lib/auth';
 
-const Root = ({ store }) => (
+const Root = ({ history, store }) => (
 	<ApolloProvider client={client} store={store}>
 		<MuiThemeProvider>
 			<CookiesProvider>
 				<div>
-					<BrowserRouter routes={routes} />
+					<Router history={history} routes={routes} />
 					<AuthModalContainer
 						loginMethod={login}
 						signupMethod={register}
