@@ -46,15 +46,18 @@
     <div class="row">
       <%= content_for?(:content) ? yield(:content) : yield %>
 		</div>
-
-		<div id="react-root" />
   </div>
 
+	<div id="react-root" />
   <%= render :partial => 'shared/footer' %>
 
   <!-- Load JavaScript last so that the rest of the page can start rendering -->
 	<% if Rails.env.development? %>
-	<script src="//localhost:8080/webpack_bundle.js"></script>
+		<!-- FIXME: Don't force developers to run server on localhost:8080 -->
+		<script src="//localhost:8080/webpack_bundle.js"></script>
+	<% else %>
+		<!-- FIXME: Put the webpack bundle on a CDN as part of deployment to production -->
+		<%= javascript_include_tag "webpack_bundle" %>
 	<% end %>
 	<%= javascript_tag '$.fx.off = true;' if Rails.env.test? %>
   </body>
