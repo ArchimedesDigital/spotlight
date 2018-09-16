@@ -8,12 +8,14 @@ import './NavBarHeader.css';
 
 const NavBarHeader = ({ dispatchToggleLeftMenu, leftMenuOpen }) => (
 	<div className="nav-header">
-		<i
+		{/*<i
 			className="mdi mdi-menu left-menu-toggle-icon"
 			onClick={dispatchToggleLeftMenu.bind(this, !leftMenuOpen)}
-		/>
+		/>*/}
 		<Link to="/">
-			<h2 className="site-title" />
+			<h2 className="site-title">
+
+			</h2>
 		</Link>
 	</div>
 );

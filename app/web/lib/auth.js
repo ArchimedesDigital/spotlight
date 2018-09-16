@@ -70,7 +70,7 @@ const register = async data => {
 		}
 		const resJson = await res.json();
 		if (resJson.token) {
-			// TODO: Add domain: 'orphe.us' options to cookie for cross hostname auth
+			// TODO: Add domain: 'dcp.archimedes.digital' options to cookie for cross hostname auth
 			const domain = process.env.REACT_APP_COOKIE_DOMAIN || 'hul.local';
 			cookies.set('token', resJson.token, { domain });
 			return resJson;

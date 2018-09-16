@@ -1,10 +1,16 @@
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
 import { reducer as formReducer } from 'redux-form';
+
 import bricks from './bricks';
 import leftMenu from './leftMenu';
-import authReducers from '../modules/auth/reducers';
 import client from '../middleware/apolloClient';
+
+import authReducers from '../modules/auth/reducers';
+import spotlightData from '../modules/dcp/spotlight/reducers';
+import libraryCloudData from '../modules/dcp/blacklight/reducers';
+import itemReducers from '../modules/items/reducers';
+
 
 import * as ActionTypes from '../actions';
 

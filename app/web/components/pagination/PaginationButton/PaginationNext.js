@@ -1,10 +1,21 @@
 import React from 'react';
+import { Link, withRouter } from 'react-router';
 
 const PaginationNext = props => (
-	<div>
-		<span>Next</span>
+	<Link
+		to={{
+			pathname: window.location.pathname,
+			query: {
+				...props.location.query,
+				page: (props.location.query.page ? parseInt(props.location.query.page, 10) : 1) + 1,
+			},
+		}}
+	>
+		<span>
+			Next
+		</span>
 		<i className="mdi mdi-chevron-right" />
-	</div>
+	</Link>
 );
 
-export default PaginationNext;
+export default withRouter(PaginationNext);

@@ -32,18 +32,64 @@ const query = gql`
 			}
 		}
 	}
-`;
+`
 
 const itemListQuery = graphql(query, {
 	name: 'itemListQuery',
-	options: ({ textsearch, skip, limit }) => ({
-		variables: {
-			hostname: getCurrentProjectHostname(),
-			textsearch,
-			offset: skip,
-			limit
+	options: ({ params }) => {
+		const queryParams = qs.parse(window.location.search.replace('?', ''));
+		const limit = 15;
+		let slug = '';
+		let skip = 0;
+		let language = null;
+		let genre = null;
+		let subjects = null;
+		let place = null;
+		let repository = null;
+
+		if (params && params.exhibitSlug) {
+			slug = params.exhibitSlug;
 		}
-	})
+
+		if (queryParams.page && parseInt(queryParams.page, 10) >= 1) {
+			skip = (parseInt(queryParams.page, 10) - 1) * limit;
+		}
+
+		if (queryParams.language) {
+			language = queryParams.language;
+		}
+
+		if (queryParams.genre) {
+			genre = queryParams.genre;
+		}
+
+		if (queryParams.subjects) {
+			subjects = queryParams.subjects;
+		}
+
+		if (queryParams.place) {
+			place = queryParams.place;
+		}
+
+		if (queryParams.repository) {
+			repository = queryParams.repository;
+		}
+
+		const variables = {
+			slug,
+			limit,
+			skip,
+			language,
+			genre,
+			subjects,
+			place,
+			repository,
+		};
+
+		return {
+			variables,
+		};
+	},
 });
 
 export default itemListQuery;

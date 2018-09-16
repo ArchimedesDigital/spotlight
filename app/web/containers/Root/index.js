@@ -13,19 +13,19 @@ import AuthModalContainer from '../../modules/auth/containers/AuthModalContainer
 import { login, register, logoutUser, verifyToken } from '../../lib/auth';
 
 const scrollToElemOrTop = () => {
-  if (window.location.hash.length) {
-    const elemHash = window.location.hash.replace('#', '');
+	if (window.location.hash.length) {
+		const elemHash = window.location.hash.replace('#', '');
 
-    if (elemHash) {
-      const elem = document.getElementById(elemHash);
+		if (elemHash) {
+			const elem = document.getElementById(elemHash);
 
-      if (elem) {
-        elem.scrollIntoView();
-      }
-    }
-  } else {
-    window.scrollTo(0, 0);
-  }
+			if (elem) {
+				elem.scrollIntoView();
+			}
+		}
+	} else {
+		window.scrollTo(0, 0);
+	}
 };
 
 const Root = ({ history, store }) => (
@@ -40,10 +40,10 @@ const Root = ({ history, store }) => (
 							routes={routes}
 						/>
 						<AuthModalContainer
-   					  loginMethod={login}
-	  					signupMethod={register}
-		  				logoutMethod={logoutUser}
-			  			getUserFromServer={verifyToken}
+							loginMethod={login}
+							signupMethod={register}
+							logoutMethod={logoutUser}
+							getUserFromServer={verifyToken}
 						/>
 					</div>
 				</CookiesProvider>
