@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import _s from 'underscore.string';
 
-import './BlacklightCollectionsListItem.css';
+import './BlacklightCollectionsListItem.scss';
 
 const BlacklightCollectionsListItem = (props) => {
 

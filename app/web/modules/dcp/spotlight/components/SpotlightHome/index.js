@@ -1,7 +1,7 @@
 import React from 'react';
 import HomeCover from './sections/HomeCover';
 
-import './SpotlightHome.css';
+import './SpotlightHome.scss';
 
 const SpotlightHome = (props) => {
 

@@ -1,13 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router';
 import HomeCollectionHighlightsListItem from '../HomeCollectionHighlightsListItem';
-import './HomeCollectionHighlightsList.css';
-
+import './HomeCollectionHighlightsList.scss';
 
 const HomeCollectionHighlightsList = ({collections}) => {
-
-
-
 	return (
 		<section className="hl__blacklightHome__highlights">
 			<h2 className="hl__blacklightHome__sectionTitle">Collection Highlights</h2>

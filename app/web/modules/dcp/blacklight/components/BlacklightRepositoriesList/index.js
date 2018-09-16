@@ -1,7 +1,7 @@
 import React from 'react';
 import BlacklightRepositoriesListItem from '../BlacklightRepositoriesListItem';
 
-import './BlacklightRepositoriesList.css';
+import './BlacklightRepositoriesList.scss';
 
 const BlacklightRepositoriesList = ({repositories}) => {
 

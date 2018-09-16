@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-import './HomeRelated.css';
+import './HomeRelated.scss';
 
 const HomeRelated = () => (
 	<section className="hl__blacklightHome__related">

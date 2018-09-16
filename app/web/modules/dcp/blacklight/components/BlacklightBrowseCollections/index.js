@@ -1,7 +1,7 @@
 import React from 'react';
 import BlacklightCollectionsListContainer from '../../containers/BlacklightCollectionsListContainer';
 
-import './BlacklightBrowseCollections.css';
+import './BlacklightBrowseCollections.scss';
 
 const BlacklightBrowseCollections = () => (
 	<div className="hl__blacklightBrowse">

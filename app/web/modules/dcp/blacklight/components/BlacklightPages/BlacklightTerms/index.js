@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './BlacklightTerms.css';
+import './BlacklightTerms.scss';
 
 const BlacklightTerms = () => (
 

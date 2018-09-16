@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import autoBind from 'react-autobind';
 import _s from 'underscore.string';
 
-import './HomeCollectionHighlightsListItem.css';
+import './HomeCollectionHighlightsListItem.scss';
 
 class HomeCollectionHighlightsListItem extends React.Component {
 

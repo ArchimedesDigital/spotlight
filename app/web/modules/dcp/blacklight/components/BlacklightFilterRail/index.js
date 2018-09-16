@@ -15,9 +15,7 @@ import 'react-accessible-accordion/dist/fancy-example.css';
 import parseQueryParamsToState from '../../lib/parseQueryParamsToState';
 import repositories from '../../lib/repositories';
 
-
-import './BlacklightFilterRail.css';
-
+import './BlacklightFilterRail.scss';
 
 class BlacklightFilterRail extends React.Component {
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import _s from 'underscore.string';
 
-import './HomeItemHighlights.css';
+import './HomeItemHighlights.scss';
 
 
 const HomeItemHighlights = ({ items }) => (

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './SpotlightPageHeader.css';
+import './SpotlightPageHeader.scss';
 
 const SpotlightPageHeader = ({ exhibit }) => {
 	let featuredImageSrc = '/images/asian-rubbings-cover.jpg';

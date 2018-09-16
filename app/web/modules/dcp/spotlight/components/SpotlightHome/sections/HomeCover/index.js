@@ -16,9 +16,7 @@ import SpotlightPageHeaderContainer from '../../../../containers/SpotlightPageHe
 import SpotlightToolbarContainer from '../../../../containers/SpotlightToolbarContainer';
 import SpotlightSearchResultsContainer from '../../../../containers/SpotlightSearchResultsContainer';
 
-import './HomeCover.css';
-
-
+import './HomeCover.scss';
 
 class HomeCover extends React.Component {
 

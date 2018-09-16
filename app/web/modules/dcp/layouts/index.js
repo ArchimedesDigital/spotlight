@@ -2,7 +2,7 @@ import React from 'react';
 import Header from '../../../components/navigation/Header';
 import Footer from '../../../components/navigation/Footer';
 
-import './DcpLayout.css';
+import './DcpLayout.scss';
 
 const DcpLayout = props => (
 	<div className="hl__dcpLayout">

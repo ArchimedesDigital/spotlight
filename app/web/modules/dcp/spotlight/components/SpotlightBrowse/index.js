@@ -7,7 +7,7 @@ import SpotlightToolbarContainer from '../../containers/SpotlightToolbarContaine
 import SpotlightPageHeaderContainer from '../../containers/SpotlightPageHeaderContainer';
 import SpotlightBrowseListItem from './SpotlightBrowseListItem';
 
-import './SpotlightBrowse.css';
+import './SpotlightBrowse.scss';
 
 const SpotlightBrowse = (props) => {
 	const { page, subjects } = props;

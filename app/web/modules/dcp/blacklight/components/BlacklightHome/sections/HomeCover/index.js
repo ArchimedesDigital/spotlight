@@ -3,9 +3,7 @@ import autoBind from 'react-autobind';
 import { Link, withRouter } from 'react-router';
 import { DebounceInput } from 'react-debounce-input';
 
-import './HomeCover.css';
-
-
+import './HomeCover.scss';
 
 class HomeCover extends React.Component {
 

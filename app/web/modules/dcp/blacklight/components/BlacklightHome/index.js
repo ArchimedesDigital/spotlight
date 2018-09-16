@@ -5,7 +5,7 @@ import HomeRelated from './sections/HomeRelated';
 import HomeItemHighlightContainer from '../../containers/HomeItemHighlightContainer';
 
 
-import './BlacklightHome.css';
+import './BlacklightHome.scss';
 
 const BlacklightHome = () => (
 

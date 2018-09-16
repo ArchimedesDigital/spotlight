@@ -5,7 +5,7 @@ import { withRouter } from 'react-router';
 import SpotlightToolbarContainer from '../../containers/SpotlightToolbarContainer';
 import SpotlightPageHeaderContainer from '../../containers/SpotlightPageHeaderContainer';
 
-import './SpotlightFeature.css';
+import './SpotlightFeature.scss';
 
 const SpotlightFeature = (props) => {
 	const { page } = props;

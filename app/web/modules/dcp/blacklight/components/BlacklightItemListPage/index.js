@@ -18,8 +18,7 @@ import parseQueryParamsToFilters from '../../../lib/parseQueryParamsToFilters';
 // redux
 import { setItemListViewType } from '../../../../items/actions';
 
-
-import './BlacklightItemListPage.css';
+import './BlacklightItemListPage.scss';
 
 class BlacklightItemListPage extends React.Component {
 

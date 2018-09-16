@@ -1,7 +1,7 @@
 import React from 'react';
 import BlacklightCollectionsListItem from '../BlacklightCollectionsListItem';
 
-import './BlacklightCollectionsList.css';
+import './BlacklightCollectionsList.scss';
 
 const BlacklightCollectionsList = ({content, collections}) => {
 

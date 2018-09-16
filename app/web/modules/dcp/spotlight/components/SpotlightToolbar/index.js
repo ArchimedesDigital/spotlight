@@ -4,7 +4,7 @@ import Media from 'react-media';
 import autoBind from 'react-autobind';
 import { Link } from 'react-router';
 
-import './SpotlightToolbar.css';
+import './SpotlightToolbar.scss';
 
 class SpotlightToolbar extends React.Component {
 

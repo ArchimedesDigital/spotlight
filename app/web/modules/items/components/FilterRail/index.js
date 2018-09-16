@@ -12,8 +12,7 @@ import {
 } from 'react-accessible-accordion';
 
 import 'react-accessible-accordion/dist/fancy-example.css';
-import './FilterRail.css';
-
+import './FilterRail.scss';
 
 const facetsToCheckboxValues = facets => {
 	const checkboxValues = {
