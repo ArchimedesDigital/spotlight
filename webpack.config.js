@@ -207,6 +207,10 @@ module.exports = {
 	performance: {
 		hints: false,
 	},
+	optimization: {
+		// easier for debugging, can turn on after release
+		minimize: false
+	},
 	plugins: [
 		new webpack.EnvironmentPlugin(getClientEnvironment()),
 		new webpack.NamedModulesPlugin()
