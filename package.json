@@ -157,7 +157,7 @@
     "useTabs": true
   },
   "scripts": {
-    "build": "yarn run build:css && webpack --config ./webpack.config.js --mode production",
+    "build": "NODE_ENV=production yarn run webpack --config ./webpack.config.js --mode production",
     "prettier": "prettier app/web/**/*.js",
     "prettier:write": "prettier --write app/web/**/*.js",
     "start": "yarn run watch:js",
