@@ -1,6 +1,7 @@
 {
   "private": true,
   "dependencies": {
+    "@babel/polyfill": "^7.0.0",
     "Dante2": "^0.4.4",
     "apollo-cache-inmemory": "^1.2.10",
     "apollo-client": "^2.4.2",
@@ -157,7 +158,7 @@
     "useTabs": true
   },
   "scripts": {
-    "build": "NODE_ENV=production yarn run webpack --config ./webpack.config.js --mode production",
+    "build": "NODE_ENV=production webpack --config ./webpack.config.js --mode production",
     "prettier": "prettier app/web/**/*.js",
     "prettier:write": "prettier --write app/web/**/*.js",
     "start": "yarn run watch:js",

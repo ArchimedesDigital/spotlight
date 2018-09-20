@@ -71,12 +71,14 @@ function getClientEnvironment() {
   return stringified;
 }
 
+const entry = NODE_ENV === 'development' ?[
+	require.resolve('react-dev-utils/webpackHotDevClient'),
+	'./app/web/index.js'
+] : ['./app/web/index.js'];
+
 module.exports = {
-	devtool: 'cheap-module-source-map',
-	entry: [
-		require.resolve('react-dev-utils/webpackHotDevClient'),
-		'./app/web/index.js'
-	],
+	devtool: NODE_ENV === 'development' && 'cheap-module-source-map',
+	entry,
 	module: {
 		rules: [
 			// TODO: Disable require.ensure as it's not a standard language feature.

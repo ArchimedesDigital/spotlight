@@ -30,3 +30,4 @@ pkg/
 
 node_modules
 app/assets/javascripts/spotlight/webpack_bundle.js
+app/assets/javascripts/spotlight/webpack_bundle.js.map
