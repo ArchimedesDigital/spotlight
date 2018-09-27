@@ -59,6 +59,10 @@ module Spotlight
       copy_file 'spotlight.js', 'app/assets/javascripts/spotlight.js'
     end
 
+		def build_webpack_assets
+
+		end
+
     def add_theme_images
       empty_directory 'app/assets/images/spotlight/themes'
       copy_file 'default_preview.png', 'app/assets/images/spotlight/themes/default_preview.png'
